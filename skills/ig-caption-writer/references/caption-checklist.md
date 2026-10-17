@@ -1,66 +1,66 @@
-# Caption Checklist (Instagram)
+# Checklist da legenda (Instagram)
 
-The per-caption scrub and fit list `ig-caption-writer` applies before showing the
-approval card. Mirrors the root algorithm checklist with caption-specific items.
+A lista que `ig-caption-writer` aplica antes de mostrar o cartão de aprovação.
 
-## Hook (the first 125 chars)
+## Gancho (os primeiros 125 caracteres)
 
-- [ ] The first line lands the payoff, tension, or number on its own.
-- [ ] It makes sense without the second line (the "more" fold eats line 2+).
-- [ ] It is not a bare title ("Tips for X") but a promise ("the X that saved me 11 hours").
-- [ ] If a number fits the claim, it is in the hook.
+- [ ] A primeira linha entrega o resultado, a tensão ou o número sozinha.
+- [ ] Faz sentido sem a segunda linha (o corte do "mais" come da linha 2 em diante).
+- [ ] Não é título seco ("Dicas de X") e sim promessa ("o X que me economizou 11 horas").
+- [ ] Se cabe um número na afirmação, ele está no gancho.
 
-## Body
+## Corpo
 
-- [ ] One idea, not three. The caption argues a single point.
-- [ ] Short lines with white space between beats; no wall of text.
-- [ ] Under 2,200 chars total.
-- [ ] Teaches or tells the story the hook promised (no bait-and-switch).
+- [ ] Uma ideia, não três.
+- [ ] Linhas curtas com espaço entre as ideias; sem bloco de texto.
+- [ ] Menos de 2.200 caracteres.
+- [ ] Ensina ou conta a história que o gancho prometeu (sem isca e troca).
+- [ ] Português correto: concordância, crase, "mas/mais", "há/a", "porque/por que".
 
 ## CTA
 
-- [ ] One CTA, not three competing ones.
-- [ ] It names the reason ("save this for your next launch") or asks a real question.
-- [ ] No "what do you think?" / "thoughts?" dead closer.
-- [ ] No engagement bait ("double tap if", "comment YES", "tag 3 friends").
+- [ ] Um CTA, não três.
+- [ ] Diz o motivo ("salva pra usar no próximo lançamento") ou faz uma pergunta real.
+- [ ] Sem "o que vocês acham?" / "comentem aí" como fechamento morto.
+- [ ] Sem isca ("dá dois toques se", "comenta SIM", "marca 3 amigos").
+- [ ] "Comenta PALAVRA" só se existe automação que entrega algo real no direct.
 
 ## Hashtags
 
-- [ ] 3-5 sized tags (2-3 niche, 1-2 mid, 0-1 broad), not 30.
-- [ ] Every tag matches the actual content.
-- [ ] At the end of the caption or in the first comment, never mid-sentence.
+- [ ] 3-5 dimensionadas (2-3 de nicho, 1-2 médias, 0-1 ampla), não 30.
+- [ ] Toda tag combina com o conteúdo.
+- [ ] No fim da legenda ou no primeiro comentário, nunca no meio da frase.
 
-## Voice scrub
+## Limpeza de voz
 
-- [ ] Em dashes (`—`) at or under about one per 100 words (1-2 per caption).
-      A single em dash is fine (29% of human captions have one). Replace only
-      the excess, with a comma, colon, parentheses or a line break, never a
-      period. No en dash (`–`) between clauses, no double dash (`--`).
-- [ ] No cluster of 2026 AI vocab (3+ markers in one paragraph = rewrite the
-      paragraph; one is fine): significant, crucial, notably, comprehensive,
-      insights, robust, leverage, foster, landscape, nuanced, streamline,
-      elevate, empower, dive in, fundamentally, essentially, ultimately; plus
-      "-ing" clause openers and "the X-tion of" nominalisations.
-- [ ] No reveal bridge ("The result?", "Here's the thing..", "Let's talk
-      about..", "Stop X, start Y") and no "It's not X, it's Y".
-- [ ] No sincerity announcement ("real talk", "not gonna lie", "POV:" on
-      something that is not a POV) and no hedge the author did not write.
-- [ ] No staccato stack ("Short. Punchy. Done.", "No X. No Y. Just Z."), no
-      one-word line for drama, at most 2 standalone fragments. Fix only a
-      paragraph that reads machine-flat; never manufacture variance.
-- [ ] At least one odd-precision number with a named referent, or a named
-      entity, where the claim allows. A bare number does not count.
-- [ ] 0-3 emoji, placed with intent, none sprinkled.
-- [ ] At most one natural rule-of-three with concrete items; no stacked or
-      hollow triads.
+- [ ] Travessões (`—`) em até cerca de um a cada 100 palavras (1-2 por legenda).
+      Um travessão sozinho é ok. Troque só o excesso, por vírgula, dois-pontos,
+      parênteses ou quebra de linha, nunca ponto final. Sem meia-risca (`–`)
+      entre orações nem hífen duplo (`--`).
+- [ ] Sem aglomerado de vocabulário de IA (3+ marcadores num parágrafo =
+      reescrever o parágrafo; um é ok): alavancar, potencializar, impulsionar,
+      otimizar, crucial, fundamental, essencial, robusto, abrangente, jornada,
+      cenário, ecossistema, insights, mergulhar, desbloquear, elevar, vale
+      ressaltar, é importante destacar; mais aberturas com gerúndio ("Pensando
+      nisso,") e nominalizações ("a implementação de").
+- [ ] Sem ponte de revelação ("O resultado?", "Seguinte..", "Vamos falar
+      sobre..", "Pare de X, comece a Y") e sem "Não é só X, é Y".
+- [ ] Sem sinceridade anunciada ("papo reto", "vou ser sincero", "POV:" sem
+      ser POV) e sem ressalva que o autor não escreveu.
+- [ ] Sem pilha picotada ("Simples. Rápido. Fácil.", "Sem X. Sem Y. Só Z."),
+      sem linha de uma palavra para drama, no máximo 2 fragmentos soltos.
+- [ ] Pelo menos um número quebrado com referência, ou um nome próprio, onde
+      a afirmação permitir. Número solto não conta.
+- [ ] 0-3 emoji, com intenção, nenhum espalhado.
+- [ ] No máximo um trio natural com itens concretos; nada de trios empilhados ou ocos.
 
-## Media
+## Mídia
 
-- [ ] The user knows which image or video to attach (Instagram needs media).
-- [ ] For a Reel, the caption supports the video; it is not the hook itself.
+- [ ] O usuário sabe qual imagem ou vídeo anexar.
+- [ ] Em Reel, a legenda apoia o vídeo; ela não é o gancho.
 
-## Scoring
+## Pontuação
 
-- Any hook or voice-scrub miss -> fix before the approval card.
-- CTA or hashtag miss -> flag with a one-line fix.
-- Clean -> show the approval card with the formula, char count, and primary goal.
+- Falha em gancho ou limpeza de voz -> corrija antes do cartão de aprovação.
+- Falha em CTA ou hashtag -> sinalize com uma correção de uma linha.
+- Tudo limpo -> mostre o cartão com fórmula, contagem de caracteres e objetivo principal.

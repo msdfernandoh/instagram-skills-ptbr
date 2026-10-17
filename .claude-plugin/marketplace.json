@@ -1,18 +1,18 @@
 {
-  "name": "instagram-skills",
+  "name": "instagram-skills-ptbr",
   "owner": {
     "name": "Serge Bulaev",
     "url": "https://github.com/sergebulaev"
   },
   "metadata": {
-    "description": "Claude Code and Codex skills for Instagram growth: caption writing with a first-125-char hook, slide-by-slide carousel planning, viral Reel and carousel hook extraction, 2026 hashtag sizing, an AI-tell humanizer with bundled pre-publish audit, and weekly content planning. Posts publish through the Publora API media flow."
+    "description": "9 skills de marketing para Instagram em português do Brasil (Claude Code e Codex): legenda com gancho nos primeiros 125 caracteres, planejamento de carrossel slide a slide, extração de gancho de Reels e carrosséis virais, hashtags dimensionadas para o mercado brasileiro (inclusive tags locais), humanizador que tira a cara de IA do português com revisão pré-publicação, reaproveitamento de conteúdo entre plataformas, otimização de perfil, insights de nicho e perfil via Apify e plano semanal de Reels, carrosséis e stories com horários no fuso do público. Publicação via Publora. Adaptação PT-BR do instagram-skills de Serge Bulaev (MIT)."
   },
   "plugins": [
     {
-      "name": "instagram-skills",
+      "name": "instagram-skills-ptbr",
       "source": "./",
-      "description": "Bundle of 9 Instagram marketing skills for Claude Code and Codex with Instagram-native hook formulas, caption writing that front-loads the first 125 chars, a 10-slide carousel planner, viral hook extraction, 2026 hashtag sizing, a unified humanizer (rewrite plus pre-publish audit), cross-platform repurposing, a profile optimizer, an Apify-powered niche and profile audience insights reader, and a weekly Reels and carousel planner. Posts ship via Publora's draft, upload, schedule media flow.",
-      "version": "1.0.32",
+      "description": "9 skills de marketing para Instagram em português do Brasil (Claude Code e Codex): legenda com gancho nos primeiros 125 caracteres, planejamento de carrossel slide a slide, extração de gancho de Reels e carrosséis virais, hashtags dimensionadas para o mercado brasileiro (inclusive tags locais), humanizador que tira a cara de IA do português com revisão pré-publicação, reaproveitamento de conteúdo entre plataformas, otimização de perfil, insights de nicho e perfil via Apify e plano semanal de Reels, carrosséis e stories com horários no fuso do público. Publicação via Publora. Adaptação PT-BR do instagram-skills de Serge Bulaev (MIT).",
+      "version": "1.0.33",
       "author": {
         "name": "Serge Bulaev",
         "url": "https://github.com/sergebulaev"
@@ -31,7 +31,10 @@
         "reels",
         "carousel",
         "captions",
-        "hashtags"
+        "hashtags",
+        "portugues",
+        "pt-br",
+        "brasil"
       ],
       "category": "productivity"
     }

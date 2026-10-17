@@ -24,7 +24,7 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SKILLS = sorted(d for d in (ROOT / "skills").iterdir() if (d / "SKILL.md").is_file())
 CANONICAL = ROOT / "references" / "untrusted-content.md"
-SECTION = re.compile(r"^## Untrusted content\s*$", re.M)
+SECTION = re.compile(r"^## (?:Untrusted content|Conteúdo não confiável)\s*$", re.M)
 CITES = "references/untrusted-content.md"
 
 #: Skills whose input is content somebody else wrote.

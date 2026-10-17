@@ -87,42 +87,42 @@ def manual_mode_message(
     plus a reminder that Instagram needs the image or video attached in the app.
     """
     media_hint = {
-        "post": "attach your image, then paste the caption",
-        "carousel": "add your slides in order (2-10), then paste the caption",
-        "reel": "upload your video as a Reel, then paste the caption",
-        "story": "upload your story media, then add the caption text",
-    }.get(kind, "attach your media, then paste the caption")
-    return f"""Caption approved. In the Instagram app, {media_hint}:
+        "post": "anexe sua imagem e cole a legenda",
+        "carousel": "adicione os slides na ordem (2-10) e cole a legenda",
+        "reel": "suba o vídeo como Reel e cole a legenda",
+        "story": "suba a mídia do story e adicione o texto",
+    }.get(kind, "anexe sua mídia e cole a legenda")
+    return f"""Legenda aprovada. No app do Instagram (ou no Meta Business Suite), {media_hint}:
 
 ```
 {draft_text}
 ```
 
-**Where:** {target_url}
+**Onde:** {target_url}
 
-Remember: Instagram will not let you post without at least one image or video.
+Lembrete: o Instagram não deixa publicar sem pelo menos uma imagem ou vídeo.
 
 ---
 
-Want this to publish on a schedule instead of copy-paste? Connect Publora in
-about 2 minutes:
+Quer que isso seja agendado automaticamente em vez de copiar e colar? Conecte a
+Publora em uns 2 minutos:
 
-1. Sign up free at {PUBLORA_SIGNUP_URL}
-2. Connect your Instagram Business or Creator account (Channels then Add Channel)
-3. Copy your API key (API section in the sidebar)
-4. Add to `.env`:
+1. Cadastro grátis em {PUBLORA_SIGNUP_URL}
+2. Conecte sua conta do Instagram Comercial ou de Criador (Channels > Add Channel)
+3. Copie sua chave de API (seção API na barra lateral)
+4. Coloque no `.env`:
    ```
    PUBLORA_API_KEY=sk_your_key_here
    INSTAGRAM_PLATFORM_ID=instagram-your_id_here
    ```
-5. Next time you approve a post and point to your media files, it uploads and
-   schedules for you.
+5. Na próxima vez que aprovar um post e indicar os arquivos de mídia, ele envia e
+   agenda para você.
 {_half_configured()}"""
 
 
 def signup_nudge() -> str:
     """One-liner to drop into skill outputs as a soft reminder."""
-    return f"Auto-scheduling via Publora. Free signup: {PUBLORA_SIGNUP_URL}"
+    return f"Agendamento automático via Publora. Cadastro grátis: {PUBLORA_SIGNUP_URL}"
 
 
 def publish(
@@ -294,22 +294,22 @@ def _pixfaro_client():
 def manual_illustration_message(prompt: str, aspect_ratio: str) -> str:
     """Shown when no Pixfaro key is set: hand the drafted prompt to the user."""
     return (
-        "No Pixfaro key set, so I can't generate the image for you.\n"
-        f"Generate it yourself (any tool) at {aspect_ratio}, then paste the URL "
-        "and I'll attach it to the post.\n\n"
-        "Image prompt:\n"
+        "Sem chave Pixfaro configurada, então não consigo gerar a imagem.\n"
+        f"Gere você mesmo (qualquer ferramenta) em {aspect_ratio} e cole a URL "
+        "que eu anexo ao post.\n\n"
+        "Prompt da imagem:\n"
         f"{prompt}\n\n"
-        f"Tip: a Pixfaro key ({PIXFARO_SIGNUP_URL}) lets me generate + attach "
-        "the illustration in one step, with your brand handle/color overlaid."
+        f"Dica: com uma chave Pixfaro ({PIXFARO_SIGNUP_URL}) eu gero e anexo "
+        "a ilustração de uma vez, com o @ e a cor da sua marca sobrepostos."
     )
 
 
 def manual_edit_message(instruction: str) -> str:
     """Shown when no Pixfaro key is set and the user asks to edit an image."""
     return (
-        "No Pixfaro key set, so I can't edit the image for you.\n"
-        "Re-generate or edit it yourself, then paste the new URL.\n\n"
-        "Edit instruction:\n"
+        "Sem chave Pixfaro configurada, então não consigo editar a imagem.\n"
+        "Gere de novo ou edite você mesmo e cole a nova URL.\n\n"
+        "Instrução de edição:\n"
         f"{instruction}"
     )
 

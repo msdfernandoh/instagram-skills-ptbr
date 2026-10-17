@@ -29,27 +29,27 @@ def render_approval_card(
     - A reminder of the media the user must supply (Instagram needs media)
     - A clear prompt: "reply post / yes to publish, or suggest edits"
     """
-    lines = [f"## Draft ready for approval - {kind}", ""]
+    lines = [f"## Rascunho pronto para aprovação - {kind}", ""]
     if target_url:
-        lines.append(f"**Target:** {target_url}")
+        lines.append(f"**Destino:** {target_url}")
     if char_count is None:
         char_count = len(preview_text)
-    fold = " (first ~125 show before the 'more' fold)" if char_count > 125 else ""
-    lines.append(f"**Caption chars:** {char_count} / 2200{fold}")
+    fold = " (os primeiros ~125 aparecem antes do 'mais')" if char_count > 125 else ""
+    lines.append(f"**Caracteres da legenda:** {char_count} / 2200{fold}")
     if slide_count is not None:
         lines.append(f"**Slides:** {slide_count}")
     if media_note:
-        lines.append(f"**Media you supply:** {media_note}")
+        lines.append(f"**Mídia que você fornece:** {media_note}")
     lines.append("")
-    lines.append("**Caption preview:**")
+    lines.append("**Prévia da legenda:**")
     lines.append("")
     for pl in preview_text.splitlines() or [""]:
         lines.append(f"> {pl}")
     lines.append("")
     if extra_context:
-        lines.append("**Context:**")
+        lines.append("**Contexto:**")
         for k, v in extra_context.items():
             lines.append(f"- **{k}**: {v}")
         lines.append("")
-    lines.append("Reply **post** / **yes** to publish, or suggest edits.")
+    lines.append("Responda **publicar** / **sim** para publicar, ou sugira ajustes.")
     return "\n".join(lines)

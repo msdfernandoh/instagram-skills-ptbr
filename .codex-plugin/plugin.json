@@ -1,7 +1,7 @@
 {
-  "name": "instagram-skills",
-  "description": "9 Claude Code and Codex skills for Instagram marketing: caption writing with a first-125-char hook, slide-by-slide carousel planning, viral Reel and carousel hook extraction, 2026 hashtag sizing, an AI-tell humanizer with pre-publish audit, cross-platform repurposing, profile optimization, niche and profile audience insights via Apify, and weekly content planning for Reels, carousels, and stories. Publora is the default publish layer for the draft, upload, schedule media flow.",
-  "version": "1.0.32",
+  "name": "instagram-skills-ptbr",
+  "description": "9 skills de marketing para Instagram em português do Brasil (Claude Code e Codex): legenda com gancho nos primeiros 125 caracteres, planejamento de carrossel slide a slide, extração de gancho de Reels e carrosséis virais, hashtags dimensionadas para o mercado brasileiro (inclusive tags locais), humanizador que tira a cara de IA do português com revisão pré-publicação, reaproveitamento de conteúdo entre plataformas, otimização de perfil, insights de nicho e perfil via Apify e plano semanal de Reels, carrosséis e stories com horários no fuso do público. Publicação via Publora. Adaptação PT-BR do instagram-skills de Serge Bulaev (MIT).",
+  "version": "1.0.33",
   "author": {
     "name": "Serge Bulaev",
     "url": "https://github.com/sergebulaev"
@@ -21,13 +21,16 @@
     "reels",
     "carousel",
     "captions",
-    "hashtags"
+    "hashtags",
+    "portugues",
+    "pt-br",
+    "brasil"
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Instagram Skills",
-    "shortDescription": "Instagram marketing skills for Claude Code and Codex.",
-    "longDescription": "A bundle of 9 Instagram marketing skills for Claude Code and Codex: caption writing, carousel planning, hook extraction, hashtag strategy, humanizing, cross-platform repurposing, profile optimization, niche and profile audience insights via Apify, and weekly content planning. Posts publish through Publora's draft, media-upload, and schedule flow.",
+    "displayName": "Instagram Skills PT-BR",
+    "shortDescription": "Skills de marketing para Instagram em português do Brasil.",
+    "longDescription": "9 skills de marketing para Instagram em português do Brasil (Claude Code e Codex): legenda com gancho nos primeiros 125 caracteres, planejamento de carrossel slide a slide, extração de gancho de Reels e carrosséis virais, hashtags dimensionadas para o mercado brasileiro (inclusive tags locais), humanizador que tira a cara de IA do português com revisão pré-publicação, reaproveitamento de conteúdo entre plataformas, otimização de perfil, insights de nicho e perfil via Apify e plano semanal de Reels, carrosséis e stories com horários no fuso do público. Publicação via Publora. Adaptação PT-BR do instagram-skills de Serge Bulaev (MIT).",
     "developerName": "Serge Bulaev",
     "category": "Productivity",
     "capabilities": [

@@ -1,96 +1,95 @@
 ---
 name: ig-hashtag-strategist
-description: "Build a sized Instagram hashtag set for a post using the 2026 reality that 3 to 5 well-chosen tags beat 30 random ones. Sizes each tag as niche (under 50k posts), mid (50k to 500k), or broad (500k+), then assembles a 2-3 niche, 1-2 mid, 0-1 broad mix that a small or mid account can actually rank in, matched to the post content and rotated to avoid spam patterns. Use to choose hashtags for a caption, carousel, or Reel. Not for writing the caption itself (use ig-caption-writer)."
+description: "Monta um conjunto de hashtags dimensionado para um post de Instagram, na realidade de 2026 em que 3 a 5 tags bem escolhidas vencem 30 aleatórias. Classifica cada tag como nicho (até ~20 mil posts), média (20 mil a 300 mil) ou ampla (300 mil+), inclui tags locais de cidade quando faz sentido e monta uma mistura de 2-3 nicho, 1-2 média e 0-1 ampla, combinando com o conteúdo e alternando para não parecer spam. Não serve para escrever a legenda (use ig-caption-writer)."
 ---
 
-# Instagram Hashtag Strategist
+# Estrategista de hashtags para Instagram
 
-Pick 3-5 hashtags that actually help, sized so the post can rank. The 30-tag wall
-is dead: in 2026 hashtags work as topic labels, and a small account ranks in
-niche tags, not in million-post broad ones. This skill builds the sized set.
+Escolhe 3-5 hashtags que ajudam de verdade, do tamanho certo para o post
+ranquear. O paredão de 30 tags morreu: em 2026 hashtag funciona como etiqueta de
+assunto, e conta pequena ranqueia em tag de nicho, não em tag de milhões de
+posts. Esta skill monta o conjunto dimensionado.
 
-## When to use
+## Quando usar
 
-- User has a caption, carousel, or Reel and needs hashtags
-- User is still posting 20-30 generic tags and wants the 2026 approach
-- User wants tags sized to where their account can actually rank
+- O usuário tem legenda, carrossel ou Reel e precisa de hashtags
+- O usuário ainda posta 20-30 tags genéricas e quer o jeito de 2026
+- O usuário quer tags do tamanho em que a conta dele consegue ranquear
 
-## The model: size, not volume
+## O modelo: tamanho, não volume
 
-A tag's **size** is its total post count. The strategy is a mix so the post
-ranks in the small tags while touching the bigger ones.
-
-| Tier | Post count | Role | Use |
+| Faixa | Nº de posts | Papel | Usar |
 |---|---|---|---|
-| Niche | under 50k | where a small/mid account can actually rank for hours | 2-3 |
-| Mid | 50k - 500k | enough audience, beatable competition | 1-2 |
-| Broad | 500k+ | a brief category-label touch, ranks for minutes | 0-1 |
+| Nicho | até ~20 mil | onde conta pequena/média ranqueia por horas | 2-3 |
+| Média | ~20 mil a 300 mil | público suficiente, concorrência vencível | 1-2 |
+| Ampla | 300 mil+ | toque rápido de categoria, ranqueia por minutos | 0-1 |
 
-**Default: 3-5 total.** Full reasoning in `../../references/hashtag-strategy.md`.
+**Padrão: 3-5 no total.** Faixas ajustadas para tags em português. Raciocínio
+completo em `../../references/hashtag-strategy.md`.
 
-## Steps
+## Passos
 
-1. **Get the post.** The caption, carousel topic, or Reel subject, plus the
-   target audience and the account's rough size (so the niche/mid split fits).
-2. **Extract topics.** Pull the 3-5 real topics the post is about (the subject,
-   the niche community, the format, the outcome).
-3. **Generate candidates per tier.** For each topic, propose niche, mid, and
-   broad candidates. Niche tags are specific and long-tail
-   (`#notionforfreelancers`); broad tags are single common words (`#marketing`).
-4. **Size each candidate.** Estimate the tier from specificity (the API does not
-   expose counts, so use judgment and tell the user to verify counts in the app's
-   search). Flag any obviously generic or flag-prone tags
-   (`#follow4follow`, `#like4like`) to drop.
-5. **Assemble the set.** 2-3 niche + 1-2 mid + 0-1 broad, total 3-5. Drop the
-   broad slot if nothing genuinely fits. Every tag must match the content.
-6. **Check the match.** Reject any tag that is popular but off-topic; a mismatch
-   mistrains the recommendation engine and lowers reach.
-7. **Rotate.** Tell the user to vary the set per topic, not reuse one block on
-   every post (identical sets across many posts read as automation).
-8. **Output.** The 3-5 set, each tagged with its tier and a one-line why, plus
-   placement guidance (end of caption or first comment).
+1. **Pegue o post.** A legenda, o tema do carrossel ou o assunto do Reel, mais
+   o público, a cidade/região (se o negócio é local) e o tamanho aproximado da
+   conta.
+2. **Extraia os temas.** Os 3-5 assuntos reais do post (o tema, a comunidade, o
+   formato, o resultado, o lugar).
+3. **Gere candidatas por faixa.** Para cada tema, proponha nicho, média e ampla.
+   Nicho é específica e de cauda longa (`#consorcioimobiliario`, `#sinopmt`);
+   ampla é uma palavra comum (`#marketing`, `#imoveis`).
+4. **Dimensione cada candidata.** Estime a faixa pela especificidade (a API não
+   mostra contagens; diga ao usuário para conferir o número na busca do app).
+   Marque para tirar as genéricas ou suspeitas (`#sigodevolta`, `#seguidores`,
+   `#follow4follow`, `#like4like`).
+5. **Monte o conjunto.** 2-3 nicho + 1-2 média + 0-1 ampla, total 3-5. Tire a
+   ampla se nenhuma servir de verdade. Negócio local: pelo menos uma tag de
+   cidade/região entre as de nicho.
+6. **Confira o encaixe.** Rejeite tag popular mas fora do assunto.
+7. **Alterne.** Diga ao usuário para variar o conjunto por assunto.
+8. **Entrega.** O conjunto de 3-5, cada tag com a faixa e um porquê de uma
+   linha, mais onde colocar (fim da legenda ou primeiro comentário).
 
-## Output format
+## Formato da saída
 
 ```
-Sized set (4 tags):
-  #notionforfreelancers   niche   the exact community this post serves
-  #freelanceworkflow      niche   long-tail, low churn, rankable
-  #productivitytips       mid     warm relevant audience, beatable
-  #notion                 broad   category label, one touch
+Conjunto dimensionado (4 tags):
+  #consorcioimobiliario   nicho   a comunidade exata que este post atende
+  #sinopmt                nicho   tag local, pouca concorrência, público certo
+  #educacaofinanceira     média   público próximo e relevante, vencível
+  #imoveis                ampla   etiqueta de categoria, um toque
 
-Placement: end of the caption or the first comment. Rotate the niche tags per topic.
+Onde colocar: fim da legenda ou primeiro comentário. Alterne as de nicho por assunto.
+Confira no app: #sinopmt e #consorcioimobiliario (estão na fronteira entre faixas).
 ```
 
-## Hard rules
+## Regras fixas
 
-Global voice rules: see root `SKILL.md` Voice rules. Additional skill-specific
-rules:
+Regras de voz globais: ver "Regras de voz" no `SKILL.md` raiz. Regras específicas:
 
-- 3-5 tags total. Never output a 30-tag block.
-- Every tag must describe the actual content. No popular-but-off-topic tags.
-- At most one broad tag; drop it if nothing fits.
-- Flag and remove engagement-farm tags (`#follow4follow`, `#like4like`) and any
-  known flagged tags.
-- Hashtags go at the end of the caption or in the first comment, never
-  mid-sentence.
-- Rotate sets per topic; do not hand the user one block to paste forever.
+- 3-5 tags no total. Nunca um bloco de 30.
+- Toda tag descreve o conteúdo real. Nada de popular-mas-fora-do-assunto.
+- No máximo uma ampla; tire se nada servir.
+- Marque e remova tags de troca de seguidor e tags sabidamente marcadas.
+- Hashtag no fim da legenda ou no primeiro comentário, nunca no meio da frase.
+- Tags no idioma que o público digita (para público brasileiro, quase sempre português).
+- Alterne conjuntos por assunto; não entregue um bloco para colar para sempre.
 
-## Anti-patterns (skill will refuse)
+## Antipadrões (a skill recusa)
 
-- Outputting 20-30 hashtags.
-- A "viral hashtag pack" of generic broad tags.
-- Tags that do not match the post to chase a bigger audience.
-- Hiding 30 tags behind dots to "look clean".
-- All-broad sets a small account cannot rank in.
+- Entregar 20-30 hashtags.
+- "Pacote de hashtags virais" de tags amplas genéricas.
+- Tags que não combinam com o post para pegar público maior.
+- Esconder 30 tags atrás de pontinhos para "ficar limpo".
+- Conjunto só de amplas, onde conta pequena não ranqueia.
 
-## Resources
+## Recursos
 
-- `../../references/hashtag-strategy.md` - the full 2026 sizing model and recipe
-- `../../references/algorithm-heuristics.md` - why sends and saves, not hashtag feeds, drive reach
+- `../../references/hashtag-strategy.md` - o modelo completo e a receita
+- `../../references/algorithm-heuristics.md` - por que envios e salvamentos, não feed de hashtag, geram alcance
+- `references/sourcing-tactics.md` - onde achar e como dimensionar candidatas
 
-## Related skills
+## Skills relacionadas
 
-- `ig-caption-writer` - writes the caption the hashtags attach to
-- `ig-carousel-planner` - the carousel whose caption carries the set
-- `ig-content-planner` - rotate tag themes across a week
+- `ig-caption-writer` - escreve a legenda que leva as hashtags
+- `ig-carousel-planner` - o carrossel cuja legenda leva o conjunto
+- `ig-content-planner` - alterna temas de tags ao longo da semana

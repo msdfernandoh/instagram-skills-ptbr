@@ -1,62 +1,61 @@
-# Instagram Content Pillars
+# Pilares de conteúdo no Instagram
 
-A pillar is a recurring content theme that gives your account a clear identity.
-Instagram rewards accounts that signal a consistent topic, because the
-recommendation engine can match them to the right non-follower audience. Pillars
-also make planning a week mechanical instead of agonizing.
+Pilar é um tema recorrente que dá identidade clara à conta. O Instagram premia
+contas que sinalizam um assunto consistente, porque o motor de recomendação
+consegue encaixá-las no público certo entre os não seguidores. Pilares também
+tornam o planejamento da semana mecânico em vez de sofrido.
 
-## The default four pillars
+## Os quatro pilares padrão
 
-| Pillar | Share | Purpose | Primary goal |
+| Pilar | Fatia | Função | Objetivo principal |
 |---|---|---|---|
-| **Educational** | 40% | teach the thing you are known for | saves |
-| **Story** | 30% | first-person build-in-public, wins and losses | follows, comments |
-| **Engagement** | 20% | relatable moments, questions, story stickers | comments, shares |
-| **Promotion** | 10% | the product, the offer, the next step | follows |
+| **Educativo** | 40% | ensinar aquilo pelo que você é conhecido | salvamentos |
+| **História** | 30% | bastidores em primeira pessoa, vitórias e perdas, cases de clientes | seguidores, comentários |
+| **Engajamento** | 20% | situações do dia a dia, perguntas, figurinhas nos stories | comentários, envios |
+| **Promoção** | 10% | o produto, a oferta, o próximo passo | seguidores |
 
-Adjust the percentages to the account, but keep no single pillar over ~50% so
-the feed does not read as one-note.
+Ajuste as porcentagens à conta, mas nenhum pilar passa de ~50%, para o feed não
+ficar monotemático.
 
-## Why this split
+## Por que essa divisão
 
-- **Educational earns the saves** that drive long-tail Explore reach. Lists,
-  frameworks, and how-tos (IG5, IG8, IG10, IG1) live here.
-- **Story earns the follows.** People follow people. Real first-person posts
-  (IG4, IG6) build the trust that converts a viewer into a follower.
-- **Engagement earns the comments and sends** that signal an active, spreadable
-  account. Relatable cold-opens (IG3), pattern-interrupt Reels (IG9), and story
-  poll/question stickers live here.
-- **Promotion converts** the audience the other three pillars built. Keep it
-  scarce so it lands.
+- **Educativo rende os salvamentos** que alimentam o alcance de cauda longa no
+  Explorar. Listas, métodos e tutoriais (IG5, IG8, IG10, IG1) moram aqui.
+- **História rende os follows.** Gente segue gente. Posts reais em primeira
+  pessoa (IG4, IG6) e depoimentos de clientes constroem a confiança. Depoimento
+  só com autorização do cliente.
+- **Engajamento rende comentários e envios** que sinalizam conta ativa.
+  Situações do dia a dia (IG3), Reels quebra-padrão (IG9) e figurinhas moram aqui.
+- **Promoção converte** o público que os outros três construíram. Mantenha
+  escassa para ela funcionar.
 
-## Format per pillar
+## Formato por pilar
 
-| Pillar | Best surface |
+| Pilar | Melhor superfície |
 |---|---|
-| Educational | carousel (saves) or how-I Reel |
-| Story | carousel (before/after) or face-to-camera Reel |
-| Engagement | single image, Reel, or story stickers |
-| Promotion | carousel or Reel with a single clear next step |
+| Educativo | carrossel (salvamentos) ou Reel "como eu fiz" |
+| História | carrossel (antes/depois) ou Reel falando para a câmera |
+| Engajamento | imagem única, Reel ou figurinhas nos stories |
+| Promoção | carrossel ou Reel com um próximo passo único e claro (direct, WhatsApp, link) |
 
-## The saves-and-shares discipline
+## A disciplina de salvamentos e envios
 
-Instagram's 2026 levers are **sends per reach** and **saves**, not likes. Every
-pillar should still ladder to one of those:
+As alavancas de 2026 são **envios por alcance** e **salvamentos**, não curtidas.
+Todo pilar ainda leva a um deles:
 
-- Educational -> saves (reference-worthy).
-- Story -> follows + comments (relationship).
-- Engagement -> comments + sends (relatable, send-worthy).
-- Promotion -> follows + the next step.
+- Educativo -> salvamentos (vale consultar de novo).
+- História -> seguidores + comentários (relacionamento).
+- Engajamento -> comentários + envios (identificação, vale mandar).
+- Promoção -> seguidores + o próximo passo.
 
-When planning a week, the headline target is the **weekly saves + shares goal**,
-with at least 3 save-bait posts and 2 send-bait posts. Likes are a vanity number;
-do not plan around them.
+No planejamento da semana, a meta principal é **salvamentos + envios da
+semana**, com pelo menos 3 posts de salvamento e 2 de envio. Curtida é número de
+vaidade; não planeje em torno dela.
 
-## Cadence
+## Cadência
 
-- 4-5 feed posts/week is a sustainable, consistent cadence. Consistency beats a
-  daily dump of filler.
-- Daily stories run underneath the feed posts: 2-4 frames, including one reshare
-  of a recent feed post.
-- Reels can run more often than carousels because each reaches a fresh
-  non-follower audience without fatiguing your existing followers.
+- 4-5 posts no feed por semana é uma cadência sustentável. Constância vence
+  post diário de enchimento.
+- Stories diários por baixo dos posts: 2-4 telas, incluindo um repost de post recente.
+- Reels podem sair mais vezes que carrosséis porque cada um alcança público novo
+  sem cansar os seguidores atuais.

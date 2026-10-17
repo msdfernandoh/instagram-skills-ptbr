@@ -1,81 +1,79 @@
-# Hook Classification Rules (Instagram)
+# Regras de classificação de gancho (Instagram)
 
-Feature extraction and scoring heuristics `ig-hook-extractor` uses to map a post
-to one of the 10 formulas in `../../../references/hook-formulas.md`.
+Extração de traços e notas que `ig-hook-extractor` usa para encaixar um post em
+uma das 10 fórmulas de `../../../references/hook-formulas.md`.
 
-## Step 1: detect the surface
+## Passo 1: detectar a superfície
 
-| Signal | Surface |
+| Sinal | Superfície |
 |---|---|
-| One photo + a caption | single image (look at IG1-IG4) |
-| 2-10 stacked images, swipe dots | carousel (look at IG5-IG8) |
-| Video, vertical, audio | Reel (look at IG9-IG10) |
+| Uma foto + legenda | imagem única (olhe IG1-IG4) |
+| 2-10 imagens empilhadas, pontinhos de arraste | carrossel (olhe IG5-IG8) |
+| Vídeo vertical, com áudio | Reel (olhe IG9-IG10) |
 
-The URL helps: `/reel/` is a Reel; `/p/` is a single image or a carousel (the
-caret/dots in the app distinguish them, so ask the user).
+A URL ajuda: `/reel/` é Reel; `/p/` é imagem única ou carrossel (pergunte ao usuário).
 
-## Step 2: extract hook features
+## Passo 2: extrair os traços do gancho
 
-### Caption hooks (first ~125 chars)
+### Ganchos de legenda (primeiros ~125 caracteres)
 
-| Feature in the first line | Formula |
+| Traço na primeira linha | Fórmula |
 |---|---|
-| An odd-precision number + a "steal this / here is how" promise | IG1 Number-First Result |
-| A flat claim that contradicts common advice | IG2 Contrarian Truth |
-| A specific shared moment, no setup, no number | IG3 Relatable Cold-Open |
-| A first-person time marker + an admitted cost or surprise | IG4 Mini-Story Confession |
+| Número quebrado + promessa de "pode copiar / é assim que faz" | IG1 Resultado com número primeiro |
+| Afirmação seca que contradiz o conselho comum | IG2 Verdade contrária |
+| Momento específico e compartilhado, sem introdução, sem número | IG3 Situação que todo mundo vive |
+| Marcador de tempo em primeira pessoa + custo ou surpresa admitidos | IG4 Mini-história confissão |
 
-### Carousel hooks (slide 1 + structure)
+### Ganchos de carrossel (slide 1 + estrutura)
 
-| Feature | Formula |
+| Traço | Fórmula |
 |---|---|
-| Slide 1 promises N numbered items; body is one item per slide | IG5 Listicle |
-| Slide 1 shows an "after"; slide 2 the "before"; body is steps | IG6 Before/After |
-| Body slides pair "Myth:" with "Truth:" | IG7 Myth-Buster |
-| Slide 1 names a framework; last slide summarizes it on one slide | IG8 Steal-This Framework |
+| Slide 1 promete N itens numerados; corpo é um item por slide | IG5 Lista |
+| Slide 1 mostra o "depois"; slide 2 o "antes"; corpo são passos | IG6 Antes e depois |
+| Slides do corpo pareiam "Mito:" com "Verdade:" | IG7 Derrubando mitos |
+| Slide 1 nomeia um método; último slide resume tudo | IG8 Rouba esse método |
 
-### Reel hooks (first 1-3 seconds)
+### Ganchos de Reel (primeiros 1-3 segundos)
 
-| Feature | Formula |
+| Traço | Fórmula |
 |---|---|
-| A pattern interrupt / open-loop on-screen text, no slow intro | IG9 Pattern-Interrupt |
-| "How I {result} in {timeframe}" + labeled steps | IG10 How-I Teardown |
+| Quebra de padrão / texto de laço aberto na tela, sem introdução lenta | IG9 Reel quebra-padrão |
+| "Como eu {resultado} em {prazo}" + passos rotulados | IG10 Reel como eu fiz |
 
-## Step 3: score confidence
+## Passo 3: nota de confiança
 
-- **High (0.8+):** the hook matches one formula's skeleton cleanly and the body
-  follows its structure.
-- **Medium (0.5-0.8):** the hook fits but the body is loose, or two formulas
-  overlap (common: IG1 and IG10 both use a result + steps). Return the top 2.
-- **Low (under 0.5):** no clean match. Describe the structure literally and
-  suggest the closest formula as a starting point.
+- **Alta (0,8+):** o gancho bate com um esqueleto e o corpo segue a estrutura.
+- **Média (0,5-0,8):** o gancho serve mas o corpo é solto, ou duas fórmulas se
+  sobrepõem (comum: IG1 e IG10). Devolva as 2 melhores.
+- **Baixa (abaixo de 0,5):** sem encaixe limpo. Descreva a estrutura literalmente
+  e sugira a fórmula mais próxima como ponto de partida.
 
-When two fit, the tiebreaker is the **primary goal** (below) and the surface: a
-caption-only result is IG1, the same result as a Reel with steps is IG10.
+Desempate pelo **objetivo principal** e pela superfície: resultado só na
+legenda é IG1; o mesmo resultado num Reel com passos é IG10.
 
-## Step 4: name the primary goal
+## Passo 4: nomear o objetivo principal
 
-Infer what the original optimized for from its structure and close:
-
-| Close / structure | Likely goal |
+| Fechamento / estrutura | Objetivo provável |
 |---|---|
-| "save this", a list, a framework, a how-to | saves |
-| "send this to..", a contrarian or myth payoff | shares |
-| a relatable moment, a question, a confession | comments |
-| proof of transformation, "follow for.." | follows |
+| "salva isso", lista, método, tutorial | salvamentos |
+| "manda pra..", opinião contrária, mito derrubado | envios |
+| situação do dia a dia, pergunta, confissão | comentários |
+| prova de transformação, "segue pra.." | seguidores |
 
-## Step 5: build the blank template
+## Passo 5: montar o modelo em branco
 
-Copy the matched formula's skeleton from `../../../references/hook-formulas.md`, keep its slot
-structure, and relabel the slots to the user's topic. Strip any AI tells the
-original had (do not propagate an AI-vocab cluster or a 30-hashtag block into
-the template; a single em dash in the original is fine).
+Copie o esqueleto da fórmula em `../../../references/hook-formulas.md`, mantenha a
+estrutura dos campos e renomeie os campos para o tema do usuário, em português.
+Não traduza literalmente expressões em inglês; adapte para como o público
+brasileiro fala. Tire os sinais de IA do original (não leve aglomerado de
+vocabulário nem bloco de 30 hashtags para o modelo; um travessão no original é ok).
 
-## Step 6: audit the source
+## Passo 6: revisar a fonte
 
-Flag, so the user does not copy them:
-- em dashes above about one per 100 words; en dashes between clauses
-- an AI vocabulary cluster (3+ markers in one paragraph: leverage, fundamentally, significant, elevate)
-- 20-30 hashtags crammed at the top
-- engagement bait ("comment YES", "tag 3 friends")
-- a hook that only makes sense after the "more" fold
+Aponte, para o usuário não copiar:
+- travessões acima de cerca de um a cada 100 palavras; meia-risca entre orações
+- aglomerado de vocabulário de IA (3+ marcadores num parágrafo)
+- 20-30 hashtags no topo
+- isca de engajamento ("comenta SIM", "marca 3 amigos")
+- gancho que só faz sentido depois do "mais"
+- promessa de resultado garantido em setor regulado

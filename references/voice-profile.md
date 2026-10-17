@@ -1,11 +1,15 @@
-# Voice & Brand Profile
+# Perfil de voz e marca
 
-Your voice, niche, and rules in one place. Fill this once (or let `ig-humanizer` build
-it from a few of your real posts), and every writing skill in this Instagram bundle
-reads it before drafting, so you stop re-explaining who you are on every request.
-This file is yours: edit it freely. Nothing here is sent anywhere; it just steers
-the drafts. Skills only load it when `filled: yes` below; an empty template is
-ignored.
+Sua voz, seu nicho e suas regras em um lugar só. Preencha uma vez (ou deixe o
+`ig-humanizer` montar a partir de alguns posts reais seus), e toda skill de
+escrita deste pacote lê este arquivo antes de rascunhar, para você parar de
+explicar quem é a cada pedido. Este arquivo é seu: edite à vontade. Nada aqui é
+enviado para lugar nenhum; ele só direciona os rascunhos. As skills só carregam
+o arquivo quando está `filled: yes` abaixo; o modelo vazio é ignorado.
+
+> Atende várias marcas? Faça uma cópia deste arquivo por marca
+> (ex.: voice-profile-racon.md, voice-profile-unifecaf.md) e diga à skill
+> qual usar no pedido.
 
 ## Status
 
@@ -13,49 +17,53 @@ ignored.
 - source: template
 - updated: --
 
-## 1. Voice fingerprint
+## 1. Impressão digital da voz
 
-- Sentence rhythm:
-- Signature openers:
-- Punctuation habits:
-- Words and phrases you use a lot:
-- Words and phrases you NEVER use:
+- Ritmo das frases:
+- Aberturas típicas:
+- Hábitos de pontuação:
+- Palavras e expressões que você usa muito:
+- Palavras e expressões que você NUNCA usa:
+- Tratamento (você / vocês / tu / a gente):
 - Emoji:
-- Formatting (Instagram): hook in the first line before the fold; hashtags in first comment; Reels vs carousel
+- Formatação (Instagram): gancho na primeira linha antes do corte; hashtags no primeiro comentário; Reels vs carrossel
 
-## 2. Who you are and who you write for
+## 2. Quem você é e para quem escreve
 
-- You are:
-- Your audience (ICP):
-- Your content pillars:
+- Você é:
+- Seu público (cliente ideal):
+- Cidade / região de atuação:
+- Seus pilares de conteúdo:
 
-## 3. Hard rules (always / never)
+## 3. Regras fixas (sempre / nunca)
 
-- Always:
-- Never:
+- Sempre:
+- Nunca:
+- Regras do setor (ex.: compliance de consórcio, regras do MEC, CRECI, anúncio financeiro):
 
-## 4. Links and CTA
+## 4. Links e CTA
 
-- Primary link you point people to:
-- Where it goes:
-- Your CTA style:
+- Link principal para onde você manda as pessoas:
+- Para onde ele leva:
+- WhatsApp / direct como canal de conversão:
+- Seu estilo de CTA:
 
-## 5. Signature examples
+## 5. Exemplos de assinatura
 
-Paste 2-4 of your own real Instagram lines or posts that sound most like you. The
-writing skills mirror the rhythm and word choice of these, not a generic voice.
+Cole 2-4 linhas ou posts reais seus no Instagram que mais soam como você. As
+skills de escrita imitam o ritmo e a escolha de palavras destes, não uma voz genérica.
 
 -
 -
 -
 
-## 6. Brand assets (for illustrations)
+## 6. Ativos de marca (para ilustrações)
 
-Used by the illustration step (`lib.illustrate`) to keep every generated image
-on-brand via a pixel-exact overlay. All optional; leave blank to skip the overlay.
+Usado na etapa de ilustração (`lib.illustrate`) para manter toda imagem gerada
+dentro da marca, com sobreposição exata. Tudo opcional; deixe em branco para pular.
 
-- Handle to stamp on images: (e.g. @yourname)
-- Brand color (hex): (e.g. #0A66C2)
-- Logo: (path or Pixfaro `logo_id`, if you have one)
-- Overlay position: (e.g. bottom-right)
-- Visual style default: (e.g. minimal flat vector; bold editorial; muted photo)
+- @ para carimbar nas imagens: (ex.: @seunome)
+- Cor da marca (hex): (ex.: #0A66C2)
+- Logo: (caminho ou `logo_id` do Pixfaro, se tiver)
+- Posição da sobreposição: (ex.: canto inferior direito)
+- Estilo visual padrão: (ex.: vetor flat minimalista; editorial forte; foto em tons suaves)

@@ -1,140 +1,135 @@
 ---
 name: ig-repurposer
-description: "Repurpose existing content into a native Instagram post. Take a LinkedIn, blog, YouTube script, or X tweet or thread and rebuild it for Instagram: a long piece becomes a carousel or a caption, re-hooked before the 125-char fold, off-platform artifacts stripped (X @-handles, link in bio), published via Publora on approval. Use to adapt content across platforms into Instagram. Not for writing from scratch (use ig-caption-writer or ig-carousel-planner), not for auditing a draft (ig-humanizer --mode audit)."
+description: "Transforma conteúdo existente em post nativo de Instagram em português. Pega post do LinkedIn, blog, roteiro de YouTube, fio do X, texto de WhatsApp ou e-mail e reconstrói para o Instagram: texto longo vira carrossel ou legenda, com novo gancho antes do corte de 125 caracteres, sem marcas da outra plataforma, publicado via Publora com aprovação. Também adapta conteúdo em inglês para PT-BR sem cara de tradução. Não serve para escrever do zero (use ig-caption-writer ou ig-carousel-planner) nem para revisar (ig-humanizer --mode audit)."
 ---
 
-# Instagram Repurposer
+# Reaproveitador para Instagram
 
-Turn something you already made into a post that reads like it was born on
-Instagram. Repurposing is not copy-paste. A post that killed on LinkedIn or a
-thread that flew on X will die on Instagram if you paste it: wrong hook, wrong
-container, wrong rhythm, no media, and artifacts ("link in bio", @-handles,
-hashtag walls) that scream off-platform.
+Transforma algo que você já fez num post que parece ter nascido no Instagram.
+Reaproveitar não é copiar e colar. Um post que bombou no LinkedIn ou um fio que
+voou no X morre no Instagram se for colado: gancho errado, formato errado, ritmo
+errado, sem mídia, e com marcas ("link na bio" de outro lugar, @ do X, paredão
+de hashtag) que denunciam que veio de fora.
 
-This skill transforms, it does not generate. It reads your source, keeps the
-idea, and rebuilds the delivery for Instagram.
+Esta skill transforma, não gera. Lê a fonte, mantém a ideia e reconstrói a
+entrega para o Instagram.
 
-## When to use
+## Quando usar
 
-- "Turn this LinkedIn post into an Instagram carousel / caption"
-- "Repurpose my blog post / newsletter / YouTube script for Instagram"
-- "This thread worked on X, adapt it for Instagram"
-- "I have a rough idea in another format, make it native here"
+- "Transforma esse post do LinkedIn num carrossel / legenda"
+- "Aproveita meu artigo / newsletter / roteiro do YouTube pro Instagram"
+- "Esse fio funcionou no X, adapta pro Instagram"
+- "Tenho esse texto que mandei no WhatsApp/lista de transmissão, vira post"
+- "Esse conteúdo em inglês é ótimo, faz uma versão nossa em português"
 
-Not for a blank-page draft (use `ig-caption-writer` for a single caption,
-`ig-carousel-planner` for a slide-by-slide carousel) and not for reviewing an
-already-Instagram draft (use `ig-humanizer --mode audit`).
+Não serve para rascunho do zero (use `ig-caption-writer` ou
+`ig-carousel-planner`) nem para revisar algo que já é do Instagram (use
+`ig-humanizer --mode audit`).
 
-## How it works
+## Como funciona
 
-**Voice profile first (all drafts).** If `../../references/voice-profile.md` has `filled: yes`, load it and match the user's voice fingerprint, hard rules, and CTA/link style throughout. If it is not filled, mention once that `ig-humanizer --mode profile` can learn their voice from a few posts, then proceed with the generic voice rules.
+**Perfil de voz primeiro (todo rascunho).** Se `../../references/voice-profile.md` (ou o perfil da marca indicada pelo usuário) estiver com `filled: yes`, carregue e siga a voz, as regras fixas e o estilo de CTA/link do usuário. Se não estiver preenchido, mencione uma vez que `ig-humanizer --mode profile` aprende a voz a partir de alguns posts e siga com as regras de voz gerais.
 
-**Never invent the specifics.** The rules below ask for a concrete number, a date and a named entity, because that is what separates a real post from a generated one. Take them from what the user actually said in this conversation. **Do not invent a figure, a date, a client name or a result, and do not soften a vague claim into a plausible-looking number.** If the user has nothing concrete for a beat, ask them once, and if they still have nothing, drop the claim rather than decorate it. A published invented number is a retraction; a missing one is only a weaker post.
+**Nunca invente os dados.** Mantenha números, datas e nomes da fonte. **Não invente número, data, nome de cliente ou resultado.** Se faltar algo concreto, pergunte uma vez; se continuar faltando, corte a afirmação.
 
-1. **Take the source.** Any format: a post, a paragraph, a script, a caption, a
-   transcript, a bullet list, a link to read. Ask for the source, the media the
-   user has (Instagram needs an image or video), and the goal (saves / shares /
-   comments / follows) if not given.
-2. **Extract the spine.** Strip the source platform's shell and pull out the one
-   claim, the one story, or the one number worth keeping. Most repurposing fails
-   because it keeps the words instead of the point.
-3. **Choose the container.** One claim or number -> single caption. A teach, a
-   list, or a build -> carousel, one point per slide (hand structure to
-   `ig-carousel-planner`, hook slide to payoff slide). A long video -> a carousel
-   that delivers the payoff, not a summary.
-4. **Re-hook for the fold.** Instagram hides everything after ~125 characters
-   behind "more". Line one (or the hook slide) must land the whole punch on its
-   own. The source's hook almost never survives; write a new first line using a
-   2026 Instagram formula (see `../../references/hook-formulas.md`), picked by the
-   goal.
-5. **Refit the format.** Caption body skimmable, short lines, white space between
-   beats. Carousel: one idea per slide, no wall. Cut the source's connective
-   tissue; Instagram rewards the front-loaded payoff.
-6. **Strip off-platform artifacts.** Remove "link in bio" carried from another
-   platform, "smash subscribe", "read more below", X @-handles that only exist
-   there, and any "as I wrote on LinkedIn" throat-clearing. A repurposed post
-   should not admit it was repurposed.
-7. **Media reminder.** Instagram rejects text-only posts. Confirm the image,
-   video, or slide set the user will attach. A caption with no media is not
-   publishable.
-8. **Hashtags at the end.** Hand the topic to `ig-hashtag-strategist` or apply a
-   3-5 sized set yourself (see `../../references/hashtag-strategy.md`). Place them
-   as one block at the END of the caption or in the first comment, never as a
-   mid-text wall.
-9. **Humanizer pass.** Run `ig-humanizer` V3 on the result: 2026 AI vocab by
-   paragraph density, em dashes above the cap (about one per 100 words, never
-   swapped for a period), stacked rule-of-three triads, generic openers and
-   reveal bridges. Fix only a paragraph that reads machine-flat; never
-   manufacture variance. Keep the user's real numbers and named entities from
-   the source.
-10. **Approval card.** Show: source -> Instagram mapping (what became what), the
-    container (single caption or N-slide carousel), formula used, the hook (flag
-    if over 125 chars), hashtag set, the media the user must attach, primary goal.
-11. **On approval.** Publish via `lib.publish(kind="post",
-    draft_text=<approved caption>, target_url="https://www.instagram.com/",
-    media=[<local file paths>], platforms=[<INSTAGRAM_PLATFORM_ID>],
-    scheduled_time=<iso_or_None>)`. For a Reel pass `kind="reel"`. The wrapper
-    runs the Publora draft then upload then schedule flow. With no media or no
-    Publora key it returns a copy-paste block and a reminder to attach the media.
+1. **Pegue a fonte.** Qualquer formato: post, parágrafo, roteiro, legenda,
+   transcrição, lista, link para ler. Pergunte pela fonte, pela mídia que o
+   usuário tem (o Instagram precisa de imagem ou vídeo) e pelo objetivo
+   (salvamentos / envios / comentários / seguidores) se não vierem.
+2. **Extraia a espinha.** Tire a casca da plataforma de origem e puxe a única
+   afirmação, a única história ou o único número que vale manter. A maioria dos
+   reaproveitamentos falha porque guarda as palavras em vez do ponto.
+3. **Escolha o formato.** Uma afirmação ou um número -> legenda única. Um
+   ensinamento, uma lista ou uma construção -> carrossel, um ponto por slide
+   (passe a estrutura para `ig-carousel-planner`). Vídeo longo -> carrossel que
+   entrega a recompensa, não um resumo.
+4. **Novo gancho para o corte.** O Instagram esconde tudo depois de ~125
+   caracteres. A linha um (ou o slide gancho) precisa dar o golpe inteiro
+   sozinha. O gancho da fonte quase nunca sobrevive; escreva uma primeira linha
+   nova com uma fórmula de `../../references/hook-formulas.md`, escolhida pelo objetivo.
+5. **Reajuste o formato.** Corpo da legenda fácil de ler, linhas curtas, espaço
+   entre as ideias. Carrossel: uma ideia por slide. Corte o tecido conectivo da
+   fonte; o Instagram premia a recompensa na frente.
+6. **Tire as marcas de fora.** Remova "link na bio" carregado de outra
+   plataforma, "se inscreve no canal", "leia mais abaixo", @ do X que só existem
+   lá, numeração de fio e qualquer "como eu escrevi no LinkedIn". Post
+   reaproveitado não admite que foi reaproveitado.
+7. **Fonte em inglês (ou outro idioma).** Não traduza frase a frase. Recrie em
+   português brasileiro natural: troque exemplos, moedas (US$ -> R$, só se o
+   número for do usuário ou da fonte; nunca converta inventando), unidades e
+   referências culturais por equivalentes locais, e corte expressões que soam
+   traduzidas ("no final do dia", "isso é um game changer", "faz sentido?").
+   Se o conteúdo for de terceiro, use a ideia e dê crédito; não republique como
+   se fosse seu.
+8. **Lembrete de mídia.** Confirme a imagem, o vídeo ou os slides que o usuário vai anexar.
+9. **Hashtags no fim.** Passe o tema para `ig-hashtag-strategist` ou aplique
+   3-5 dimensionadas (ver `../../references/hashtag-strategy.md`), num bloco no FIM
+   da legenda ou no primeiro comentário.
+10. **Passada do humanizador.** Rode `ig-humanizer` V3: vocabulário de IA por
+    densidade, travessões acima do teto (nunca trocados por ponto final), trios
+    empilhados, aberturas genéricas e pontes de revelação. Mexa só em parágrafo
+    mecânico; nunca fabrique variação. Mantenha os números e nomes reais da fonte.
+11. **Cartão de aprovação.** Mostre: fonte -> Instagram (o que virou o quê), o
+    formato (legenda única ou carrossel de N slides), fórmula, gancho (sinalize
+    se passou de 125 caracteres), hashtags, mídia a anexar, objetivo.
+12. **Com aprovação.** Publique via `lib.publish(kind="post",
+    draft_text=<legenda aprovada>, target_url="https://www.instagram.com/",
+    media=[<caminhos locais>], platforms=[<INSTAGRAM_PLATFORM_ID>],
+    scheduled_time=<iso_em_UTC_ou_None>)`. Para Reel use `kind="reel"`. Sem mídia
+    ou sem chave Publora, devolve um bloco para copiar e o lembrete de anexar a mídia.
 
-## Native-fit rules (source -> Instagram)
+## Regras de encaixe (fonte -> Instagram)
 
-- **LinkedIn post -> Instagram:** a long post becomes a carousel (one point per
-  slide) or, if it is one sharp claim, a single caption. LinkedIn tolerates
-  warm-up; Instagram does not. The LinkedIn hook is usually too long; rewrite it
-  for the 125-char fold.
-- **Blog / newsletter -> carousel:** turn the structure into slides, one point
-  per slide, hook slide first, payoff slide last. Do not paste the whole piece
-  into one caption.
-- **YouTube script -> carousel of the payoff:** lead with the video's payoff, not
-  its intro. Build the carousel around "here's what I found", not a scene-by-scene
-  recap.
-- **Tweet / thread -> caption or carousel:** a single tweet becomes a caption; a
-  thread becomes a carousel, one tweet per slide with its own micro-point. Strip
-  X @-handles and thread numbering.
+- **Post do LinkedIn -> Instagram:** post longo vira carrossel (um ponto por
+  slide) ou, se for uma afirmação afiada, legenda única. O LinkedIn tolera
+  aquecimento; o Instagram não. O gancho do LinkedIn costuma ser longo demais.
+- **Blog / newsletter -> carrossel:** a estrutura vira slides, gancho primeiro,
+  recompensa por último. Não cole o texto inteiro numa legenda.
+- **Roteiro de YouTube -> carrossel da recompensa:** comece pela recompensa do
+  vídeo, não pela introdução.
+- **Tweet / fio -> legenda ou carrossel:** um tweet vira legenda; um fio vira
+  carrossel, um tweet por slide com seu micro-ponto. Tire @ e numeração.
+- **Texto de WhatsApp / lista de transmissão -> legenda:** tire saudações
+  ("Bom dia, pessoal!"), áudios citados e "encaminhado"; mantenha o fato e o CTA.
 
-## Hard rules
+## Regras fixas
 
-Global voice rules: see root `SKILL.md` Voice rules. Additional skill-specific
-rules:
+Regras de voz globais: ver "Regras de voz" no `SKILL.md` raiz. Regras específicas:
 
-- Keep the source's **claim and facts** intact. Repurposing changes the delivery,
-  never the meaning or the numbers.
-- The new first line (or hook slide) must stop the scroll on its own before the
-  125-char fold. If it needs the second line, rewrite it.
-- Never paste the source verbatim and trim. Rebuild the hook and rhythm from the
-  spine.
-- One specific number where the source offers one. Keep it.
-- 3-5 sized hashtags as one block at the end, never 30 and never mid-caption.
-- Media is required. Never present a repurposed caption as publishable without
-  reminding the user to attach the image, video, or slides.
-- Do not hard-sell the user's product. One natural mention max.
+- Mantenha a **afirmação e os fatos** da fonte. Reaproveitar muda a entrega,
+  nunca o sentido nem os números.
+- A nova primeira linha (ou slide gancho) para a rolagem sozinha antes do corte.
+- Nunca cole a fonte e apare. Reconstrua gancho e ritmo a partir da espinha.
+- Um número específico quando a fonte oferecer. Mantenha.
+- 3-5 hashtags num bloco no fim, nunca 30 e nunca no meio.
+- Mídia é obrigatória.
+- Sem venda agressiva. No máximo uma menção natural.
 
-## Anti-patterns (skill will refuse)
+## Antipadrões (a skill recusa)
 
-- Copy-pasting the source with light edits (that is not repurposing).
-- Keeping the source platform's artifacts ("link in bio", "smash subscribe", X
-  @-handles, thread numbering).
-- A hook that only makes sense after the 125-char fold.
-- A mid-caption hashtag wall instead of one block at the end.
-- Presenting a caption with no media as ready to post.
-- ALL CAPS first line for intensity. Carry it with word choice.
-- Em dashes above the cap (more than about one per 100 words), or an em dash swapped for a period.
-- "The result?" / "Here's the thing.." reveal bridges and staccato stacks added during the rewrite.
-- Rule-of-three lists without specifics.
-- "leverage", "fundamentally", "game-changer", "level up", "dive in".
-- Meta throat-clearing ("I originally posted this on...").
+- Copiar a fonte com edições leves.
+- Manter marcas da plataforma de origem ("se inscreve", @ do X, numeração de fio).
+- Tradução literal que soa como legenda dublada.
+- Gancho que só faz sentido depois do corte de 125 caracteres.
+- Paredão de hashtag no meio da legenda.
+- Apresentar legenda sem mídia como pronta.
+- Primeira linha EM CAIXA ALTA para dar intensidade.
+- Travessões acima do teto, ou travessão trocado por ponto final.
+- "O resultado?" / "Seguinte.." e pilhas picotadas criadas na reescrita.
+- Listas de três sem nada concreto.
+- "alavancar", "potencializar", "virada de chave", "próximo nível", "jornada".
+- Pigarro de bastidor ("publiquei isso originalmente no...").
 
-## Resources
+## Recursos
 
-- `../../references/hook-formulas.md` - the 10 Instagram formula skeletons to re-hook with
-- `../../references/algorithm-heuristics.md` - 2026 Instagram ranking rules (fold, timing, signals)
-- `../../references/hashtag-strategy.md` - the 3-5 sized hashtag recipe
-- `../../references/media-workflow.md` - the draft, upload, schedule flow
+- `../../references/hook-formulas.md` - os 10 esqueletos para o novo gancho
+- `../../references/algorithm-heuristics.md` - regras de ranqueamento (corte, horário, sinais)
+- `../../references/hashtag-strategy.md` - a receita de 3-5 hashtags
+- `../../references/media-workflow.md` - o fluxo rascunho, upload, agendamento
 
-## Related skills
+## Skills relacionadas
 
-- `ig-caption-writer` - write a fresh single caption from scratch
-- `ig-carousel-planner` - structure a slide-by-slide carousel (repurposer hands long builds here)
-- `ig-hashtag-strategist` - build the sized hashtag set
-- `ig-humanizer` - scrub AI tells, plus `--mode audit` to review the result
+- `ig-caption-writer` - escreve uma legenda nova do zero
+- `ig-carousel-planner` - estrutura o carrossel (o reaproveitador manda construções longas para lá)
+- `ig-hashtag-strategist` - monta o conjunto de hashtags
+- `ig-humanizer` - tira a cara de IA, mais `--mode audit` para revisar

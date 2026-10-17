@@ -1,85 +1,117 @@
-# Worked Before/After Rewrites (Instagram)
+# Reescritas antes/depois comentadas (Instagram, PT-BR)
 
-Each example shows the AI-tell version, the humanized version, and what changed.
-
----
-
-## Example 1: a caption (single image)
-
-**Before (AI-likely):**
-> In today's fast-paced digital landscape, leveraging Instagram can fundamentally
-> transform your brand. It's not just about posting, it's about strategy. Here are
-> some game-changing tips to elevate your content and unlock your true potential.
-> What do you think? Double tap if you agree!
-> #marketing #socialmedia #instagram #growth #branding #contentcreator #digital
-> #strategy #success #entrepreneur #business #tips #viral #explore #reels (continues to 30)
-
-**After (humanized):**
-> I grew an Instagram account from 0 to 10k in 4 months posting 3 times a week.
->
-> one habit did it, and it was neither 30 hashtags nor daily posting.
->
-> I made every caption answer "would someone send this to a friend?". if the
-> answer was no, I rewrote the first line.
->
-> save this before your next post.
->
-> #bootstrappedgrowth #instagramforniches #contentstrategy #marketing
-
-**What changed:**
-- The first paragraph scored 6 markers ("in today's fast-paced", "digital
-  landscape", "leveraging", "fundamentally", "game-changing", "elevate",
-  "unlock"), so it was rewritten as a paragraph, not word-swapped. The "not
-  just X, it's Y" went on a single hit. Dead closer + bait cut.
-- Front-loaded a number with a referent (0 to 10k, 4 months, 3 posts a week)
-  into the first 125 chars (the hook now stands alone). Nothing fabricated: the
-  numbers came from the user.
-- Cut 30 hashtags to a 4-tag sized set (3 niche/mid + 1 broad).
-- Kept the lowercase-casual register and a save prompt with a reason.
-- Pass 2 check: the first draft of line 2 read "not 30 hashtags. not daily
-  posting. one thing.", which is a "No X. No Y. Just Z." stack: three
-  standalone fragments (over the 2-per-caption cap) in the negative-parallel
-  shape. Merged into one sentence with a clause that does work, in the
-  author's lowercase register. No em dash was touched (none over the cap).
+Cada exemplo mostra a versão com cara de IA, a versão humanizada e o que mudou.
+Os números dos "depois" vieram do usuário; nada foi inventado.
 
 ---
 
-## Example 2: carousel slide 1 (on-image text)
+## Exemplo 1: legenda (imagem única)
 
-**Before:**
-> Tips for Growing on Instagram — A Comprehensive Guide
+**Antes (cara de IA):**
+> No cenário digital atual, alavancar o Instagram pode transformar
+> fundamentalmente a sua marca. Não é só sobre postar, é sobre estratégia. Confira
+> dicas incríveis para elevar seu conteúdo e destravar todo o seu potencial! 🚀✨
+> E você, o que acha? Dá dois toques se concorda!
+> #marketing #marketingdigital #instagram #empreendedorismo #sucesso #foco
+> #negocios #dicas #viral #explore #reels (continua até 30)
 
-**After:**
-> 7 Instagram growth mistakes that cost you reach (most do #4)
+**Depois (humanizado):**
+> saí de 0 para 10 mil seguidores em 4 meses postando 3 vezes por semana.
+>
+> o que fez diferença não foi hashtag nem postar todo dia.
+>
+> eu passei a reescrever a primeira linha de toda legenda até ela responder:
+> "alguém mandaria isso pra um amigo?"
+>
+> salva pra conferir antes do seu próximo post.
+>
+> #marketingparapequenasempresas #instagramparanegocios #marketingdigital #marketing
 
-**What changed:**
-- Turned a bare title into a promise (7 mistakes) + an open loop (most do #4) +
-  a stake (cost you reach). Now it earns the swipe.
-- The em dash was under the cap (one per slide) and was not the problem; it
-  went with the title-plus-subtitle structure it was gluing together. "A
-  Comprehensive Guide" was the real tell (2026 vocabulary on a slide).
+**O que mudou:**
+- O primeiro parágrafo tinha 7 marcadores ("cenário digital atual",
+  "alavancar", "transformar", "fundamentalmente", "incríveis", "elevar",
+  "destravar"), então foi reescrito inteiro, não trocado palavra por palavra. O
+  "não é só X, é Y" saiu com uma ocorrência. Fechamento morto + isca cortados.
+- Número com referência (0 a 10 mil, 4 meses, 3 posts por semana) nos primeiros
+  125 caracteres. O gancho agora se sustenta sozinho.
+- 30 hashtags viraram 4 dimensionadas.
+- Foguete + brilhos (assinatura de emoji de IA) saíram.
+- Conferência da Passada 2: o primeiro rascunho da linha 2 era "não foi
+  hashtag. não foi postar todo dia. foi uma coisa só.", que é uma pilha "Sem X.
+  Sem Y. Só Z." com três fragmentos. Virou uma frase com oração que trabalha.
 
 ---
 
-## Example 3: a Reel caption
+## Exemplo 2: slide 1 de carrossel (texto da arte)
 
-**Before:**
-> 🚀✨ Unlock the secrets to viral Reels! 🔥 In this video we delve deep into the
-> strategies that will fundamentally elevate your content game. 💯🙌 Don't forget
-> to like, share, and tag 3 friends! 🎯🚀
+**Antes:**
+> Consórcio — Um Guia Completo e Abrangente
 
-**After:**
-> the 3-second hook that took my Reels from 800 views to 40k.
->
-> it is not the audio. it is the first frame.
->
-> save this and watch your first second back before you post.
->
-> #reelsstrategy #shorthookwriting #contentcreator
+**Depois:**
+> 7 erros que fazem você pagar mais caro no consórcio (quase todo mundo comete o 4)
 
-**What changed:**
-- Cut the emoji storm (8+) to zero; the hook carries it.
-- Killed "unlock", "delve deep", "fundamentally elevate", and the "tag 3
-  friends" bait.
-- Led with a real before/after number in the first line.
-- Replaced the bait CTA with a save prompt that names the reason.
+**O que mudou:**
+- Título seco virou promessa (7 erros) + laço aberto (quase todo mundo comete o
+  4) + o que está em jogo (pagar mais caro). Agora ganha o arraste.
+- O travessão estava dentro do teto (um por slide) e não era o problema; saiu
+  junto com a estrutura título-subtítulo. "Completo e Abrangente" era o sinal
+  real (dois marcadores num slide de quatro palavras).
+
+---
+
+## Exemplo 3: legenda de Reel
+
+**Antes:**
+> 🔥🚀 Descubra o segredo que ninguém te conta sobre Reels virais! 💯 Neste vídeo
+> mergulhamos fundo nas estratégias que vão elevar seu conteúdo ao próximo nível.
+> 🙌✨ Não esquece de curtir, compartilhar e marcar 3 amigos! 👇👇
+
+**Depois:**
+> o gancho de 3 segundos que levou meus Reels de 800 para 40 mil visualizações.
+>
+> não foi o áudio. foi o primeiro frame.
+>
+> salva e assiste o primeiro segundo do seu próximo Reel antes de postar.
+>
+> #reelsparanegocios #ganchodereels #criadordeconteudo
+
+**O que mudou:**
+- Chuva de emoji (9) cortada para zero; o gancho carrega.
+- Saíram "o segredo que ninguém te conta", "mergulhamos fundo", "elevar",
+  "próximo nível" e a isca "marcar 3 amigos".
+- Primeira linha com antes/depois real em número.
+- CTA de isca virou pedido de salvar com motivo.
+- "não foi o áudio. foi o primeiro frame." ficou: é um par de frases curtas
+  completas com sujeito implícito e verbo, dentro do limite de 2 fragmentos.
+
+---
+
+## Exemplo 4: texto institucional de negócio local
+
+**Antes:**
+> A Gauchinho Consórcios é referência em soluções financeiras na região,
+> oferecendo segurança, solidez e tranquilidade para você conquistar seus sonhos.
+> Vale ressaltar que trabalhamos com excelência e transparência. Venha fazer
+> parte dessa jornada! Entre em contato e solicite já a sua simulação!
+
+**Depois (com dados que o usuário passou):**
+> carta de R$ 300 mil para imóvel, parcela de R$ 1.180, sem juros (só a taxa de administração).
+>
+> foi assim que o Marcos, de Sorriso, saiu do aluguel em 2024 sem dar entrada.
+>
+> quer saber quanto ficaria a sua? comenta SIMULAÇÃO que a gente te manda a
+> tabela no direct.
+>
+> #consorcioimobiliario #sorrisomt #sinopmt #educacaofinanceira
+
+**O que mudou:**
+- Parágrafo com 6 marcadores ("referência em soluções", "segurança, solidez e
+  tranquilidade" como trio oco, "conquistar seus sonhos", "vale ressaltar",
+  "excelência", "jornada"): reescrito inteiro.
+- Trio oco de valores institucionais trocado por prova concreta (valor da carta,
+  parcela, cliente com autorização, cidade, ano). Todos os números e o nome
+  vieram do usuário; sem eles, a skill teria perguntado em vez de inventar.
+- "Entre em contato e solicite já" virou um CTA de palavra-chave que entrega
+  algo real (o usuário confirmou que tem automação de direct).
+- Nenhuma promessa de contemplação ou prazo garantido.
+- Tags locais de cidade como nicho.

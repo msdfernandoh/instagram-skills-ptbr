@@ -14,7 +14,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEST = ROOT / ".codex-marketplace" / "instagram-skills"
+DEST = ROOT / ".codex-marketplace" / "instagram-skills-ptbr"
 
 PATHS_TO_COPY = [
     ".codex-plugin",

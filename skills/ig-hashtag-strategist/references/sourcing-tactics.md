@@ -1,52 +1,56 @@
-# Hashtag Sourcing Tactics
+# Táticas para achar hashtags
 
-How `ig-hashtag-strategist` finds and sizes candidate tags. Pairs with the full
-model in `../../../references/hashtag-strategy.md`.
+Como `ig-hashtag-strategist` encontra e dimensiona candidatas. Complementa o
+modelo completo em `../../../references/hashtag-strategy.md`.
 
-## Finding niche tags (the workhorses)
+## Achando tags de nicho (as que trabalham)
 
-Niche tags (under 50k posts) are where a small or mid account ranks and stays
-visible for hours. Sources:
+Tags de nicho (até ~20 mil posts em português) são onde conta pequena ou média
+ranqueia e fica visível por horas. Fontes:
 
-- **Combine two words:** topic + audience (`#notionforfreelancers`), topic +
-  format (`#carouseldesign`), topic + style (`#uglyfoodphotography`).
-- **Community names:** what the people in your exact world call themselves
-  (`#bootstrappedsaas`, `#filmphotographycommunity`).
-- **The creators you admire:** the smaller tags they actually rank in (not the
-  giant ones in their first line).
-- **Instagram search autocomplete:** type the topic and read the suggested tags
-  with their post counts; the ones under ~50k are your niche slots.
+- **Junte duas palavras:** tema + público (`#marketingparacorretores`), tema +
+  formato (`#carrosseldeinstagram`), tema + estilo (`#fotografiadecomida`).
+- **Tema + lugar:** a fonte mais forte para negócio local (`#imoveissinop`,
+  `#consorciocuiaba`, `#eventossorriso`). Cidade + UF (`#sinopmt`) também.
+- **Nome da comunidade:** como as pessoas do seu mundo se chamam
+  (`#corretordeimoveis`, `#designerjunior`, `#produtorrural`).
+- **Criadores que você admira:** as tags menores em que eles realmente
+  ranqueiam (não as gigantes da primeira linha).
+- **Autocompletar da busca do Instagram:** digite o tema e leia as sugestões
+  com o número de posts; as abaixo de ~20 mil são suas vagas de nicho.
 
-## Finding mid tags (the extenders)
+## Achando tags médias
 
-Mid tags (50k-500k) name a recognizable sub-topic: `#contentstrategy`,
-`#indiehacker`, `#filmphotography`. They extend reach to a warm audience without
-being unwinnable. One or two per post.
+Tags médias (~20 mil a 300 mil) nomeiam um subtema reconhecível:
+`#educacaofinanceira`, `#marketingdigital`, `#investimentoimobiliario`. Ampliam o
+alcance para um público próximo sem ser impossível. Uma ou duas por post.
 
-## The broad slot (optional)
+## A vaga ampla (opcional)
 
-Broad tags (500k+) are single common words: `#marketing`, `#fitness`, `#food`.
-They rank for minutes, so treat them as a category label. Use at most one, and
-only if it genuinely fits. Skip it rather than force it.
+Tags amplas (300 mil+) são palavras comuns: `#marketing`, `#imoveis`, `#comida`.
+Ranqueiam por minutos, então trate como etiqueta de categoria. No máximo uma, e
+só se servir de verdade. Melhor pular que forçar.
 
-## Sizing without the API
+## Dimensionando sem a API
 
-The publishing API does not expose tag post counts. Size by:
+A API de publicação não mostra o número de posts das tags. Dimensione por:
 
-1. **Specificity heuristic:** the more specific and combined, the more niche. A
-   single common word is broad.
-2. **In-app verification:** tell the user to check the count Instagram shows in
-   search for the borderline tags.
+1. **Especificidade:** quanto mais específica e combinada, mais nicho. Uma
+   palavra comum é ampla.
+2. **Conferência no app:** diga ao usuário para olhar o número na busca do
+   Instagram para as tags que ficaram na fronteira.
+3. **Tag morta:** tag local com poucos posts e o mais recente de meses atrás
+   não ajuda. Prefira as que têm posts recentes.
 
-## Tags to drop on sight
+## Tags para cortar na hora
 
-- Engagement-farm tags: `#follow4follow`, `#like4like`, `#followforfollowback`.
-- Anything that cycles through flagged/banned status (generic spammy tags).
-- Popular-but-off-topic tags. A mismatch trains the recommendation engine to
-  show the post to the wrong audience, which lowers engagement rate and reach.
+- Tags de troca: `#sigodevolta`, `#seguidores`, `#curtir`, `#follow4follow`,
+  `#like4like`, `#followforfollowback`.
+- Tudo que já foi marcado ou banido (tags genéricas de spam).
+- Tags populares mas fora do assunto.
 
-## Rotation
+## Alternância
 
-Do not reuse one 5-tag block on every post. Identical sets across many posts read
-as automation. Rotate the niche tags to match each post's specific topic; the mid
-and broad slots can stay more stable within a content pillar.
+Não reuse o mesmo bloco de 5 tags em todo post. Conjuntos idênticos parecem
+automação. Alterne as de nicho conforme o assunto de cada post; as médias e a
+ampla podem ficar mais estáveis dentro de um pilar de conteúdo.

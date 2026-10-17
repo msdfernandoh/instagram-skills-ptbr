@@ -1,33 +1,36 @@
-# Scrub Rules (Instagram, V3, 2026-09)
+# Regras de limpeza (Instagram, V3, PT-BR)
 
-Tiered catalogs the humanizer applies. Load this file when actually executing a
-scrub. Two tiers: forensic (always on) and strict (default on), plus the
-Instagram-format scrubs. V3: vocabulary is scored by **density per
-paragraph**, not deleted per word. Em dashes are **capped** at about 1 per 100
-words, not banned (29% of human captions use one). Forced rhythm is a tell,
-not a fix. See SKILL.md "What changed in V3" for the evidence.
+Catálogos por nível que o humanizador aplica. Carregue este arquivo quando for
+de fato executar uma limpeza. Dois níveis: forense (sempre ligado) e estrito
+(ligado por padrão), mais as limpezas de formato do Instagram. V3: vocabulário
+contado por **densidade por parágrafo**, não apagado palavra a palavra.
+Travessão com **teto** de cerca de 1 a cada 100 palavras, não proibido. Ritmo
+forçado é sinal, não solução.
 
-## Contents
+Todos os padrões abaixo assumem texto em português brasileiro, com acentos.
+Rode as expressões com `re.I` e trate o texto como Unicode (Python 3 já faz isso).
 
-- Density scoring (how every vocabulary rule is applied)
-- FORENSIC tier (always on)
-- STRICT tier (default on)
-- Instagram-format scrubs (always apply)
-- Pass 2 - Rhythm (anti-uniformity guard only)
-- Pass 3 - Forbidden insertions (sincerity markers, hedges)
-- Preserve these (user voice, do not scrub)
+## Sumário
+
+- Contagem por densidade (como toda regra de vocabulário é aplicada)
+- Nível FORENSE (sempre ligado)
+- Nível ESTRITO (ligado por padrão)
+- Limpezas de formato do Instagram (sempre)
+- Passada 2 - Ritmo (só proteção contra uniformidade)
+- Passada 3 - Inserções proibidas (sinceridade, ressalvas)
+- Preserve (voz do usuário, não limpar)
 
 ---
 
-## Density scoring (how every vocabulary rule is applied)
+## Contagem por densidade
 
-The cluster principle: readers spot AI text from clusters of markers, not from
-any single word. One "notably" in a paragraph is English. "Notably",
-"comprehensive" and a nominalisation in the same paragraph is a signature.
+O princípio do aglomerado: leitores identificam texto de IA por aglomerados de
+marcadores, não por uma palavra isolada. Um "fundamental" num parágrafo é
+português. "Fundamental", "jornada" e uma nominalização no mesmo parágrafo é assinatura.
 
 ```python
 def score_paragraph(paragraph: str, markers: dict) -> dict:
-    """Count marker hits per paragraph (or per carousel slide). Returns hits and the action to take."""
+    """Conta marcadores por parágrafo (ou por slide). Devolve as ocorrências e a ação."""
     hits = []
     for name, pattern in markers.items():
         for m in re.finditer(pattern, paragraph, flags=re.I):
@@ -35,407 +38,378 @@ def score_paragraph(paragraph: str, markers: dict) -> dict:
     n = len(hits)
     always = [h for h in hits if h[0] in ("reveal_bridge", "neg_parallel", "sincerity_marker")]
     if n >= 3:
-        action = "REWRITE_PARAGRAPH"   # 3+ markers = signal. Rewrite the paragraph, not word-by-word.
+        action = "REWRITE_PARAGRAPH"   # 3+ marcadores = sinal. Reescreva o parágrafo, não palavra por palavra.
     elif always:
-        action = "REPLACE"             # a reveal bridge / negative parallelism / sincerity marker is always scrubbed,
-                                       # even when it shares the paragraph with one ordinary marker (checked BEFORE n == 2)
+        action = "REPLACE"             # ponte de revelação / paralelismo negativo / sinceridade sai sempre,
+                                       # mesmo dividindo o parágrafo com um marcador comum (checado ANTES de n == 2)
     elif n == 2:
-        action = "FLAG_ONLY"           # 2 = borderline. Report it, leave the words: the audit allows 0-2 per unit.
+        action = "FLAG_ONLY"           # 2 = limite. Reporte e deixe as palavras.
     else:
-        action = "LEAVE"               # a single common word is not a verdict
+        action = "LEAVE"               # uma palavra comum não é veredito
     return {"hits": hits, "count": n, "action": action}
 ```
 
-Rules of application:
-- Score forensic markers separately: one hit = delete, no density threshold.
-- Caption-level counts also matter for two patterns: triads (3+ per caption =
-  scrub down to the first natural one; one or two natural triads pass, the
-  same threshold the audit uses) and standalone fragments (3+ per caption =
-  merge back, see Pass 2).
-- Never replace a word with a synonym from the same list. "Leverage" to
-  "harness" is not a fix.
-- When you rewrite a paragraph, rewrite it in the author's register
-  (lowercase casual stays lowercase casual, their emoji stay), not in "plain"
-  register. Plainness at uniform temperature is itself a fingerprint.
+Como aplicar:
+- Marcadores forenses contam à parte: uma ocorrência = apagar, sem limite de densidade.
+- Duas contagens são por legenda: trios (3+ na legenda = reduzir ao primeiro
+  natural) e fragmentos soltos (3+ na legenda = juntar de volta, ver Passada 2).
+- Nunca troque uma palavra por sinônimo da mesma lista. "Alavancar" por
+  "potencializar" não é correção.
+- Ao reescrever um parágrafo, reescreva no registro do autor (casual minúsculo
+  continua casual minúsculo, os emoji dele ficam), não num registro "neutro".
+  Neutralidade uniforme também é assinatura.
 
 ---
 
-## FORENSIC tier (always on)
+## Nível FORENSE (sempre ligado)
 
-Real model leakage no human types. Delete or flag on sight.
+Vazamento real de modelo que ninguém digita. Apague ou sinalize na hora.
 
-| Pattern | Action |
+| Padrão | Ação |
 |---|---|
-| `oaicite`, `contentReference`, `turn0search0`, `attached_file`, `grok_card` | delete the marker |
-| "As of my last update", "As of my knowledge cutoff", "I cannot browse" | delete the disclaimer line |
-| `[Your Name]`, `[Brand]`, `[insert X here]`, `YYYY-MM-DD` template blanks | flag, ask the user to fill |
-| Em dashes above the cap (see below) | replace the excess with a comma, colon, parentheses, or a rewrite; never a period |
+| `oaicite`, `contentReference`, `turn0search0`, `attached_file`, `grok_card` | apagar o marcador |
+| "Até a minha última atualização", "Com base no meu conhecimento até", "Não consigo navegar", "Como modelo de linguagem" | apagar a linha |
+| `[Seu Nome]`, `[Nome da Empresa]`, `[inserir X aqui]`, `[Cidade]`, `DD/MM/AAAA` sem preencher | sinalizar, pedir ao usuário |
+| Travessões acima do teto (abaixo) | trocar o excesso por vírgula, dois-pontos, parênteses ou reescrita; nunca ponto final |
+| Resto de tradução automática: aspas inglesas misturadas (`"..."` com `“...”`), "Sr./Sra." onde a fonte tinha "Mr.", números no formato americano (`1,250.00`, `$`) num texto em reais | normalizar para o padrão brasileiro (`R$ 1.250,00`) se o número for do usuário; sinalizar se for ambíguo |
 
-### Em dash cap (about 1 per 100 words)
+### Teto de travessão (cerca de 1 a cada 100 palavras)
 
-The character is not a tell: GPT-5.4 emits 1.43 em dashes per 1,000 words,
-below the human 3.23, and 29% of human Instagram captions in our corpus use
-one. A caption's em dash is never a tell on its own; a blanket ban
-over-sterilises captions and zero dashes across a long caption is the tell of
-someone trying to look human. What is still forensic is the old GPT-4 glue
-habit: 3+ in a short caption.
+Em português o travessão é ainda mais comum que em inglês (diálogo, aposto,
+ênfase). O caractere não denuncia IA; a densidade denuncia. O que continua
+forense é o vício antigo de colar a legenda inteira com travessões: 3+ numa
+legenda curta.
 
 ```python
 def em_dash_excess(text: str) -> int:
-    """Return how many em dashes exceed the cap (~1 per 100 words, floor 1, ceiling 2 per caption).
-    0 = leave every em dash alone. A carousel slide counts as its own unit with a cap of 1."""
+    """Quantos travessões passam do teto (~1 a cada 100 palavras, mínimo 1, máximo 2 por legenda).
+    0 = deixe todos. Um slide de carrossel é uma unidade com teto 1."""
     words = len(text.split())
     cap = max(1, min(2, round(words / 100)))
     return max(0, text.count("—") - cap)
 
-# Replacement order for the EXCESS ones (keep the one doing the most work, usually the first):
-#   1. comma            if the dash joins a clause to the main sentence
-#   2. colon            if the dash introduces a reveal, a list, or a consequence
-#   3. parentheses      if the dash pair wraps an aside
-#   4. line break       Instagram-native: the aside gets its own line
-#   5. rewrite          if none of the above reads naturally
-# NEVER a period. "X. Y." from a split dash creates fragment stacking, which is a worse tell than the dash.
+# Ordem de troca para o EXCESSO (mantenha o que trabalha mais, geralmente o primeiro):
+#   1. vírgula        se o travessão liga uma oração à frase principal
+#   2. dois-pontos    se introduz revelação, lista ou consequência
+#   3. parênteses     se o par de travessões envolve um aposto
+#   4. quebra de linha  nativo do Instagram: o aposto ganha linha própria
+#   5. reescrita      se nada acima soa natural
+# NUNCA ponto final. "X. Y." de um travessão dividido cria pilha de fragmentos, que é pior que o travessão.
+# Travessão de diálogo (início de fala, em legenda que conta uma conversa) não conta para o teto.
 ```
 
 ---
 
-## STRICT tier (default on)
+## Nível ESTRITO (ligado por padrão)
 
-What expert human readers cite when they spot AI text (vocabulary 53%,
-sentence structure 36%). All vocabulary and grammar lists go through
-`score_paragraph()`; reveal bridges, negative parallelism and sincerity
-markers are scrubbed on a single hit.
+O que leitores atentos citam quando identificam texto de IA: vocabulário e
+estrutura das frases. Todas as listas de vocabulário e gramática passam por
+`score_paragraph()`; pontes de revelação, paralelismo negativo e marcadores de
+sinceridade saem com uma ocorrência só.
 
-### Punctuation
+### Pontuação
 
-- Curly quotes -> straight quotes.
-- `--` -> a comma or a line break (not a period: a period here stacks fragments).
-- En dash (`–`) between clauses -> a comma. Number ranges (7-9) stay.
-- Em dashes are handled by `em_dash_excess()` above, not stripped.
+- `--` -> vírgula ou quebra de linha (não ponto final).
+- Meia-risca (`–`) entre orações -> vírgula. Intervalos numéricos (7-9, 18h-21h) ficam.
+- Travessões tratados por `em_dash_excess()`, não removidos.
+- Reticências de três pontos em toda frase ("e aí... deu certo...") -> mantenha
+  no máximo uma; o `..` de pausa leve é voz e fica.
+- Exclamação múltipla ("!!!") e frases todas terminando em "!" -> no máximo uma
+  exclamação na legenda, salvo se for a voz do perfil.
 
-### Vocabulary: durable 2026 markers (density-scored)
+### Vocabulário: marcadores de IA em português (por densidade)
 
-The 2023-24 list (delve, tapestry, realm) is decaying because humans now avoid
-those words. The durable markers are common words LLMs over-select at 2-5x the
-human rate across 2026 frontier models. They are ordinary English, so one per
-paragraph is fine. Three in a paragraph is a signature.
+Palavras que modelos escolhem bem acima da taxa humana em português. São
+português comum, então uma por parágrafo é ok. Três num parágrafo é assinatura.
 
-| Marker | Preferred replacement when the paragraph is over threshold |
+| Marcador | Troca preferida quando o parágrafo passa do limite |
 |---|---|
-| significant | a number ("31% more saves", not "significant growth"; ask if none exists) |
-| crucial | delete, or "the" |
-| notably, particularly | delete |
-| comprehensive, holistic | full |
-| insight(s) | say what was learned |
-| robust | solid (keep if a term of art) |
-| leverage | use |
-| foster | build |
-| landscape | field |
-| nuanced | specific |
-| multifaceted | delete |
-| streamline | simplify |
-| elevate | lift |
-| empower | help |
-| utilize, harness | use |
-| facilitate | help |
-| unlock | open up |
-| navigate (figurative) | handle |
-| dive in / dive into | get into |
-| seamless | smooth |
-| ecosystem | space |
+| alavancar, potencializar, impulsionar, turbinar | usar, aumentar, ajudar (ou o verbo concreto: "vender mais", "fechar 3 contratos") |
+| otimizar, maximizar | melhorar, aproveitar melhor (ou o número) |
+| crucial, fundamental, essencial, primordial | apagar, ou "o que importa é" (melhor: diga o porquê) |
+| robusto, sólido, abrangente, holístico, completo | diga o que tem dentro |
+| significativo, expressivo, considerável | um número ("31% mais salvamentos"; pergunte se não houver) |
+| estratégico, assertivo | apagar, ou diga a decisão |
+| incrível, poderoso, transformador, disruptivo, revolucionário, inovador | apagar, ou o fato que impressiona |
+| jornada | caminho, processo (ou o nome real: "os 6 meses até a contemplação") |
+| cenário, panorama, universo (de algo), ecossistema | mercado, área, setor (ou apagar) |
+| insights | diga o que aprendeu |
+| mindset | jeito de pensar (ou a decisão concreta) |
+| mergulhar (em), aprofundar (figurado) | entrar em, ver de perto |
+| desbloquear, destravar | abrir, liberar |
+| elevar (figurado), levar ao próximo nível | melhorar (com o número) |
+| navegar (figurado) | lidar com |
+| fomentar, catalisar | criar, puxar |
+| agregar valor | diga qual valor |
+| ressignificar | mudar o jeito de ver (ou apagar) |
+| protagonismo, protagonista da sua história | apagar |
+| sinergia, paradigma | apagar |
+| transformar vidas, fazer a diferença | o resultado concreto para uma pessoa |
+| excelência, qualidade (como slogan) | a prova da qualidade |
 
-Filler adverbs (each counts as one marker; delete when over threshold):
-fundamentally, essentially, ultimately, crucially, notably, particularly,
-arguably, certainly, definitely, undoubtedly.
+Advérbios de enchimento (cada um conta como um marcador; apague acima do limite):
+fundamentalmente, essencialmente, basicamente, efetivamente, certamente,
+notavelmente, indiscutivelmente, verdadeiramente, definitivamente, literalmente
+(quando não é literal), realmente (repetido), simplesmente (repetido).
 
-### Grammar markers (density-scored; the 2026 structural signature)
+Conectores de redação escolar (cada um conta como marcador; abrindo parágrafo pesam dobrado):
 
 ```python
-GRAMMAR_MARKERS = {
-    # Present-participial clause openers: 5.3x the human rate.
-    # "Leveraging our data, we..." / "Building on this, ..." / lowercase-casual "leveraging our data, we..."
-    "ing_opener": r"(?m)^[\s>*\-]*[A-Za-z][a-z]+ing\b[^.]{0,60},",
-    # Nominalisations: verb-turned-noun that hides the actor. "the implementation of"
-    "nominalisation": r"\bthe (\w+(?:tion|sion|ment|ance|ence|ization|isation)) of\b",
-    # Stacked abstract nouns
-    "abstract_stack": r"\b(alignment|transformation|optimization|innovation|efficiency|scalability|synergy)\b.{0,40}\b(alignment|transformation|optimization|innovation|efficiency|scalability|synergy)\b",
+CONNECTORS_PT = [
+    r"\bvale (ressaltar|destacar|lembrar|mencionar) que\b",
+    r"\bé importante (destacar|ressaltar|lembrar|frisar|mencionar|notar) que\b",
+    r"\bcabe (ressaltar|destacar|lembrar) que\b",
+    r"(?m)^(nesse|neste) sentido,",
+    r"(?m)^diante disso,",
+    r"(?m)^dessa (forma|maneira),",
+    r"(?m)^além disso,",
+    r"(?m)^(por fim|em suma|em resumo|em síntese|concluindo),",
+    r"(?m)^ademais,",
+    r"\bnão (só|somente|apenas) \w+ como também\b",
+]
+```
+
+### Marcadores gramaticais (por densidade; a assinatura estrutural)
+
+```python
+GRAMMAR_MARKERS_PT = {
+    # Gerúndio abrindo frase: "Pensando nisso, ...", "Visando otimizar, ...", "Buscando ..., a gente ..."
+    "gerund_opener": r"(?m)^[\s>*\-]*[A-Za-zÀ-ú]+(ando|endo|indo|ondo)\b[^.\n]{0,60},",
+    # Nominalização: verbo virado substantivo que esconde quem faz. "a implementação de", "o desenvolvimento de"
+    "nominalisation": r"\b[ao]s? (\w+(?:ção|ções|são|mento|mentos|ância|ência|agem)) d[eoa]s?\b",
+    # Substantivos abstratos empilhados
+    "abstract_stack": r"\b(transformação|inovação|otimização|eficiência|escalabilidade|sinergia|excelência|crescimento|resultados)\b.{0,40}\b(transformação|inovação|otimização|eficiência|escalabilidade|sinergia|excelência|crescimento|resultados)\b",
+    # Gerundismo de telemarketing: "vou estar enviando", "vamos estar fazendo"
+    "gerundismo": r"\b(vou|vamos|vai|vão|irei|iremos) estar \w+(ando|endo|indo)\b",
 }
-# Fix for ing_opener: put the actor first. "Leveraging our data, we cut churn" -> "we cut churn with our data."
-# Fix for nominalisation: use the verb. "the implementation of the new flow" -> "when we shipped the new flow"
+# Correção do gerúndio de abertura: comece pelo sujeito. "Pensando nisso, criamos X" -> "por isso a gente criou X."
+# Correção da nominalização: use o verbo. "a implementação do novo processo" -> "quando a gente mudou o processo"
+# Gerundismo: corrija sempre ("vou estar enviando" -> "vou enviar" / "te mando").
+# A nominalização só conta quando esconde a ação; "o lançamento do evento" como nome de coisa é normal.
 ```
 
-### 2026 model-idiom layer (density-scored)
+### Cara de tradução (por densidade; uma ocorrência já merece atenção)
 
-Phrases that were human caption idiom in 2024 and are model idiom in 2026.
-Each counts as one marker; "let that sink in" and "that's the real story" are
-scrubbed on a single hit as closers.
+Expressões calcadas do inglês que denunciam texto gerado ou traduzido:
 
 ```python
-IDIOM_LAYER_2026 = [
-    r"\bquietly\b",                          # "quietly shipped"
-    r"(?m)^\w+ matters\.$",                  # "consistency matters." as a line
-    r"\bcompound(s|ing)?\b",
-    r"\ba signal\b|\bthe signal\b",
-    r"\bthe work\b",
-    r"\bbuilt different\b",
-    r"\bload-bearing\b",
-    r"\bdoing the heavy lifting\b",
-    r"\blet that sink in\b",
-    r"\bthat's the real story\b",
-    r"\bmain character energy\b",
-    r"\bsoft launch(ing)?\b(?! a product)",  # as a mood, not a product launch
+CALQUES_PT = [
+    r"\bno final do dia\b",                  # at the end of the day
+    r"\bfaz sentido\?",                      # makes sense?
+    r"\bisso dito,",                         # that said
+    r"\bdito isso,",
+    r"\bsem mais delongas\b",
+    r"\bcomo um todo\b",
+    r"\b(uma|a) (incrível|enorme|grande) (oportunidade|jornada|experiência)\b",  # ordem de adjetivo do inglês, como clichê
+    r"\bestar (animad[oa]|empolgad[oa]) (em|para) (anunciar|compartilhar)\b",   # excited to announce/share
+    r"\bé com (grande )?(alegria|satisfação|orgulho) que\b",
+    r"\bnão poderia(m)? estar mais (feliz|felizes|orgulhos[oa]s?)\b",          # couldn't be happier
+    r"\bjogo (mudou|virou)\b|\bmudou o jogo\b",                                # game changer
+    r"\bcuidar de si mesm[oa]\b",
+    r"\bsua melhor versão\b",
 ]
 ```
 
-### Reveal bridges (single hit = replace)
+### Camada de idiomas de modelo (por densidade)
+
+Expressões que eram jeito de legenda humana em 2023-24 e viraram vício de
+modelo em 2026. Cada uma conta como marcador; "deixa isso entrar" e "pensa
+nisso" como fechamento saem com uma ocorrência.
 
 ```python
-REVEAL_BRIDGES = [
-    (r"(?im)^the (result|outcome|answer|lesson|catch|kicker|truth)\?\s*", ""),   # "The result?"
-    (r"(?i)\bit'?s not \w[^,.]{0,40}, it'?s \b", None),                          # "It's not X, it's Y" (rewrite as paired declaratives)
-    (r"(?i)^stop \w[^,.]{0,40}\. start \b|^stop \w[^,.]{0,40}, start \b", None),  # "Stop X, start Y"
-    (r"(?im)^here'?s (what|how|why|the thing)\b[^:.\n]{0,40}[:.]\s*", ""),      # "Here's what/how", "Here's the thing.."
-    (r"(?im)^(plot twist|spoiler|the twist)[:?]\s*", ""),
-    (r"(?im)^let'?s talk about\b[^.\n]{0,40}[.:]\s*", ""),                      # "Let's talk about.." opener
+IDIOM_LAYER_PT = [
+    r"\bsilenciosamente\b",                   # "silenciosamente lançou"
+    r"(?m)^\w+ importa\.$",                   # "constância importa." sozinho na linha
+    r"\bjuros compostos\b(?! d)",             # usado como metáfora ("constância é juros compostos")
+    r"\bo trabalho (invisível|de base)\b",
+    r"\bsobre isso\.$",                       # "é sobre isso." / "e tá tudo bem."
+    r"\be (tá|está) tudo bem\.?$",
+    r"\bé sobre (isso|aquilo)\b",
+    r"\b(deixa|deixe) isso (entrar|assentar)\b",
+    r"\bpensa(e)? nisso\.?$",
+    r"\bfoi aí que (tudo mudou|eu entendi)\b",
+    r"\bvirada de chave\b",
+    r"\bsair da zona de conforto\b",
+    r"\bplot twist\b",
 ]
-# Fix: delete the bridge and let the next sentence stand. It was the point anyway.
-# Named 2026 tells on every reader list; measured reach-negative on LinkedIn (vendor data).
 ```
 
-### Negative parallelism (single hit = rewrite)
-
-Strip the "not X, but Y" / "it isn't about X, it's about Y" constructions and
-every sibling form ("The question isn't X, it's Y", "This isn't X. This is
-Y."). Rewrite as paired declaratives, not by auto-substitution, and flag for
-the user since meaning preservation needs judgement. Zero human captions in
-our corpus use one.
-
-### Rule of three (strict at density; one natural triad is allowed)
-
-Tricolon runs at 2x the expert-human rate across 2026 models. 23% of human
-captions in our corpus contain one, so the tell is the stacked or perfectly
-parallel triad, the hollow one, and the repeat, not the form.
+### Pontes de revelação (uma ocorrência = trocar)
 
 ```python
-NO_NO_JUST = r"\b(no \w+)[,.] (no \w+)[,.] ((?:just|only) \w+)"   # "No X. No Y. Just Z." / "no X, no Y, just Z"
+REVEAL_BRIDGES_PT = [
+    (r"(?im)^(o|a) (resultado|resposta|lição|pegadinha|verdade|segredo|detalhe)\?\s*", ""),   # "O resultado?"
+    (r"(?i)\bnão é (só|apenas|sobre) [^,.]{1,40}[,.] é\b", None),        # "Não é só X, é Y" (reescreva como afirmações pareadas)
+    (r"(?i)\bnão se trata de [^,.]{1,40}, (mas|e sim) de\b", None),        # "Não se trata de X, mas de Y"
+    (r"(?i)^pare de [^,.]{1,40}[.,] comece a\b", None),                    # "Pare de X. Comece a Y"
+    (r"(?im)^(seguinte|é o seguinte|olha só|sabe o que é)[:.!]\s*", ""),   # "Seguinte:"
+    (r"(?im)^(vamos|bora) falar (sobre|de)\b[^.\n]{0,40}[.:?!]\s*", ""),   # "Vamos falar sobre.."
+    (r"(?im)^(spoiler|plot twist|a reviravolta)[:!]\s*", ""),
+    (r"(?im)^(e sabe (o que|qual) (aconteceu|foi o resultado))\?\s*", ""),
+    (r"(?im)^(você sabia que)\b", None),                                   # só sai se a frase seguinte não trouxer dado surpreendente
+]
+# Correção: apague a ponte e deixe a frase seguinte em pé. Ela já era o ponto.
+```
+
+### Paralelismo negativo (uma ocorrência = reescrever)
+
+Tire as construções "não é X, é Y" / "não se trata de X, mas de Y" e todas as
+irmãs ("A questão não é X, é Y", "Isso não é X. Isso é Y.", "Não é sobre X. É
+sobre Y."). Reescreva como afirmações pareadas, não por substituição automática,
+e sinalize ao usuário, porque preservar o sentido exige julgamento.
+
+### Regra de três (estrita por densidade; um trio natural é permitido)
+
+```python
+NO_NO_JUST_PT = r"\b(sem \w+)[,.] (sem \w+)[,.] ((?:só|apenas|somente) \w+)"   # "Sem X. Sem Y. Só Z."
 
 def detect_triads(text: str) -> list:
     patterns = [
-        r"(\w+), (\w+),? and (\w+)",                       # word triplets
-        r"(\w+ \w+), (\w+ \w+),? and (\w+ \w+)",           # short-phrase triplets
-        r"(?m)^(\w+)\. (\w+)\. (\w+)\.$",                  # "Simple. Effective. Easy." (also a Pass 2 staccato hit)
-        NO_NO_JUST,                                        # staged construction, never a natural triad (also a Pass 2 hit)
+        r"(\w+), (\w+),? e (\w+)",                          # trio de palavras
+        r"(\w+ \w+), (\w+ \w+),? e (\w+ \w+)",              # trio de expressões curtas
+        r"(?m)^(\w+)\. (\w+)\. (\w+)\.$",                   # "Simples. Rápido. Fácil."
+        r"(?i)\bmais (\w+), mais (\w+) e mais (\w+)\b",     # "mais rápido, mais barato e mais fácil"
+        NO_NO_JUST_PT,
     ]
     return [m for p in patterns for m in re.finditer(p, text, flags=re.I)]
 
-HOLLOW_ADJECTIVES = {"dynamic", "vibrant", "innovative", "faster", "cheaper", "better", "simple",
-                     "effective", "easy", "bold", "clear", "focused", "scalable", "powerful", "aesthetic"}
-ABSTRACT_NOUNS = {"growth", "impact", "value", "alignment", "innovation", "efficiency", "results", "success",
-                  "clarity", "freedom", "scale", "momentum", "consistency", "mindset", "strategy", "vision"}
+HOLLOW_ADJECTIVES_PT = {"dinâmico", "dinâmica", "inovador", "inovadora", "rápido", "rápida", "barato",
+    "barata", "melhor", "simples", "eficiente", "eficaz", "fácil", "prático", "prática", "moderno",
+    "moderna", "seguro", "segura", "confiável", "completo", "completa", "incrível", "poderoso",
+    "poderosa", "acessível", "personalizado", "personalizada", "exclusivo", "exclusiva"}
+ABSTRACT_NOUNS_PT = {"crescimento", "impacto", "valor", "inovação", "eficiência", "resultados",
+    "sucesso", "clareza", "liberdade", "escala", "constância", "consistência", "mindset", "estratégia",
+    "visão", "propósito", "qualidade", "segurança", "confiança", "credibilidade", "excelência",
+    "praticidade", "tranquilidade", "conquista", "realização"}
 
-def hollow(t: "re.Match", text: str) -> bool:
-    """A triad is hollow when its items are interchangeable: every item is an abstract adjective or an
-    abstract noun, and none carries a receipt (a proper name, a number, a $ or %). Equal word counts are
-    NOT a tell on their own: "Stripe invoices, Vercel logs, and GitHub alerts" is a natural concrete triad.
-    Capitalization alone is never a receipt: a capital that opens a sentence ("Simple, effective, and easy",
-    "Simple. Effective. Easy.") is sentence case, not a name. A name is a capital that does NOT open a sentence."""
-    def opens_sentence(pos: int) -> bool:
-        return re.search(r"(?:^|[.!?\n])\s*$", text[:pos]) is not None
-    def has_receipt() -> bool:
-        for g in range(1, t.lastindex + 1):
-            pos = t.start(g)
-            for w in t.group(g).split():
-                if re.search(r"[0-9$%]", w):
-                    return True
-                if w[:1].isupper() and not opens_sentence(pos):
-                    return True
-                pos += len(w) + 1
-        return False
-    items = t.groups()
-    all_abstract = all(x.lower().strip() in HOLLOW_ADJECTIVES or x.lower().strip() in ABSTRACT_NOUNS
-                       or x.lower().split()[-1] in ABSTRACT_NOUNS for x in items)
-    return (not has_receipt()) and all_abstract
+# hollow(): um trio é oco quando os itens são intercambiáveis: todos adjetivos ou substantivos
+# abstratos das listas acima, e nenhum traz um "recibo" (nome próprio, número, R$, %).
+# "Racon, Gauchinho e UNIFECAF" é trio concreto e natural. "segurança, praticidade e tranquilidade"
+# é oco. Maiúscula no início de frase não é nome próprio.
 
-def triad_action(triads: list, text: str) -> list:
-    """Call once per caption with that caption's triads (from detect_triads(text)). Scrub any hollow triad on
-    sight. Natural (concrete, non-interchangeable) triads are a density call, on the SAME threshold the audit
-    uses: one or two pass; at 3+ triads in the caption scrub down to the FIRST natural one. Rewrite mode is
-    never harsher than audit mode. Threads are not pooled: the threshold is per caption."""
-    actions = []
-    over_density = len(triads) >= 3
-    kept_one = False
-    for t in triads:
-        staged = t.re.pattern == NO_NO_JUST          # "no X, no Y, just Z" is a staged tell in either punctuation, always rewritten
-        if hollow(t, text) or staged or (over_density and kept_one):
-            actions.append((t, "REWRITE_AS_TWO_OR_FOUR"))   # 2 items, or 4 with one that breaks the pattern
-        else:
-            actions.append((t, "LEAVE"))
-            kept_one = True
-    return actions
+# triad_action(): por legenda. Trio oco sai na hora. "Sem X. Sem Y. Só Z." sai sempre.
+# Trios naturais: um ou dois passam; com 3+ na legenda, reduza ao PRIMEIRO natural.
+# Reescreva como 2 itens, ou 4 com um que quebre o padrão.
 ```
 
-### Dead phrases (delete or rewrite)
+Atenção especial a perfis comerciais: "segurança, solidez e tranquilidade",
+"agilidade, transparência e confiança", "qualidade, preço justo e bom
+atendimento" são trios ocos típicos de texto institucional. Troque por uma
+prova concreta ("47 anos de mercado", "parcela de R$ 612 sem juros", "atendimento
+no WhatsApp até 22h").
 
-- "in today's fast-paced world", "in the digital age", "in the age of AI"
-- "at the end of the day"
-- "game-changer", "deep dive", "level up", "next level", "must-have", "paradigm shift"
-- "the world of {thing}"
-- "the hard truth is" / "the uncomfortable reality is"
+### Frases mortas (apagar ou reescrever)
 
-### Dead closers (rewrite to a landing or a specific ask)
+- "no mundo de hoje", "nos dias de hoje", "em um mundo cada vez mais (conectado|competitivo|digital)", "na era digital", "na era da IA", "atualmente, mais do que nunca"
+- "no final das contas" (como muleta), "a verdade é que", "a dura verdade é que"
+- "game changer", "virada de chave", "próximo nível", "subir de nível", "imperdível", "o segredo que ninguém te conta", "sem sombra de dúvidas", "mudança de paradigma"
+- "o universo de {coisa}", "o mundo de {coisa}"
+- "não perca essa oportunidade", "vagas limitadas" (só se for verdade e com número)
 
-- "What do you think?"
-- "Thoughts?"
-- "Double tap if you agree."
-- "Tag 3 friends who need this."
-- "Comment YES below."
-- "Let that sink in."
-- A one-word closing line ("Still.")
+### Fechamentos mortos (reescrever como aterrissagem ou pedido específico)
 
-A save or send prompt that names a reason ("save this before your next
-post") is not a dead closer; it is the CTA Instagram rewards.
+- "O que vocês acham?" / "E você, o que acha?" sem pergunta específica
+- "Comentem aí!" / "Conta pra mim nos comentários!"
+- "Dá dois toques se concorda." / "Curte se você também..."
+- "Marca 3 amigos que precisam ver isso."
+- "Comenta SIM aqui embaixo." (isca sem entrega)
+- "Pensa nisso." / "Fica a reflexão."
+- "Fica a dica!" como fechamento genérico
+- Linha final de uma palavra ("Bora!" "Simples assim.")
 
-### Emoji storms
+Um pedido de salvar ou enviar que diz o motivo ("salva pra consultar antes da
+assembleia") não é fechamento morto; é o CTA que o Instagram premia. "Comenta
+TABELA que eu te mando no direct" é válido se a automação existe e entrega.
 
-- 4+ emoji in a caption, or emoji on every line: cut to 0-3 placed with intent.
-- The 2024-25 AI emoji signature (rocket, sparkles, fire, 100, raised hands in
-  a row) is scrubbed on a single hit as a set.
-- The author's own 1-3 intentional emoji are voice and stay (see Preserve).
+### Chuva de emoji
 
-## Instagram-format scrubs (always apply)
+- 4+ emoji na legenda, ou emoji em toda linha: corte para 0-3 com intenção.
+- A assinatura de IA de 2024-25 (foguete, brilhos, fogo, 100, mãos pra cima,
+  setinha para baixo em fila; ou o check verde em toda linha de lista) sai como
+  conjunto com uma ocorrência.
+- Os 1-3 emoji intencionais do autor são voz e ficam.
 
-- A hook that needs line 2 to make sense: rewrite so the first 125 chars stand
-  alone.
-- 6+ hashtags, or any mid-sentence: cut to a 3-5 sized set at the end or in the
-  first comment (see `../../../references/hashtag-strategy.md`).
-- A bare carousel slide-1 title: rewrite to a promise + open loop.
-- A caption over 2,200 chars: tighten.
-- On-image slide text: at most one em dash per slide, and only if it does real
-  work; slides are short.
+## Limpezas de formato do Instagram (sempre)
+
+- Gancho que precisa da linha 2: reescreva para os 125 primeiros caracteres se sustentarem.
+- 6+ hashtags, ou hashtag no meio da frase: corte para 3-5 dimensionadas no fim
+  ou no primeiro comentário (ver `../../../references/hashtag-strategy.md`).
+- Título seco no slide 1: reescreva como promessa + laço aberto.
+- Legenda acima de 2.200 caracteres: aperte.
+- Texto na arte: no máximo um travessão por slide, e só se trabalhar.
 
 ---
 
-## Pass 2 - Rhythm (anti-uniformity guard only)
+## Passada 2 - Ritmo (só proteção contra uniformidade)
 
-Replaces V2's "BREAK (force burstiness)". Detectors do not score burstiness
-(GPTZero dropped it in 2023). Captions are mid-length, and on the platforms
-where we have engagement data sentence-length variance is either neutral or a
-negative (LinkedIn null; Threads uniform wins), so rhythm is not a reach
-lever here. What readers do notice is machine-flat uniformity (structure =
-36% of expert judgments) and, worse, staged variance: mechanical long/short
-alternation is a learnable humanizer fingerprint. So: fix rhythm only where it
-reads machine-flat, remove manufactured variance everywhere, never add
-variance as a tactic.
+Corrige ritmo só onde soa mecânico, remove variação fabricada em todo lugar,
+nunca adiciona variação como tática.
 
 ```python
-STACCATO_TELLS = [
-    r"(?m)^\w+\.$",                                              # one-word line for drama: "Still." "Exactly."
-    r"(?m)^(\w+\. ){2,}\w+\.$",                                  # "Short. Punchy. Done." / "Simple. Effective. Easy."
-    r"(?i)\bno \w+\. no \w+\. (just|only) \w+",                  # "No X. No Y. Just Z."
-    r"(?i)\ball (of )?the \w+\. none of the \w+",                # "All the X. None of the Y."
-    r"(?im)^the (result|outcome|answer|lesson|catch|kicker|truth)\?",  # "The result?" reveal (also a strict reveal bridge)
-    r"(?i)\b(why|how|what happened)\? (because|simple|easy)\b",  # pseudo-Socratic Q&A
-    r"(?i)\b(that's it|that's all|that's the post|full stop|period)\.$",
+STACCATO_TELLS_PT = [
+    r"(?m)^\w+[.!]$",                                                 # linha de uma palavra para drama: "Pois." "Exato!"
+    r"(?m)^(\w+\. ){2,}\w+\.$",                                       # "Simples. Rápido. Fácil."
+    r"(?i)\bsem \w+\. sem \w+\. (só|apenas|somente) \w+",            # "Sem X. Sem Y. Só Z."
+    r"(?i)\btodo o \w+\. nada d[eoa] \w+",                            # "Todo o X. Nada do Y."
+    r"(?im)^(o|a) (resultado|resposta|lição|verdade|segredo)\?",      # "O resultado?" (também ponte estrita)
+    r"(?i)\b(por quê|como|o que aconteceu)\? (porque|simples|fácil)\b",  # pergunta-resposta pseudo-socrática
+    r"(?i)\b(é isso|só isso|ponto final|simples assim|sem mais)\.$",
 ]
 
-def is_standalone_fragment(s: str) -> bool:
-    """A fragment is a short line with no subject + finite verb: "Still.", "Exactly.", "No excuses.",
-    "Every single time." A short complete sentence ("It worked.", "Sales rose.") is not a fragment and
-    never counts toward the cap; short is not the tell, fragment-for-drama is."""
-    return len(s.split()) < 4 and not has_subject_and_verb(s)
+# is_standalone_fragment(s): linha curta (< 4 palavras) sem sujeito + verbo conjugado: "Pois é.",
+# "Exatamente.", "Sem desculpas.", "Toda santa vez." Uma frase curta completa ("Deu certo.",
+# "As vendas subiram.") não é fragmento e nunca conta para o limite.
 
-def restore_rhythm(text: str) -> str:
-    """V3. Remove staged variance; un-flatten only what reads machine-flat. Never manufacture variance."""
-    paragraphs = split_paragraphs(text)
-    fragments_seen = 0
-
-    for i, p in enumerate(paragraphs):
-        # 1. Kill staged rhythm first. Merge staccato runs into one full sentence with a real clause.
-        for pat in STACCATO_TELLS:
-            if re.search(pat, p):
-                p = merge_into_sentence(p, pat)     # "No filters. No presets. Just light." -> "no filters or presets, just the light from the window."
-
-        sents = split_sentences(p)
-        lengths = [len(s.split()) for s in sents]
-
-        # 2. Cap standalone fragments at 2 per CAPTION, not per paragraph. Only true fragments count;
-        #    "It worked. Sales rose. Customers returned." is three short sentences, not three fragments.
-        for j, s in enumerate(sents):
-            if is_standalone_fragment(s):
-                fragments_seen += 1
-                if fragments_seen > 2:
-                    sents[j] = attach_to_neighbor(sents, j)   # fold into the previous sentence with a comma or colon
-
-        # 3. Un-flatten ONLY a machine-flat paragraph: 4+ sentences, every one within +-3 words of the
-        #    mean, no subordinate clause anywhere. Then extend the ONE sentence that carries the most
-        #    content by joining it to its natural neighbour with a clause that does work (because / which /
-        #    when / after), not a comma splice. Once per paragraph, and only if the result reads like the
-        #    author. A paragraph with one long and one short sentence is already fine.
-        if len(sents) >= 4 and all(abs(n - mean(lengths)) <= 3 for n in lengths) and not any(has_working_clause(s) for s in sents):
-            k = max(range(len(sents)), key=lambda j: lengths[j])
-            j = k + 1 if k + 1 < len(sents) else k - 1
-            sents[k] = join_with_clause(sents[k], sents[j])
-            del sents[j]                              # the absorbed neighbour is removed so nothing appears twice
-
-        # 4. Never long/short/long/short. If the paragraph now alternates (4+ sentences flipping between
-        #    short <8 words and long >=16 words), fold the SECOND short sentence into the sentence before it.
-        #    The seesaw is the humanizer fingerprint.
-        lengths = [len(s.split()) for s in sents]
-        if len(lengths) >= 4 and all((lengths[k] < 8) != (lengths[k + 1] < 8) for k in range(len(lengths) - 1)) \
-                and all(n < 8 or n >= 16 for n in lengths):
-            k = [j for j, n in enumerate(lengths) if n < 8][1]
-            sents[k - 1] = join_with_clause(sents[k - 1], sents[k])
-            del sents[k]
-
-        # 5. One-idea-per-line captions (each paragraph one sentence) and carousel slides: leave rhythm alone entirely.
-
-        paragraphs[i] = rejoin_keeping_breaks(p, sents)   # re-attach the paragraph's own single line breaks; the pass edits sentences, never breaks
-
-    return "\n\n".join(paragraphs)
+# restore_rhythm(text): mesmo algoritmo da versão original:
+#   1. Mate o ritmo encenado: junte cada pilha picotada numa frase completa com oração de verdade.
+#      "Sem filtro. Sem preset. Só luz." -> "sem filtro nem preset, só a luz da janela."
+#   2. Limite fragmentos soltos a 2 por LEGENDA; o terceiro em diante se junta à frase anterior
+#      com vírgula ou dois-pontos.
+#   3. Desachate SÓ parágrafo mecânico: 4+ frases, todas a ±3 palavras da média, nenhuma oração
+#      subordinada. Aí junte a frase de mais conteúdo à vizinha com uma oração que trabalha
+#      (porque / que / quando / depois que), uma vez por parágrafo.
+#   4. Nunca longa/curta/longa/curta. Se o parágrafo alterna (4+ frases, curtas < 8 palavras,
+#      longas >= 16), dobre a SEGUNDA curta na frase anterior.
+#   5. Legendas de uma ideia por linha e slides de carrossel: não mexa no ritmo.
+#   A passada edita frases, nunca as quebras de linha.
 ```
 
-Layout vs rhythm: one-sentence lines with blank lines between them are
-Instagram's native caption layout and are **not** touched by this pass. "I
-grew an account from 0 to 10k in 4 months." on its own line is layout.
-"Still." on its own line is fragment-for-drama. The pass edits sentences,
-never the line breaks.
+Layout vs ritmo: linhas de uma frase com linha em branco entre elas são o layout
+nativo de legenda e **não** são tocadas. "cresci de 0 a 10 mil seguidores em 4
+meses." numa linha só é layout. "Pois é." numa linha só é fragmento para drama.
 
-## Pass 3 - Forbidden insertions (sincerity markers, hedges)
+## Passada 3 - Inserções proibidas (sinceridade, ressalvas)
 
-Pass 3 adds concreteness only (a referenced odd-precision number, a named
-entity, a flat dated fact). It never adds these, and Pass 1 strict removes them
-when the draft already has them as an opener or pivot:
+A Passada 3 só acrescenta concretude (número quebrado com referência, nome
+próprio, fato seco e datado). Nunca acrescenta o que está abaixo, e a Passada 1
+estrita remove quando o rascunho já traz como abertura ou virada:
 
 ```python
-SINCERITY_MARKERS = [
-    # Anchored to a line start OR a sentence boundary, so a same-line pivot ("The launch failed. Real talk, this hurt.") is caught too.
-    r"(?im)(?:^|(?<=[.!?]\s))(let me be (honest|real|direct|clear)|i'?ll be (honest|real|direct)|honestly\?|honest (caveat|version|answer)|the honest (version|answer|truth) is|to be (direct|honest|fair|transparent)|real talk|full transparency|can i be (honest|vulnerable)|i'?ll say the quiet part|not gonna lie|ngl|unpopular opinion|storytime)[:,.]?\s*",
-    r"(?im)(?:^|(?<=[.!?]\s))pov:\s*(?!.*\b(you|your)\b)",   # "POV:" on something that is not a point of view
-    r"(?i)\b(i (might|may|could) be wrong,? but|perhaps|it seems (to me )?that|in my humble opinion|i think it'?s fair to say)\b",  # inserted hedges: only scrub if NOT in the author's voice samples
+SINCERITY_MARKERS_PT = [
+    # Ancorado no início da linha OU após fim de frase, para pegar a virada na mesma linha.
+    r"(?im)(?:^|(?<=[.!?]\s))(vou ser (sincer[oa]|honest[oa]|diret[oa]|bem sincer[oa])|sendo (bem |muito )?(sincer[oa]|honest[oa])|sinceramente\?|papo reto|real oficial|verdade seja dita|vou te contar (uma coisa|um segredo|a verdade)|posso ser (sincer[oa]|vulnerável)|confesso que|opinião impopular|senta que lá vem( a)? história|preciso desabafar|não vou mentir|vou abrir o jogo)[:,.!]?\s*",
+    r"(?im)(?:^|(?<=[.!?]\s))pov:\s*(?!.*\b(você|vc|sua|seu)\b)",   # "POV:" em algo que não é ponto de vista
+    r"(?i)\b(posso estar errad[oa],? mas|talvez,? só talvez|parece que|na minha humilde opinião|me arrisco a dizer)\b",  # ressalvas inseridas: só limpe se NÃO estiverem nas amostras de voz do autor
 ]
-# Fix: delete the marker and keep the sentence that follows. If the sentence that follows is not
-# a specific fact, the marker was doing the work of vulnerability. Ask the author for the fact.
-# Evidence: performed hesitancy 2x more common in LLM than expert human text; "false vulnerability"
-# is a named 2026 tell. The rule is: never manufacture one, and never wrap a fact in one.
+# Correção: apague o marcador e mantenha a frase seguinte. Se a frase seguinte não é um fato
+# específico, o marcador estava fazendo o papel da vulnerabilidade. Peça o fato ao autor.
 ```
 
-## Preserve these (user voice, do not scrub)
+## Preserve (voz do usuário, não limpar)
 
-- Lowercase-casual register if that is how the user captions
-- `..` as a soft pause and single line breaks as beats
-- One or two sentence fragments used intentionally ("every time.") - the cap
-  is 2 per caption, not 0
-- One em dash per ~100 words. Do not push the count to zero; 29% of human
-  captions have one and zero across a long caption is below the human baseline
-- One natural rule-of-three with concrete, non-interchangeable items (23% of
-  human captions have one)
-- One genuinely long sentence per paragraph, even if a style guide would split it
-- The author's 1-3 intentional emoji
-- Contractions (don't, it's, you're)
-- Specific numbers with referents and named entities (add MORE, never remove)
-- First-person sensory details
-- The author's reactions and opinions, including a blunt one. Flat tone across
-  a whole caption is a humanizer fingerprint
-- A single common-word marker in a paragraph ("notably", "robust" as a term
-  of art). One is not a verdict
-- Their actual story. Never invent a detail to make a caption land
+- Registro casual minúsculo, se é assim que o usuário escreve
+- `..` como pausa leve e quebras de linha simples como batidas
+- Um ou dois fragmentos intencionais ("toda vez.") - o limite é 2 por legenda, não 0
+- Um travessão a cada ~100 palavras. Não empurre para zero.
+- Um trio natural com itens concretos e não intercambiáveis
+- Uma frase realmente longa por parágrafo
+- Os 1-3 emoji intencionais do autor
+- Oralidade e contrações do português falado ("pra", "tá", "tô", "a gente", "né", "cê")
+- Regionalismos e gírias do autor ("bah", "tchê", "uai", "égua", "mano", "véi", "trem")
+- Números específicos com referência e nomes próprios (acrescente MAIS, nunca tire)
+- Detalhes sensoriais em primeira pessoa
+- Reações e opiniões do autor, inclusive as diretas. Tom chapado na legenda
+  inteira é assinatura de humanizador
+- Um marcador comum isolado num parágrafo ("fundamental", "estratégico" como
+  termo técnico). Um não é veredito
+- A história real do autor. Nunca invente um detalhe para a legenda funcionar

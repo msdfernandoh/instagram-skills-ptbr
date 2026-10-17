@@ -1,14 +1,14 @@
 {
-  "name": "instagram-skills",
+  "name": "instagram-skills-ptbr",
   "interface": {
-    "displayName": "Instagram Skills"
+    "displayName": "Instagram Skills PT-BR"
   },
   "plugins": [
     {
-      "name": "instagram-skills",
+      "name": "instagram-skills-ptbr",
       "source": {
         "source": "local",
-        "path": "./.codex-marketplace/instagram-skills"
+        "path": "./.codex-marketplace/instagram-skills-ptbr"
       },
       "policy": {
         "installation": "AVAILABLE",

@@ -1,166 +1,164 @@
-# 2026 Instagram Posting Heuristics
+# Heurísticas de postagem no Instagram (2026)
 
-Synthesized from Instagram's public ranking statements (Adam Mosseri's creator
-posts), the 2023-2026 algorithm explainers, and observed creator data. Numbers
-marked "reported" are community-measured, not officially confirmed. Instagram
-ranks each surface (Feed, Reels, Explore, Stories) with its own model, but the
-signals below generalize.
+Sintetizado das declarações públicas do Instagram sobre ranqueamento (posts do
+Adam Mosseri para criadores), dos explicadores de algoritmo de 2023-2026 e de
+dados observados de criadores. Números marcados como "relatado" são medidos pela
+comunidade, não confirmados oficialmente. Cada superfície (Feed, Reels, Explorar,
+Stories) tem seu próprio modelo, mas os sinais abaixo valem em geral.
 
-## Contents
+## Sumário
 
-- Signal weights (relative reach impact)
-- The first 30-60 minutes
-- Reach suppressors (avoid)
-- Reach amplifiers
-- Format and media limits (via the publishing API)
-- Carousels
+- Peso dos sinais
+- Os primeiros 30-60 minutos
+- O que derruba o alcance
+- O que amplia o alcance
+- Limites de formato e mídia (via API)
+- Carrosséis
 - Reels
 - Stories
-- Timing
-- Saves and sends are the underrated levers
-- Pre-publish checklist
+- Horários (Brasil)
+- Salvamentos e envios são as alavancas subestimadas
+- Checklist antes de publicar
 
-## Signal weights (relative reach impact)
+## Peso dos sinais (impacto relativo no alcance)
 
-Instagram scores predicted engagement, and the engagement types are not equal.
-Reported relative weights from creator testing and platform statements:
-
-| Signal | Relative weight | Note |
+| Sinal | Peso relativo | Nota |
 |---|---|---|
-| **Send / share** (to a friend in DM, or reshare to story) | highest positive | "sends per reach" is the metric the algorithm leans on hardest in 2026 |
-| **Save** | high | the "I will come back to this" signal; drives reach for how-tos, lists, frameworks |
-| **Comment** (esp. with author reply back) | high | a real conversation is a strong quality signal |
-| **Reel watch time / completion / rewatch** | high (Reels) | for video, retention and rewatch decide the push |
-| **Profile visit then follow** | high | the growth signal; payoff content earns it |
-| **Like** | low | cheap affirmation, light reach |
-| **Negative: "not interested", unfollow, hide, report** | heavy penalty | one report outweighs many likes |
+| **Envio / compartilhamento** (direct para amigo, ou repost no story) | o mais alto | "envios por alcance" é a métrica em que o algoritmo mais se apoia em 2026 |
+| **Salvamento** | alto | o sinal de "vou voltar nisso"; alavanca tutoriais, listas, métodos |
+| **Comentário** (principalmente com resposta do autor) | alto | conversa real é sinal forte de qualidade |
+| **Tempo assistido / conclusão / reexibição do Reel** | alto (Reels) | em vídeo, retenção e reexibição decidem o empurrão |
+| **Visita ao perfil seguida de follow** | alto | o sinal de crescimento |
+| **Curtida** | baixo | afirmação barata, pouco alcance |
+| **Negativo: "não tenho interesse", deixar de seguir, ocultar, denunciar** | penalidade pesada | uma denúncia pesa mais que muitas curtidas |
 
-Takeaway: optimize for **sends, saves, and comments**, not likes. The single
-most useful question before posting: would a viewer send this to one specific
-friend, or save it to use later?
+Resumo: otimize para **envios, salvamentos e comentários**, não curtidas. A
+pergunta mais útil antes de postar: alguém mandaria isso para um amigo
+específico, ou salvaria para usar depois?
 
-## The first 30-60 minutes
+## Os primeiros 30-60 minutos
 
-- The opening window sets the trajectory. Early saves, sends, and comments tell
-  the ranker to widen distribution to non-followers via Explore and the Reels
-  feed.
-- **Reply to early comments fast.** Author replies pull more comments and signal
-  an active conversation.
-- A Reel that holds retention through the first 3 seconds in the opening test
-  earns a wider push.
+- A janela inicial define a trajetória. Salvamentos, envios e comentários cedo
+  dizem ao algoritmo para abrir a distribuição para não seguidores (Explorar e
+  aba Reels).
+- **Responda rápido aos primeiros comentários.** Resposta do autor puxa mais
+  comentários e sinaliza conversa ativa.
+- Um Reel que segura a retenção nos primeiros 3 segundos no teste inicial ganha
+  um empurrão maior.
 
-## Reach suppressors (avoid)
+## O que derruba o alcance (evite)
 
-- **Engagement bait** ("comment YES", "tag 3 friends", "double tap if") is
-  explicitly downranked.
-- **Reposted/recycled video with another app's watermark** (a visible logo from
-  a different platform) is suppressed in Reels.
-- **All-hashtag captions** (20-30 tags crammed at the top) read as spam in 2026
-  and do not help reach. Sized 3-5 tags is the current guidance.
-- **Aspect ratios outside 4:5 to 1.91:1** get cropped, which hurts a carousel or
-  a feed image.
-- **High hide/unfollow/report rate** collapses distribution fast.
-- **Mixed media in one carousel** is rejected by the API outright.
+- **Isca de engajamento** ("comenta SIM", "marca 3 amigos", "dá dois toques se")
+  é rebaixada explicitamente.
+- **Vídeo reaproveitado com marca d'água de outro app** (logo do TikTok, CapCut
+  etc.) é suprimido nos Reels.
+- **Legenda só de hashtag** (20-30 tags no topo) parece spam em 2026 e não ajuda.
+- **Proporções fora de 4:5 a 1,91:1** são cortadas, o que prejudica carrossel e
+  imagem no feed.
+- **Taxa alta de ocultar/deixar de seguir/denunciar** derruba a distribuição rápido.
+- **Mídia misturada no carrossel** é rejeitada pela API.
 
-## Reach amplifiers
+## O que amplia o alcance
 
-- **Sends are the lever.** A post built to be sent to a friend (a relatable
-  truth, a useful list, a "you need to see this") out-reaches a like-bait post.
-- **Saves compound.** Save-bait formats (lists, frameworks, how-tos, before/
-  after) keep earning reach for days as Explore surfaces them.
-- **Reels with strong retention** get pushed to non-followers the hardest of any
-  format in 2026. Original audio and on-screen text both help.
-- **Carousels get a second look:** a viewer who does not swipe may see slide 2
-  on a re-surface, so Instagram sometimes re-shows carousels, giving them a
-  longer tail.
-- **Replying to your own comments and DMs** in the first hour keeps the
-  conversation signal alive.
+- **Envios são a alavanca.** Post feito para ser mandado para alguém (uma verdade
+  do dia a dia, uma lista útil, um "você precisa ver isso") alcança mais que post
+  de isca de curtida.
+- **Salvamentos se acumulam.** Formatos de salvamento (listas, métodos,
+  tutoriais, antes/depois) continuam ganhando alcance por dias pelo Explorar.
+- **Reels com retenção forte** são o formato mais empurrado para não seguidores
+  em 2026. Áudio original e texto na tela ajudam.
+- **Carrossel ganha segunda chance:** quem não arrastou pode ver o slide 2 numa
+  nova exibição, o que dá uma cauda mais longa.
+- **Responder comentários e directs** na primeira hora mantém o sinal de conversa vivo.
 
-## Format and media limits (via the publishing API)
+## Limites de formato e mídia (via API de publicação)
 
-| Item | Limit |
+| Item | Limite |
 |---|---|
-| Caption | 2,200 chars (first ~125 visible before "more") |
-| Hashtags | 30 max per post (but 3-5 sized tags is the 2026 practice) |
-| Carousel items | 2-10 (API; the native app allows 20) |
-| Image formats | JPEG, PNG, WebP (WebP auto-converts to JPEG) |
-| Image max size | 8 MB |
-| Reel duration | up to 3 min (180s) via API; 5-90s are eligible for the Reels tab |
-| Reel/video max size | 300 MB |
-| Carousel video | up to 60s per clip |
-| Mixed media in a carousel | not allowed (all images or all video) |
-| Aspect ratio | 4:5 (portrait) to 1.91:1 (landscape); portrait 4:5 fills the feed |
-| Rate limit | ~50 posts / 24h (some accounts report 25) |
+| Legenda | 2.200 caracteres (os primeiros ~125 aparecem antes do "mais") |
+| Hashtags | máximo 30 por post (mas 3-5 bem dimensionadas é a prática de 2026) |
+| Itens no carrossel | 2-10 (API; o app nativo permite 20) |
+| Formatos de imagem | JPEG, PNG, WebP (WebP vira JPEG automaticamente) |
+| Tamanho máximo de imagem | 8 MB |
+| Duração do Reel | até 3 min (180 s) via API; 5-90 s entram na aba Reels |
+| Tamanho máximo de vídeo | 300 MB |
+| Vídeo no carrossel | até 60 s por clipe |
+| Mídia misturada no carrossel | não permitido (só imagens ou só vídeos) |
+| Proporção | 4:5 (retrato) a 1,91:1 (paisagem); 4:5 ocupa mais a tela |
+| Limite de publicações | ~50 posts / 24 h (algumas contas relatam 25) |
 
-- **Media is required on every post.** Instagram rejects text-only posts. The
-  writer skills produce the caption; the user supplies the image or video.
-- A single image posts as a photo; 2-10 images post as a carousel; a single
-  video posts as a Reel by default (or a Story via `videoType: "STORIES"`).
+- **Mídia é obrigatória em todo post.** O Instagram rejeita post só de texto.
+  As skills escrevem a legenda; o usuário fornece a imagem ou o vídeo.
+- Uma imagem vira foto; 2-10 imagens viram carrossel; um vídeo vira Reel por
+  padrão (ou Story via `videoType: "STORIES"`).
 
-## Carousels
+## Carrosséis
 
-- **Slide 1 is the entire funnel.** It must promise a payoff and open a loop, or
-  the viewer never swipes. Everything else only matters if slide 1 earns the
-  swipe.
-- **Front-load value.** Swipe-through decays with depth, so the strongest item
-  goes on slide 2 or 3, not saved for slide 10.
-- **Optimal length: 6-10 slides** for a teaching or list carousel. Each slide
-  should make one point and stand alone.
-- **The last slide earns the save and the follow.** Close with a one-slide
-  summary (the saveable artifact) plus a single clear ask.
-- **Design for the 4:5 frame.** Portrait fills more screen and holds attention.
+- **O slide 1 é o funil inteiro.** Precisa prometer uma recompensa e abrir um
+  laço, senão ninguém arrasta.
+- **Valor na frente.** O arraste cai com a profundidade, então o item mais forte
+  vai no slide 2 ou 3, não guardado para o 10.
+- **Tamanho ideal: 6-10 slides** para carrossel de ensino ou lista. Cada slide
+  um ponto, legível sozinho.
+- **O último slide rende o salvamento e o follow.** Feche com um resumo em um
+  slide mais um único pedido claro.
+- **Desenhe para o quadro 4:5.**
 
 ## Reels
 
-- **The first 1-3 seconds decide reach.** Open with a pattern interrupt, an
-  on-screen text hook, and the point. No "hey guys, welcome back".
-- **Retention and rewatch are the goal.** A loop-able ending (the last frame
-  flows into the first) lifts rewatch.
-- **On-screen text** lets silent viewers get the hook and improves completion.
-- **Original or trending audio** helps, but the hook and retention matter more.
-- No visible watermark from another video app.
+- **Os primeiros 1-3 segundos decidem o alcance.** Abra com quebra de padrão,
+  texto na tela e o ponto. Nada de "oi gente, sejam bem-vindos".
+- **Retenção e reexibição são a meta.** Um final que emenda no começo aumenta
+  a reexibição.
+- **Texto na tela** pega quem assiste sem som e melhora a conclusão.
+- **Áudio original ou em alta** ajuda, mas gancho e retenção importam mais.
+- Sem marca d'água de outro app de vídeo.
 
 ## Stories
 
-- **Stories do not drive reach** to non-followers; they deepen the relationship
-  with existing followers and keep you top-of-mind.
-- A **reshare of your feed post to your story** is a send-equivalent signal and
-  pushes the original to followers who missed it.
-- Interactive stickers (poll, question, quiz) earn the taps that keep you in the
-  front of the story tray.
+- **Stories não trazem alcance** para não seguidores; aprofundam a relação com
+  quem já segue e mantêm você lembrado.
+- **Repostar seu post do feed no story** equivale a um envio e empurra o post
+  original para seguidores que não viram.
+- Figurinhas interativas (enquete, caixinha de perguntas, quiz) rendem os toques
+  que mantêm você no começo da fila de stories.
 
-## Timing
+## Horários (Brasil, fuso local do público)
 
-| Audience | Best windows (local) |
+Os horários abaixo são pontos de partida. **Sempre confira os insights da conta**
+(Painel profissional > Público > Horários mais ativos), porque cada público é um.
+
+| Público | Melhores janelas (horário local) |
 |---|---|
-| US creators / consumers | weekdays 11 AM-1 PM and 7-9 PM, plus Sun evening |
-| B2B / founders | Tue-Thu mid-morning and lunch |
-| Global mixed | post when your specific audience is online (check your insights) |
+| Consumidor final / público geral | dias úteis 11h-13h (almoço) e 18h30-21h30; domingo à noite |
+| B2B / empresários / profissionais | terça a quinta, 7h-9h, 12h-13h e 18h-19h |
+| Público universitário / EAD | dias úteis 12h-14h e 20h-23h |
+| Negócio local (cidade do interior) | 11h30-13h e 19h-21h; sábado de manhã costuma funcionar bem |
 
-- Consistency beats raw frequency. 3-5 high-quality posts a week with a
-  steady cadence outperforms a daily dump of filler.
-- Reels can be posted more often than carousels without fatigue, because each
-  reaches a fresh non-follower audience.
+- Lembre do fuso: Mato Grosso, Mato Grosso do Sul, Rondônia, Roraima e a maior
+  parte do Amazonas estão em UTC-4 (uma hora atrás de Brasília). Agende no fuso
+  do público, não no de Brasília por padrão.
+- Constância vence frequência bruta. 3-5 posts de qualidade por semana com ritmo
+  estável superam um post diário de enchimento.
+- Reels podem sair com mais frequência que carrosséis sem cansar, porque cada um
+  alcança um público novo.
 
-## Saves and sends are the underrated levers
+## Salvamentos e envios são as alavancas subestimadas
 
-- A **save** means the viewer intends to return: it rewards lists, frameworks,
-  how-tos, and before/after content. Design save-bait deliberately (IG5, IG8,
-  IG10, IG1, IG6).
-- A **send** means the viewer thought of a specific person: it rewards relatable
-  truths, myth-busters, and contrarian takes (IG2, IG7, IG3, IG9).
-- Both spread reach far more than a like. The hook-formulas goal tags map every
-  formula to saves, shares, comments, or follows.
+- **Salvamento** = a pessoa pretende voltar: recompensa listas, métodos,
+  tutoriais e antes/depois (IG5, IG8, IG10, IG1, IG6).
+- **Envio** = a pessoa pensou em alguém específico: recompensa verdades do dia a
+  dia, mitos derrubados e opiniões contrárias (IG2, IG7, IG3, IG9).
 
-## Pre-publish checklist
+## Checklist antes de publicar
 
-- [ ] First 125 chars of the caption stop the scroll on their own.
-- [ ] Em dashes (`—`) at or under about one per 100 words (never swap one for a period); no en dashes (`–`) between clauses or double dashes (`--`).
-- [ ] No AI vocabulary cluster (3+ markers in one paragraph: leverage, fundamentally, significant, etc.).
-- [ ] At least one odd-precision number with a named referent where the claim allows it.
-- [ ] 3-5 sized hashtags (not 30), at the end or in the first comment.
-- [ ] 0-3 emoji, placed with intent, none sprinkled.
-- [ ] Carousel slide 1 promises and opens a loop; the last slide pays off + asks.
-- [ ] Media supplied and within limits (JPEG/PNG/WebP, no mixed media, 2-10 slides).
-- [ ] Close is a landing or a specific save/send ask, not "what do you think?".
-- [ ] A clear primary goal (saves / shares / comments / follows), not all at once.
+- [ ] Os primeiros 125 caracteres param a rolagem sozinhos.
+- [ ] Travessões (`—`) em até cerca de um a cada 100 palavras (nunca trocado por ponto final); sem meia-risca (`–`) entre orações nem hífen duplo (`--`).
+- [ ] Sem aglomerado de vocabulário de IA (3+ marcadores no mesmo parágrafo: alavancar, potencializar, crucial, jornada etc.).
+- [ ] Pelo menos um número específico com referência clara, quando a afirmação permite.
+- [ ] 3-5 hashtags dimensionadas (não 30), no fim ou no primeiro comentário.
+- [ ] 0-3 emoji, com intenção, nenhum espalhado.
+- [ ] Slide 1 do carrossel promete e abre um laço; o último entrega + pede.
+- [ ] Mídia pronta e dentro dos limites (JPEG/PNG/WebP, sem mistura, 2-10 slides).
+- [ ] O fechamento é uma aterrissagem ou um pedido de salvar/enviar com motivo, não "o que vocês acham?".
+- [ ] Um objetivo principal claro (salvamentos / envios / comentários / seguidores).

@@ -1,57 +1,57 @@
-# Example Week (Instagram)
+# Semana de exemplo (Instagram)
 
-A filled-in 7-day plan for a creator launching a design course to junior
-designers and career switchers. Theme: "launching our design course". Pillar mix:
-40% Educational / 30% Story / 20% Engagement / 10% Promotion. Cadence: 6 feed
-posts + daily stories.
+Um plano de 7 dias preenchido para uma escola de design lançando um curso para
+designers iniciantes e pessoas em transição de carreira. Tema: "lançamento do
+curso de design". Pilares: 40% Educativo / 30% História / 20% Engajamento /
+10% Promoção. Cadência: 6 posts no feed + stories diários. Fuso do público:
+Brasília (UTC-3).
 
-## 7-day calendar
+## Calendário de 7 dias
 
-| Day | Format | Pillar | Formula | Angle | Goal | Time |
+| Dia | Formato | Pilar | Fórmula | Ângulo | Objetivo | Horário |
 |---|---|---|---|---|---|---|
-| Mon | Reel | Educational | IG9 Pattern-Interrupt | "you are posting your portfolio in the wrong order" | shares | 12:30 PM |
-| Tue | Carousel | Educational | IG5 Listicle | "7 portfolio mistakes that cost the interview (most do #4)" | saves | 11:30 AM |
-| Wed | Story set | Engagement | poll + question stickers | "which homepage layout would you click?" | comments | 7:00 PM |
-| Thu | Carousel | Story | IG6 Before/After | "my first portfolio vs the one that got me hired" | follows | 11:00 AM |
-| Fri | Single image | Engagement | IG3 Relatable | "opening Figma to fix one spacing issue and rebuilding the whole page" | comments | 1:00 PM |
-| Sat | Reel | Educational | IG10 How-I Teardown | "how I redesign a landing page in 25 minutes" | saves | 10:00 AM |
-| Sun | Carousel | Promotion | IG8 Steal-This Framework | "the 4-part framework I teach in the course (doors open today)" | follows | 6:00 PM |
+| Seg | Reel | Educativo | IG9 Quebra-padrão | "você monta o portfólio na ordem errada" | envios | 12h30 |
+| Ter | Carrossel | Educativo | IG5 Lista | "7 erros no portfólio que custam a entrevista (quase todo mundo comete o 4)" | salvamentos | 11h30 |
+| Qua | Stories | Engajamento | enquete + caixinha de perguntas | "qual home você clicaria?" | comentários | 19h |
+| Qui | Carrossel | História | IG6 Antes e depois | "meu primeiro portfólio vs o que me fez ser contratada" | seguidores | 11h |
+| Sex | Imagem única | Engajamento | IG3 Situação do dia a dia | "abrir o Figma pra arrumar um espaçamento e refazer a página inteira" | comentários | 13h |
+| Sáb | Reel | Educativo | IG10 Como eu fiz | "como eu redesenho uma landing page em 25 minutos" | salvamentos | 10h |
+| Dom | Carrossel | Promoção | IG8 Rouba esse método | "o método de 4 partes que eu ensino no curso (inscrições abertas hoje)" | seguidores | 18h |
 
-Stories run daily underneath: behind-the-scenes of building the course, a poll or
-question sticker, and a reshare of that day's or a recent feed post.
+Stories todo dia por baixo: bastidores da produção do curso, uma enquete ou
+caixinha de perguntas e um repost do post do dia ou de um recente.
 
-## Weekly saves goal
+## Meta semanal de salvamentos
 
-- **Headline target:** beat last week's saves + shares.
-- Save-bait posts this week: Tue (IG5), Sat (IG10), Sun (IG8), with Thu (IG6)
-  also save-and-follow. That is 3+ save-bait, target met.
-- Send-bait posts: Mon (IG9 pattern interrupt), and Thu's before/after is
-  send-worthy. Target of 2 met.
+- **Meta principal:** superar os salvamentos + envios da semana passada.
+- Posts de salvamento: Ter (IG5), Sáb (IG10), Dom (IG8), e Qui (IG6) também
+  rende salvamento e follow. São 3+, meta batida.
+- Posts de envio: Seg (IG9), e o antes/depois de quinta vale envio. Meta de 2 batida.
 
-## Daily story cadence
+## Rotina de stories
 
-- Mon-Sun: 2-4 frames/day.
-- At least one reshare/day of a recent feed post (pushes it to followers who
-  missed it, a send-equivalent signal).
-- Wed and the launch Sunday lean on interactive stickers (poll, question, quiz)
-  to pull taps and seed comments.
+- Seg-Dom: 2-4 telas por dia.
+- Pelo menos um repost por dia de post recente do feed.
+- Quarta e o domingo de lançamento usam figurinhas interativas (enquete,
+  caixinha, quiz) para puxar toques e semear comentários.
+- Domingo: figurinha de link para a página de inscrição.
 
-## Balance check
+## Checagem de equilíbrio
 
-- [x] Format mix: 2 Reels, 3 carousels, 1 single image, daily stories
-- [x] 3+ save-bait posts (Tue, Sat, Sun) and 2 send-bait (Mon, Thu)
-- [x] 1 real first-person story post (Thu before/after)
-- [x] No pillar over 50%: Educational 3/6, Story 1/6, Engagement 2 (image + stories), Promotion 1/6
-- [x] No formula repeated more than twice
-- [x] Promotion = 1 post (Sun)
-- [x] Goal mix spread: saves (Tue, Sat, Sun), shares (Mon, Thu), comments (Wed, Fri), follows (Thu, Sun)
+- [x] Formatos: 2 Reels, 3 carrosséis, 1 imagem única, stories diários
+- [x] 3+ posts de salvamento (Ter, Sáb, Dom) e 2 de envio (Seg, Qui)
+- [x] 1 post de história real em primeira pessoa (Qui, antes/depois)
+- [x] Nenhum pilar acima de 50%: Educativo 3/6, História 1/6, Engajamento 2 (imagem + stories), Promoção 1/6
+- [x] Nenhuma fórmula repetida mais de duas vezes
+- [x] Promoção = 1 post (Dom)
+- [x] Objetivos espalhados: salvamentos (Ter, Sáb, Dom), envios (Seg, Qui), comentários (Qua, Sex), seguidores (Qui, Dom)
 
-## Notes
+## Notas
 
-- The launch carousel (Sun) is the only hard-promotion post; the four educational
-  and story posts before it earn the trust that makes the offer land.
-- Hashtags: rotate a 3-5 sized set per post via `ig-hashtag-strategist` (the
-  portfolio posts share niche tags like `#juniordesigner` and `#portfolioreview`;
-  the launch post adds the course's branded tag).
-- Each post still needs the user's image or video; the planner sets the angle and
-  format, the writer skills draft the caption, the user supplies the media.
+- O carrossel de lançamento (Dom) é o único post de promoção direta; os quatro
+  posts educativos e de história antes dele constroem a confiança.
+- Hashtags: alterne um conjunto de 3-5 por post via `ig-hashtag-strategist` (os
+  posts de portfólio dividem tags de nicho como `#designerjunior` e
+  `#portfoliodedesign`; o post de lançamento acrescenta a tag de marca do curso).
+- Cada post ainda precisa da imagem ou do vídeo do usuário; o planejador define
+  ângulo e formato, as skills de escrita fazem a legenda, o usuário fornece a mídia.

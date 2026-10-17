@@ -1,120 +1,120 @@
 ---
 name: ig-caption-writer
-description: "Draft an Instagram caption with the hook in the first 125 characters, a skimmable body, and one clear CTA, using a 2026 hook formula chosen by goal (saves, shares, comments, follows). Runs the humanizer pass and, on approval, publishes with the image or video you supply via the Publora media flow. Use to caption a single image or a Reel. Not for slide-by-slide carousels (use ig-carousel-planner) or auditing a draft (use ig-humanizer --mode audit)."
+description: "Escreve legenda de Instagram em português com o gancho nos primeiros 125 caracteres, corpo fácil de ler e um CTA claro, usando uma fórmula de gancho de 2026 escolhida pelo objetivo (salvamentos, envios, comentários, seguidores). Passa pelo humanizador e, com aprovação, publica com a imagem ou o vídeo que você fornecer via Publora. Use para legenda de imagem única ou Reel. Não serve para carrossel slide a slide (use ig-carousel-planner) nem para revisar rascunho (use ig-humanizer --mode audit)."
 ---
 
-# Instagram Caption Writer
+# Redator de legendas para Instagram
 
-Write a caption that earns the tap and the save. Instagram hides everything after
-~125 characters behind "more", so the hook does the entire job in the first
-line. This skill front-loads that hook, keeps the body skimmable, and lands one
-clear call to action.
+Escreve uma legenda que ganha o toque e o salvamento. O Instagram esconde tudo
+depois de ~125 caracteres atrás do "mais", então o gancho faz o trabalho todo na
+primeira linha. Esta skill coloca o gancho na frente, deixa o corpo fácil de
+ler e fecha com um único chamado para ação.
 
-## When to use
+## Quando usar
 
-- User says "write me an Instagram caption about X"
-- User has a single image or a Reel and needs the caption around it
-- User wants a sharper hook for a draft they already have
-- User wants a caption that auto-publishes with their media on approval
+- "Escreve uma legenda pro Instagram sobre X"
+- O usuário tem uma imagem ou um Reel e precisa da legenda
+- O usuário quer um gancho mais forte para um rascunho que já tem
+- O usuário quer uma legenda que publica junto com a mídia após aprovação
 
-## Formulas this skill uses (caption-first shapes)
+## Fórmulas que esta skill usa (formatos de legenda)
 
-| Code | Formula | Primary goal | Best for |
+| Código | Fórmula | Objetivo principal | Melhor para |
 |---|---|---|---|
-| IG1 | Number-First Result | saves | one odd-precision result + a "steal this" promise |
-| IG2 | Contrarian Truth | shares | a sharp, defensible against-the-grain claim |
-| IG3 | Relatable Cold-Open | comments | a specific shared moment, no setup |
-| IG4 | Mini-Story Confession | comments, follows | a real first-person story with a cost |
+| IG1 | Resultado com número primeiro | salvamentos | um resultado com número quebrado + promessa de "pode copiar" |
+| IG2 | Verdade contrária | envios | uma afirmação forte e defensável contra a corrente |
+| IG3 | Situação que todo mundo vive | comentários | um momento específico e compartilhado, sem introdução |
+| IG4 | Mini-história confissão | comentários, seguidores | uma história real em primeira pessoa, com custo |
 
-Full skeletons in `../../references/hook-formulas.md`. For carousels (IG5-IG8) use
-`ig-carousel-planner`; for Reels (IG9-IG10) the hook lives in the video, and this
-skill writes the supporting caption.
+Esqueletos completos em `../../references/hook-formulas.md`. Para carrossel
+(IG5-IG8) use `ig-carousel-planner`; em Reels (IG9-IG10) o gancho está no vídeo e
+esta skill escreve a legenda de apoio.
 
-### Pick by goal first
+### Escolha primeiro pelo objetivo
 
-| Goal | Reach for |
+| Objetivo | Use |
 |---|---|
-| Saves | IG1 |
-| Shares | IG2 |
-| Comments | IG3, IG4 |
-| Follows | IG4 |
+| Salvamentos | IG1 |
+| Envios | IG2 |
+| Comentários | IG3, IG4 |
+| Seguidores | IG4 |
 
-## Steps
+## Passos
 
-**Voice profile first (all drafts).** If `../../references/voice-profile.md` has `filled: yes`, load it and match the user's voice fingerprint, hard rules, and CTA/link style throughout. If it is not filled, mention once that `ig-humanizer --mode profile` can learn their voice from a few posts, then proceed with the generic voice rules.
+**Perfil de voz primeiro (todo rascunho).** Se `../../references/voice-profile.md` (ou o perfil da marca indicada pelo usuário) estiver com `filled: yes`, carregue e siga a voz, as regras fixas e o estilo de CTA/link do usuário. Se não estiver preenchido, mencione uma vez que `ig-humanizer --mode profile` aprende a voz a partir de alguns posts e siga com as regras de voz gerais.
 
-**Never invent the specifics.** The rules below ask for a concrete number, a date and a named entity, because that is what separates a real post from a generated one. Take them from what the user actually said in this conversation. **Do not invent a figure, a date, a client name or a result, and do not soften a vague claim into a plausible-looking number.** If the user has nothing concrete for a beat, ask them once, and if they still have nothing, drop the claim rather than decorate it. A published invented number is a retraction; a missing one is only a weaker post.
+**Nunca invente os dados.** As regras abaixo pedem número concreto, data e nome próprio, porque é isso que separa um post real de um gerado. Use o que o usuário disse nesta conversa. **Não invente número, data, nome de cliente ou resultado, e não transforme uma afirmação vaga num número que parece plausível.** Se o usuário não tem nada concreto para um trecho, pergunte uma vez; se continuar sem, corte a afirmação em vez de enfeitar. Número inventado publicado vira retratação; número que falta só deixa o post mais fraco.
 
-1. **Gather inputs.** Topic, angle, the media (single image or Reel), target
-   audience, and the goal (saves / shares / comments / follows).
-2. **Pick the formula.** Use the goal table to shortlist, then suggest 2-3 that
-   also fit the topic and let the user choose.
-3. **Write the hook (first 125 chars).** It must land the payoff, tension, or
-   number before the "more" fold and make sense on its own.
-4. **Write the body.** Short lines, white space between beats, one idea. Teach or
-   tell the story that the hook promised. Keep it under 2,200 chars.
-5. **Write one CTA.** A specific save or send prompt ("save this for your next
-   launch", "send to the friend who keeps doing #2"), a real question, or a
-   single next step. Never "what do you think?".
-6. **Add hashtags.** Hand off the topic to `ig-hashtag-strategist` or apply the
-   3-5 sized set yourself (see `../../references/hashtag-strategy.md`). Put them at
-   the end or note they go in the first comment.
-7. **Humanizer pass.** Scrub 2026 AI vocab by paragraph density, cap em
-   dashes (about one per 100 words; a caption's single dash is not a tell,
-   never swap one for a period), break stacked triads, generic openers and
-   reveal bridges. Fix only a paragraph that reads machine-flat; never
-   manufacture variance or one-word lines for drama. Add an odd-precision
-   number with a named referent or a named entity where the claim allows.
-   Canonical rules: `ig-humanizer` V3.
-8. **Optional audit.** Invoke `ig-humanizer --mode audit` for a pass-fail check.
-9. **Approval card.** Show: formula used, the hook (flag if over 125 chars),
-   full caption, char count, hashtag set, primary goal, and the media the user
-   must supply.
-10. **On approval, publish with media.** Call `lib.publish(kind="post",
-    draft_text=<approved caption>, target_url="https://www.instagram.com/",
-    media=[<local file paths>], platforms=[<INSTAGRAM_PLATFORM_ID>],
-    scheduled_time=<iso_or_None>)`. For a Reel pass `kind="reel"`. The wrapper
-    runs the Publora draft then upload then schedule flow. With no media or no
-    Publora key it returns a copy-paste block and a reminder to attach the media.
+1. **Reúna as informações.** Tema, ângulo, a mídia (imagem ou Reel), público e
+   o objetivo (salvamentos / envios / comentários / seguidores).
+2. **Escolha a fórmula.** Use a tabela de objetivos e sugira 2-3 que também
+   combinem com o tema; deixe o usuário escolher.
+3. **Escreva o gancho (125 primeiros caracteres).** Precisa entregar o
+   resultado, a tensão ou o número antes do corte e fazer sentido sozinho.
+4. **Escreva o corpo.** Linhas curtas, espaço entre as ideias, uma ideia só.
+   Ensine ou conte a história que o gancho prometeu. Menos de 2.200 caracteres.
+5. **Escreva um CTA.** Um pedido de salvar ou enviar com motivo ("salva pra
+   consultar antes de dar o lance", "manda pra quem tá pensando em comprar
+   imóvel"), uma pergunta real, ou um próximo passo único (direct, WhatsApp,
+   link). Nunca "o que vocês acham?".
+6. **Hashtags.** Passe o tema para `ig-hashtag-strategist` ou aplique o
+   conjunto de 3-5 você mesmo (ver `../../references/hashtag-strategy.md`). No
+   fim ou no primeiro comentário. Para negócio local, inclua uma tag de cidade.
+7. **Passada do humanizador.** Corte vocabulário de IA por densidade de
+   parágrafo, limite travessões (cerca de um a cada 100 palavras; um travessão
+   sozinho não denuncia, nunca troque por ponto final), quebre trios empilhados,
+   aberturas genéricas e pontes de revelação. Mexa só em parágrafo que soa
+   mecânico; nunca fabrique variação ou linhas de uma palavra para dar drama.
+   Regras canônicas: `ig-humanizer` V3.
+8. **Revisão opcional.** Chame `ig-humanizer --mode audit` para um passa/não passa.
+9. **Cartão de aprovação.** Mostre: fórmula usada, o gancho (sinalize se passou
+   de 125 caracteres), legenda completa, contagem de caracteres, hashtags,
+   objetivo principal e a mídia que o usuário precisa fornecer.
+10. **Com aprovação, publique com mídia.** Chame `lib.publish(kind="post",
+    draft_text=<legenda aprovada>, target_url="https://www.instagram.com/",
+    media=[<caminhos locais>], platforms=[<INSTAGRAM_PLATFORM_ID>],
+    scheduled_time=<iso_em_UTC_ou_None>)`. Para Reel use `kind="reel"`. Sem mídia
+    ou sem chave Publora, devolve um bloco para copiar e o lembrete de anexar a mídia.
 
-## Hard rules
+## Regras fixas
 
-Global voice rules: see root `SKILL.md` Voice rules. Additional skill-specific
-rules:
+Regras de voz globais: ver "Regras de voz" no `SKILL.md` raiz. Regras específicas:
 
-- The first 125 characters must stop the scroll on their own. Rewrite any hook
-  that needs the second line to make sense.
-- One idea per caption. Two ideas means two posts.
-- One specific number where the claim allows it.
-- 3-5 sized hashtags, never 30. 0-3 emoji, placed with intent.
-- Media is required. Never present a caption as publishable without reminding
-  the user to attach the image or video.
-- Do not hard-sell. One natural mention of the next step, max.
+- Os primeiros 125 caracteres precisam parar a rolagem sozinhos. Reescreva todo
+  gancho que precise da segunda linha.
+- Uma ideia por legenda. Duas ideias são dois posts.
+- Um número específico onde a afirmação permitir.
+- 3-5 hashtags dimensionadas, nunca 30. 0-3 emoji, com intenção.
+- Mídia é obrigatória. Nunca apresente uma legenda como pronta sem lembrar de
+  anexar a imagem ou o vídeo.
+- Sem venda agressiva. No máximo uma menção natural ao próximo passo.
+- Sem promessa de resultado garantido em setor regulado (consórcio, crédito,
+  educação, saúde, imóveis).
 
-## Anti-patterns (skill will refuse)
+## Antipadrões (a skill recusa)
 
-- A hook that only makes sense after the fold.
-- Em dashes above the cap (more than about one per 100 words), or an em dash swapped for a period.
-- "Let's talk about.." or "Here's the thing.." openers; "The result?" as a reveal.
-- Announced candor ("real talk", "not gonna lie", "POV:" on something that is not a POV) with no dated fact behind it.
-- Staccato stacks ("No X. No Y. Just Z.") and one-word lines added for drama.
-- 20-30 hashtags stuffed at the top.
-- Engagement bait ("double tap if you agree", "comment YES").
-- Rule-of-three lists without specifics.
-- "leverage", "fundamentally", "game-changer", "level up", "dive in".
-- Padding a one-line idea to look substantial.
+- Gancho que só faz sentido depois do corte.
+- Travessões acima do teto, ou travessão trocado por ponto final.
+- Aberturas "Vamos falar sobre..", "Seguinte..", "Bora falar de.."; "O resultado?" como revelação.
+- Sinceridade anunciada ("papo reto", "vou ser sincero", "POV:" sem ser POV) sem fato datado por trás.
+- Pilhas picotadas ("Sem X. Sem Y. Só Z.") e linhas de uma palavra para dar drama.
+- 20-30 hashtags no topo.
+- Isca de engajamento ("dá dois toques se concorda", "comenta SIM", "marca 3 amigos").
+- Listas de três sem nada concreto.
+- "alavancar", "potencializar", "virada de chave", "próximo nível", "jornada", "mergulhar".
+- Encher uma ideia de uma linha para parecer substancial.
 
-## Resources
+## Recursos
 
-- `../../references/hook-formulas.md` - all 10 Instagram formulas (IG1-IG4 are caption-first)
-- `../../references/algorithm-heuristics.md` - 2026 Instagram ranking rules
-- `../../references/hashtag-strategy.md` - the 3-5 sized hashtag recipe
-- `../../references/media-workflow.md` - the draft, upload, schedule flow
-- `references/caption-checklist.md` - the per-caption scrub and fit list
+- `../../references/hook-formulas.md` - as 10 fórmulas (IG1-IG4 são de legenda)
+- `../../references/algorithm-heuristics.md` - regras de ranqueamento e horários no Brasil
+- `../../references/hashtag-strategy.md` - a receita de 3-5 hashtags
+- `../../references/media-workflow.md` - o fluxo rascunho, upload, agendamento
+- `references/caption-checklist.md` - a lista de verificação por legenda
 
-## Related skills
+## Skills relacionadas
 
-- `ig-carousel-planner` - when the idea is a slide-by-slide carousel
-- `ig-hashtag-strategist` - build the sized hashtag set
-- `ig-humanizer` - AI-tell scrubber, plus `--mode audit` for review
-- `ig-hook-extractor` - reverse-engineer a hook from a post you admire
+- `ig-carousel-planner` - quando a ideia é um carrossel
+- `ig-hashtag-strategist` - monta o conjunto de hashtags
+- `ig-humanizer` - tira a cara de IA, mais `--mode audit` para revisão
+- `ig-hook-extractor` - descobre o gancho de um post que você admira

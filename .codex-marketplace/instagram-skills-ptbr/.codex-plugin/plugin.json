@@ -1,0 +1,50 @@
+{
+  "name": "instagram-skills-ptbr",
+  "description": "9 skills de marketing para Instagram em português do Brasil (Claude Code e Codex): legenda com gancho nos primeiros 125 caracteres, planejamento de carrossel slide a slide, extração de gancho de Reels e carrosséis virais, hashtags dimensionadas para o mercado brasileiro (inclusive tags locais), humanizador que tira a cara de IA do português com revisão pré-publicação, reaproveitamento de conteúdo entre plataformas, otimização de perfil, insights de nicho e perfil via Apify e plano semanal de Reels, carrosséis e stories com horários no fuso do público. Publicação via Publora. Adaptação PT-BR do instagram-skills de Serge Bulaev (MIT).",
+  "version": "1.0.33",
+  "author": {
+    "name": "Serge Bulaev",
+    "url": "https://github.com/sergebulaev"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/sergebulaev/instagram-skills",
+  "repository": "https://github.com/sergebulaev/instagram-skills",
+  "keywords": [
+    "instagram",
+    "instagram-marketing",
+    "marketing",
+    "social-media",
+    "content",
+    "claude-skills",
+    "codex-skills",
+    "viral",
+    "reels",
+    "carousel",
+    "captions",
+    "hashtags",
+    "portugues",
+    "pt-br",
+    "brasil"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Instagram Skills PT-BR",
+    "shortDescription": "Skills de marketing para Instagram em português do Brasil.",
+    "longDescription": "9 skills de marketing para Instagram em português do Brasil (Claude Code e Codex): legenda com gancho nos primeiros 125 caracteres, planejamento de carrossel slide a slide, extração de gancho de Reels e carrosséis virais, hashtags dimensionadas para o mercado brasileiro (inclusive tags locais), humanizador que tira a cara de IA do português com revisão pré-publicação, reaproveitamento de conteúdo entre plataformas, otimização de perfil, insights de nicho e perfil via Apify e plano semanal de Reels, carrosséis e stories com horários no fuso do público. Publicação via Publora. Adaptação PT-BR do instagram-skills de Serge Bulaev (MIT).",
+    "developerName": "Serge Bulaev",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/sergebulaev/instagram-skills",
+    "defaultPrompt": [
+      "Write an Instagram caption from my notes.",
+      "Plan a 10-slide carousel on this topic.",
+      "Plan a week of Reels and carousels."
+    ],
+    "brandColor": "#E1306C",
+    "composerIcon": "./assets/icon.svg"
+  }
+}

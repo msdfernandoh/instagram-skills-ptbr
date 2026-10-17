@@ -1,325 +1,324 @@
-# 10 Instagram Hook Formulas - 2026 Edition
+# 10 fórmulas de gancho para Instagram (edição 2026, PT-BR)
 
-Instagram rewards a different shape than a feed where the whole post is visible.
-Three surfaces matter, and each has its own hook:
+O Instagram premia um formato diferente de um feed onde o post aparece inteiro.
+Três superfícies importam, e cada uma tem seu gancho:
 
-- **Caption hook** (single image or any post): the first ~125 characters, before
-  the "more" fold. It has to earn the tap on its own.
-- **Carousel slide 1:** the visual hook. The viewer decides in under a second
-  whether to swipe. Slide 1 promises; the last slide pays off.
-- **Reel hook:** the first 1-3 seconds (visual + on-screen text + spoken line).
-  Retention in those seconds decides whether the Reel gets pushed.
+- **Gancho da legenda** (imagem única ou qualquer post): os primeiros ~125
+  caracteres, antes do "mais". Precisa ganhar o toque sozinho.
+- **Slide 1 do carrossel:** o gancho visual. A pessoa decide em menos de um
+  segundo se vai arrastar. O slide 1 promete; o último entrega.
+- **Gancho do Reel:** os primeiros 1-3 segundos (imagem + texto na tela + fala).
+  A retenção nesses segundos decide se o Reel é empurrado.
 
-Each formula below has a skeleton, why it works, and a primary engagement goal.
-The goals map to Instagram's 2026 ranked signals. Instagram's "save" lever is
-**saves + shares** (sends): saves mean "I will come back to this", sends mean "a
-specific person needs to see this". Both spread reach far more than a like.
+Cada fórmula tem um esqueleto, o porquê funciona e um objetivo principal. Os
+objetivos seguem os sinais de ranqueamento de 2026: **salvamentos** ("vou voltar
+nisso") e **envios** ("fulano precisa ver isso") espalham muito mais alcance que
+curtidas.
 
-| Goal | What it earns | Why it matters on Instagram |
+| Objetivo | O que rende | Por que importa |
 |---|---|---|
-| **saves** | private bookmarks | the strongest "reference-worthy" signal; drives reach for how-tos, lists, frameworks |
-| **shares** | sends to friends + reshares to story | the strongest "spreadable" signal in 2026; sends per reach is the metric to chase |
-| **comments** | replies and threads under the post | real conversation tells the ranker the post is worth surfacing |
-| **follows** | profile visits that convert | the growth signal; a payoff slide that proves value earns the follow |
+| **salvamentos** | favoritos privados | o sinal mais forte de "conteúdo de referência"; alavanca tutoriais, listas, métodos |
+| **envios** | direct para amigos + repost no story | o sinal mais forte de "vale espalhar" em 2026 |
+| **comentários** | respostas e conversas | conversa real diz ao algoritmo que o post merece aparecer |
+| **seguidores** | visita ao perfil que converte | o sinal de crescimento; slide final que prova valor rende o follow |
 
-Formulas IG1-IG4 are **caption-first** shapes (single image or any post). IG5-IG8
-are **carousel** shapes (slide-by-slide). IG9-IG10 are **Reel** shapes. Saves and
-shares are the underrated levers; design for them deliberately.
+IG1-IG4 são formatos de **legenda**. IG5-IG8 são de **carrossel**. IG9-IG10 são
+de **Reel**.
 
-> Keep em dashes under the cap in the fill-in slots below (about one per 100
-> words in the finished caption; a slot rarely needs one). A caption glued
-> together by dashes reads as AI; a single dash does not.
+> Nos espaços a preencher abaixo, respeite o teto de travessão (cerca de um a
+> cada 100 palavras na legenda pronta; um espaço raramente precisa de um).
 
-## Contents
+## Sumário
 
-- IG1 - Number-First Result (caption)
-- IG2 - Contrarian Truth (caption)
-- IG3 - Relatable Cold-Open (caption)
-- IG4 - Mini-Story Confession (caption)
-- IG5 - Listicle Carousel (carousel)
-- IG6 - Before/After Transformation (carousel)
-- IG7 - Myth-Buster Carousel (carousel)
-- IG8 - Steal-This Framework (carousel)
-- IG9 - Pattern-Interrupt Reel (reel)
-- IG10 - How-I Reel Teardown (reel)
-- Engagement-goal split
-- Surface -> container: pick first
-- Hook micro-rules (Instagram-specific)
-- Never do
+- IG1 - Resultado com número primeiro (legenda)
+- IG2 - Verdade contrária (legenda)
+- IG3 - Situação que todo mundo vive (legenda)
+- IG4 - Mini-história confissão (legenda)
+- IG5 - Carrossel de lista (carrossel)
+- IG6 - Antes e depois (carrossel)
+- IG7 - Derrubando mitos (carrossel)
+- IG8 - Rouba esse método (carrossel)
+- IG9 - Reel quebra-padrão (reel)
+- IG10 - Reel "como eu fiz" (reel)
+- Divisão por objetivo
+- Superfície -> formato: escolha primeiro
+- Micro-regras de gancho
+- Nunca faça
 
 ---
 
-## IG1 - Number-First Result (caption)
+## IG1 - Resultado com número primeiro (legenda)
 
-**Goal: saves.** Single image or carousel cover caption. Lead with one concrete,
-odd-precision result before the fold.
-
-```
-{Specific number result} in {timeframe}.
-
-Here is the exact thing I changed.
-```
-
-Worked shape:
+**Objetivo: salvamentos.** Imagem única ou capa de carrossel. Comece com um
+resultado concreto, de número quebrado, antes do corte.
 
 ```
-I cut my editing time from 6 hours to 47 minutes per video.
+{Resultado com número específico} em {prazo}.
 
-The 3-step setup is below, steal it.
+Aqui está exatamente o que eu mudei.
 ```
 
-**Why:** A hard number in the first 125 chars stops the scroll and promises a
-repeatable method, which is the most-saved kind of caption. Odd, non-rounded
-figures (47 minutes, $873) read as real measurement, not a vibe.
+Exemplo de forma:
 
-**Warning:** Never invent the number. A figure that gets challenged in the
-comments costs more reach than the post earned.
+```
+reduzi o tempo de edição de 6 horas para 47 minutos por vídeo.
+
+o passo a passo tá aqui embaixo, pode copiar.
+```
+
+**Por quê:** um número concreto nos primeiros 125 caracteres para a rolagem e
+promete um método repetível, que é o tipo de legenda mais salvo. Números quebrados
+(47 minutos, R$ 873) parecem medição real, não impressão.
+
+**Cuidado:** nunca invente o número. Um número contestado nos comentários custa
+mais alcance do que o post ganhou.
 
 ---
 
-## IG2 - Contrarian Truth (caption)
+## IG2 - Verdade contrária (legenda)
 
-**Goal: shares.** Single image. A sharp, defensible claim that cuts against the
-common advice in your niche.
+**Objetivo: envios.** Imagem única. Uma afirmação forte e defensável que vai
+contra o conselho comum do seu nicho.
 
 ```
-{Common advice everyone repeats} is wrong.
+{Conselho que todo mundo repete} está errado.
 
-{What actually works, stated flatly.}
+{O que funciona de verdade, dito sem rodeio.}
 ```
 
-**Why:** A screenshot-ready opinion gets sent to friends ("see, I told you")
-and reshared to stories. The claim has to be true enough to defend in the
-comments and sharp enough to make a send worth it.
+Exemplo de forma:
 
-**Warning:** A contrarian take you cannot back up gets ratio'd in the comments.
-Only ship the ones you would defend in person.
+```
+dar lance todo mês não é o jeito mais rápido de ser contemplado no consórcio.
+
+o que adianta é entender o histórico de lances do seu grupo.
+```
+
+**Por quê:** uma opinião pronta para print é mandada para amigos ("viu, eu
+falei") e repostada no story. Precisa ser verdadeira o bastante para defender nos
+comentários e afiada o bastante para valer o envio.
+
+**Cuidado:** opinião contrária que você não sustenta vira chuva de crítica nos
+comentários. Só publique as que você defenderia pessoalmente.
 
 ---
 
-## IG3 - Relatable Cold-Open (caption)
+## IG3 - Situação que todo mundo vive (legenda)
 
-**Goal: comments.** Single image or Reel caption. Name a specific, shared moment
-with no setup. The reader sees themselves and replies.
-
-```
-{One specific line that drops the reader into a feeling everyone in your niche knows.}
-```
-
-Worked shape:
+**Objetivo: comentários.** Imagem única ou legenda de Reel. Nomeie um momento
+específico e compartilhado, sem introdução. A pessoa se vê e responde.
 
 ```
-opening Canva to "make one quick graphic" and closing it 90 minutes later.
+{Uma linha específica que joga o leitor num sentimento que todo mundo do seu nicho conhece.}
 ```
 
-**Why:** Recognition is instant and the comments fill with "this is me". Specific
-beats generic: a named moment ("90 minutes later") lands harder than a vague
-mood. Comments are a real ranked signal, so this drives reach.
+Exemplo de forma:
 
-**Warning:** This is the most copied genre on Instagram, so a generic version
-disappears. The specificity is the whole job.
+```
+abrir o Canva pra "fazer uma artezinha rápida" e fechar 90 minutos depois.
+```
+
+**Por quê:** o reconhecimento é instantâneo e os comentários enchem de "sou eu".
+Específico vence genérico: um momento nomeado ("90 minutos depois") bate mais
+forte que um clima vago.
+
+**Cuidado:** é o gênero mais copiado do Instagram, então a versão genérica some.
+A especificidade é o trabalho todo.
 
 ---
 
-## IG4 - Mini-Story Confession (caption)
+## IG4 - Mini-história confissão (legenda)
 
-**Goal: comments and follows.** Single image or Reel. A short first-person story
-with a real cost or surprise, ending on what you learned.
+**Objetivo: comentários e seguidores.** Imagem única ou Reel. Uma história curta
+em primeira pessoa com custo real ou surpresa, terminando no aprendizado.
 
 ```
-{Time marker}: {the thing that happened, including the ugly part}.
+{Marcador de tempo}: {o que aconteceu, incluindo a parte feia}.
 
-{The one line of meaning that makes it worth the read.}
+{A única linha de significado que faz valer a leitura.}
 ```
 
-**Why:** Transparency out-pulls polish. A real failure earns comments because it
-gives followers permission to compare notes, and the payoff line earns the
-follow. Founders and creators over-index on raw build-in-public stories.
+**Por quê:** transparência puxa mais que perfeição. Uma falha real rende
+comentários porque dá permissão para os seguidores compararem experiências, e a
+linha final rende o follow.
 
-**Warning:** It has to be true. Manufactured vulnerability is obvious and gets
-punished.
+**Cuidado:** tem que ser verdade. Vulnerabilidade fabricada é óbvia e é punida.
 
 ---
 
-## IG5 - Listicle Carousel (carousel)
+## IG5 - Carrossel de lista (carrossel)
 
-**Goal: saves.** Slide 1 promises a numbered payoff; each middle slide delivers
-one item; the last slide recaps and asks for the save.
+**Objetivo: salvamentos.** O slide 1 promete uma recompensa numerada; cada slide
+do meio entrega um item; o último resume e pede o salvamento.
 
 ```
-Slide 1: {N} {things} that {big specific payoff}.
-         (most people miss number {k})
+Slide 1: {N} {coisas} que {recompensa grande e específica}.
+         (quase todo mundo erra a {k})
 
-Slides 2..N-1: one item each, named, with a concrete example.
+Slides 2..N-1: um item cada, nomeado, com exemplo concreto.
 
-Last slide: the one-line recap + "save this so you actually use it".
+Último slide: o resumo em uma linha + "salva pra usar de verdade".
 ```
 
-**Why:** A numbered teaching carousel is the most-saved format on Instagram. The
-"most people miss number k" line opens a loop that pulls the swipe. The recap
-slide makes the whole thing worth saving as a reference.
+**Por quê:** carrossel de lista numerada é o formato mais salvo do Instagram. O
+"quase todo mundo erra a 4" abre um laço que puxa o arraste.
 
-**Warning:** If slide 1 over-promises and the slides under-deliver, you train
-followers to skip your carousels. The promise is a contract.
+**Cuidado:** se o slide 1 promete demais e os slides entregam pouco, você ensina
+o seguidor a pular seus carrosséis. A promessa é um contrato.
 
 ---
 
-## IG6 - Before/After Transformation (carousel)
+## IG6 - Antes e depois (carrossel)
 
-**Goal: saves and follows.** Slide 1 shows or states the "after"; the body shows
-the steps from before to after.
+**Objetivo: salvamentos e seguidores.** O slide 1 mostra o "depois"; o corpo
+mostra os passos do antes até o depois.
 
 ```
-Slide 1: {the after state, with a number or a striking visual}.
+Slide 1: {o depois, com número ou imagem marcante}.
 
-Slide 2: where it started (the before).
+Slide 2: onde começou (o antes).
 
-Slides 3..N-1: the exact steps, one per slide.
+Slides 3..N-1: os passos exatos, um por slide.
 
-Last slide: "follow for the full {topic} system" + save prompt.
+Último slide: "segue pra ver o método completo de {tema}" + pedido de salvamento.
 ```
 
-**Why:** Proof of transformation is the most credible hook on Instagram. The
-gap between slide 1 (after) and slide 2 (before) is the open loop that earns the
-swipe; the step slides earn the save; the proof earns the follow.
+**Por quê:** prova de transformação é o gancho mais crível do Instagram. A
+distância entre o slide 1 (depois) e o slide 2 (antes) é o laço que rende o arraste.
 
-**Warning:** Vague steps ("be consistent", "stay focused") kill the save. Every
-step needs something someone could do tomorrow.
+**Cuidado:** passo vago ("tenha constância", "foque") mata o salvamento. Cada
+passo precisa ser algo que dá para fazer amanhã.
 
 ---
 
-## IG7 - Myth-Buster Carousel (carousel)
+## IG7 - Derrubando mitos (carrossel)
 
-**Goal: shares.** Slide 1 names a belief your niche holds; each slide dismantles
-one myth and replaces it with what is true.
+**Objetivo: envios.** O slide 1 nomeia uma crença do nicho; cada slide derruba
+um mito e coloca a verdade no lugar.
 
 ```
-Slide 1: {N} {topic} myths that are costing you {specific loss}.
+Slide 1: {N} mitos sobre {tema} que estão te custando {perda específica}.
 
-Slides 2..N-1: "Myth: {belief}." then "Truth: {what actually works}."
+Slides 2..N-1: "Mito: {crença}." depois "Verdade: {o que funciona}."
 
-Last slide: the reframe in one line + "send this to someone who still believes #1".
+Último slide: a virada em uma linha + "manda pra quem ainda acredita no #1".
 ```
 
-**Why:** A myth-buster gives the reader ammunition, so they send it to someone
-who needs correcting. Naming a specific loss ("costing you 40% of your reach")
-raises the stakes. Sends are the heaviest spread signal in 2026.
+**Por quê:** derrubar mitos dá munição ao leitor, que manda para quem precisa ser
+corrigido. Nomear a perda ("te custando 40% do alcance") aumenta o que está em jogo.
 
-**Warning:** Do not invent the myth to knock it down. Strawman myth-busters read
-as cynical and the comments will call it.
+**Cuidado:** não invente um mito só para derrubar. Espantalho parece cínico e os
+comentários vão apontar.
 
 ---
 
-## IG8 - Steal-This Framework (carousel)
+## IG8 - Rouba esse método (carrossel)
 
-**Goal: saves.** Slide 1 frames a named, repeatable framework you use; the body
-breaks it into its parts; the last slide hands it over.
+**Objetivo: salvamentos.** O slide 1 apresenta um método com nome que você usa;
+o corpo divide em partes; o último slide entrega tudo.
 
 ```
-Slide 1: the {named} framework I use to {specific result}.
+Slide 1: o método {nome} que eu uso pra {resultado específico}.
 
-Slides 2..N-1: one part of the framework per slide, with the why.
+Slides 2..N-1: uma parte do método por slide, com o porquê.
 
-Last slide: the framework on one slide (the saveable summary) + save prompt.
+Último slide: o método inteiro em um slide (o resumo salvável) + pedido de salvamento.
 ```
 
-**Why:** A named framework feels like intellectual property worth keeping. The
-single-slide summary at the end is pure save-bait: people save the whole carousel
-to run the framework later.
+**Por quê:** um método com nome parece propriedade intelectual que vale guardar.
+O resumo em um slide no final é isca pura de salvamento.
 
-**Warning:** A framework that is just a list with a fancy name disappoints.
-Give each part a real reason it exists.
+**Cuidado:** método que é só uma lista com nome bonito decepciona. Cada parte
+precisa de um motivo real para existir.
 
 ---
 
-## IG9 - Pattern-Interrupt Reel (reel)
+## IG9 - Reel quebra-padrão (reel)
 
-**Goal: shares.** The first 1-3 seconds break the expected visual or open a loop
-with on-screen text. No slow intro.
-
-```
-First frame text: {a claim or question that makes scrolling past feel like missing out}.
-
-First spoken line: {drop straight into the point, no "hey guys welcome back"}.
-```
-
-Worked shape:
+**Objetivo: envios.** Os primeiros 1-3 segundos quebram o visual esperado ou
+abrem um laço com texto na tela. Sem introdução lenta.
 
 ```
-First frame: "you are posting Reels at the worst possible time."
-First line: "here is when your audience is actually online."
+Texto do primeiro frame: {uma afirmação ou pergunta que faz passar reto parecer perda}.
+
+Primeira fala: {direto ao ponto, sem "oi gente, tudo bem com vocês?"}.
 ```
 
-**Why:** Reel reach is decided in the first seconds. A pattern interrupt plus an
-open loop holds retention long enough for the push, and a payoff worth sending
-earns the share. On-screen text lets silent viewers get the hook.
+Exemplo de forma:
 
-**Warning:** A hook the Reel does not pay off causes a fast swipe-away, which
-the ranker reads as low quality. The promise has to land.
+```
+Primeiro frame: "você posta Reels no pior horário possível."
+Primeira fala: "olha quando o seu público tá online de verdade."
+```
+
+**Por quê:** o alcance do Reel é decidido nos primeiros segundos. Quebra de
+padrão + laço aberto seguram a retenção o bastante para o empurrão, e uma
+recompensa que vale enviar rende o compartilhamento. Texto na tela pega quem
+assiste sem som (a maioria).
+
+**Cuidado:** gancho que o Reel não entrega causa saída rápida, que o algoritmo
+lê como baixa qualidade.
 
 ---
 
-## IG10 - How-I Reel Teardown (reel)
+## IG10 - Reel "como eu fiz" (reel)
 
-**Goal: saves.** First seconds frame a specific result; the Reel walks the exact
-steps, on-screen text labeling each.
+**Objetivo: salvamentos.** Os primeiros segundos apresentam um resultado
+específico; o Reel mostra os passos exatos com rótulo na tela.
 
 ```
-First frame text: how I {specific result with a number} in {timeframe}.
+Texto do primeiro frame: como eu {resultado com número} em {prazo}.
 
-Body: step 1, step 2, step 3 with on-screen labels, fast cuts, no filler.
+Corpo: passo 1, passo 2, passo 3 com rótulos na tela, cortes rápidos, sem enrolação.
 
-End: "save this so you can follow along" + a one-line recap on screen.
+Final: "salva pra fazer junto" + resumo de uma linha na tela.
 ```
 
-**Why:** "How I" beats "How to" on Instagram because first-person results carry
-proof. A tight, no-filler teardown is heavy save-bait: viewers save it to run
-the steps later. The number in the first frame is the credibility anchor.
+**Por quê:** "como eu fiz" vence "como fazer" no Instagram porque resultado em
+primeira pessoa carrega prova. Um passo a passo enxuto é isca forte de salvamento.
 
-**Warning:** Steps that go by too fast to follow get a save but no completion,
-and shallow steps get neither. Pace for "I could actually do this".
+**Cuidado:** passos rápidos demais para acompanhar rendem salvamento sem
+retenção; passos rasos não rendem nenhum dos dois.
 
 ---
 
-## Engagement-goal split
+## Divisão por objetivo
 
-Pick the formula by what you want the post to earn, then narrow by topic and
-surface.
-
-| Goal | Earned by | Formulas |
+| Objetivo | Conquistado com | Fórmulas |
 |---|---|---|
-| **saves** | lists, frameworks, how-tos, repeatable methods | IG1, IG5, IG8, IG10, IG6 |
-| **shares** | contrarian takes, myth-busters, send-worthy payoffs | IG2, IG7, IG9 |
-| **comments** | relatable moments, confessions, real questions | IG3, IG4 |
-| **follows** | proof of transformation, payoff slides that show value | IG4, IG6, IG8 |
+| **salvamentos** | listas, métodos, tutoriais | IG1, IG5, IG8, IG10, IG6 |
+| **envios** | opiniões contrárias, mitos, recompensas que valem mandar | IG2, IG7, IG9 |
+| **comentários** | situações do dia a dia, confissões, perguntas reais | IG3, IG4 |
+| **seguidores** | prova de transformação, slide final que mostra valor | IG4, IG6, IG8 |
 
-## Surface -> container: pick first
+## Superfície -> formato: escolha primeiro
 
-| If the idea is... | Use | Why |
+| Se a ideia é... | Use | Por quê |
 |---|---|---|
-| One result, one number, one moment | single image + caption (IG1, IG2, IG3) | the caption carries it |
-| A numbered teaching list | carousel (IG5) | one item per slide earns the save |
-| A transformation with steps | carousel (IG6) | the before/after gap pulls the swipe |
-| A belief to correct | carousel (IG7) | myth/truth pairs are send-worthy |
-| A repeatable framework | carousel (IG8) | the summary slide is save-bait |
-| Motion, demo, face-to-camera | Reel (IG9, IG10) | the first seconds are the hook |
+| Um resultado, um número, um momento | imagem única + legenda (IG1, IG2, IG3) | a legenda carrega |
+| Uma lista numerada que ensina | carrossel (IG5) | um item por slide rende salvamento |
+| Uma transformação com passos | carrossel (IG6) | o intervalo antes/depois puxa o arraste |
+| Uma crença a corrigir | carrossel (IG7) | pares mito/verdade valem envio |
+| Um método repetível | carrossel (IG8) | o slide-resumo é isca de salvamento |
+| Movimento, demonstração, falando pra câmera | Reel (IG9, IG10) | os primeiros segundos são o gancho |
 
-## Hook micro-rules (Instagram-specific)
+## Micro-regras de gancho
 
-- **First 125 chars carry the caption.** Everything after the "more" fold is for
-  the reader you already hooked.
-- **Slide 1 of a carousel is a promise, not a title.** "5 ways to X" beats "Tips
-  for X". Put the loop ("most miss #4") on slide 1.
-- **The last slide earns the save and the follow.** Close with the one-slide
-  summary plus a single clear ask, not three.
-- **"How I" beats "How to".** First-person results carry proof.
-- **One specific number** in the hook raises saves and shares. 47 minutes beats
-  "fast".
+- **Os primeiros 125 caracteres carregam a legenda.** Depois do "mais" é para
+  quem você já fisgou.
+- **Slide 1 é promessa, não título.** "5 jeitos de X" vence "Dicas de X".
+- **O último slide rende o salvamento e o follow.** Feche com o resumo em um
+  slide e um único pedido claro, não três.
+- **"Como eu fiz" vence "como fazer".**
+- **Um número específico** no gancho aumenta salvamentos e envios. "47 minutos"
+  vence "rápido". Em reais: "R$ 312 por mês" vence "parcela baixa".
 
-## Never do
+## Nunca faça
 
-- Pad a one-line idea into a 10-slide carousel (viewers feel the filler and bail).
-- Open slide 1 with a bare title and no promise.
-- Stuff 30 hashtags at the top of the caption (see `hashtag-strategy.md`).
-- Bait engagement ("comment YES", "double tap if.."). Instagram downranks it.
-- Mix images and videos in one carousel (the API rejects it).
+- Esticar uma ideia de uma linha num carrossel de 10 slides.
+- Abrir o slide 1 com título seco e sem promessa.
+- Encher o topo da legenda com 30 hashtags.
+- Isca de engajamento ("comenta SIM", "dá dois toques se.."). O Instagram rebaixa.
+- Misturar imagem e vídeo no mesmo carrossel (a API rejeita).
+- Prometer resultado que depende de sorte ou de terceiros como se fosse garantido
+  (ex.: "contemplação garantida", "aprovação certa", "renda garantida").

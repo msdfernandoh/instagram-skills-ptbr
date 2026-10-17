@@ -1,104 +1,135 @@
-# Voice Rules for Instagram
+# Regras de voz para Instagram (PT-BR)
 
-These are the canonical voice rules for the whole bundle. Every skill inherits
-them. Skill-local "Hard rules" sections only add format-specific overrides
-(caption length, slide counts, hashtag sizing) and point back here.
+Estas são as regras de voz canônicas do pacote inteiro. Toda skill herda estas
+regras. As seções "Regras fixas" de cada skill só acrescentam ajustes do formato
+(tamanho da legenda, número de slides, hashtags) e apontam de volta para cá.
 
-## Hard rules
+Escrevemos em **português brasileiro do jeito que se fala no Instagram**: direto,
+próximo, sem cara de release de assessoria e sem cara de texto gerado por IA.
 
-1. **Em dashes (`—`) capped at about 1 per 100 words** (1-2 per caption, at
-   most 1 per carousel slide). The character is no longer a tell (2026 models
-   use fewer than humans, and 29% of human captions in our corpus contain one);
-   the density is. Replace the excess with a comma, colon, parentheses or a
-   line break, never a period. No en dashes (`–`) between clauses, no double
-   dashes (`--`).
-2. **Use `..` or a line break** as a soft pause when you would reach for a
-   second em dash. Reads human and matches how people actually caption on
-   Instagram.
-3. **Capitalize personal names, company names, product names** (Stripe, Canva,
-   Figma). Lowercase a brand name and it reads as careless.
-4. **Sentence starts can be lowercase.** Lowercase openers are native to the
-   Instagram caption register. Names inside are always capitalized.
-5. **Specific numbers beat adjectives.** "saved 11 hours a week" beats "saved
-   tons of time". "$4,200 in 30 days" beats "made good money".
-6. **One idea per caption.** A caption that argues three points reads as a blog
-   post. Pick the one that earns the save.
-7. **Don't hard-sell.** Instagram buries overtly promotional captions. Teach or
-   tell a story, then point to the next step once.
+## Regras fixas
 
-## Vocabulary markers (density-scored)
+1. **Travessão (`—`) com teto de cerca de 1 a cada 100 palavras** (1-2 por
+   legenda, no máximo 1 por slide de carrossel). O travessão em si não denuncia
+   IA; a densidade denuncia. O excesso vira vírgula, dois-pontos, parênteses ou
+   quebra de linha, nunca ponto final. Nada de meia-risca (`–`) entre orações nem
+   hífen duplo (`--`).
+2. **Use `..` ou quebra de linha** como pausa leve quando você ia usar um segundo
+   travessão. Soa humano e é como as pessoas escrevem legenda.
+3. **Nomes próprios com maiúscula** (pessoas, empresas, produtos, cidades: Canva,
+   Nubank, Sinop, Racon). Marca em minúscula parece descuido.
+4. **Início de frase pode ser minúsculo** se for o estilo do perfil. Nomes dentro
+   da frase continuam com maiúscula.
+5. **Número específico vence adjetivo.** "economizei 11 horas por semana" vence
+   "economizei muito tempo". "R$ 4.200 em 30 dias" vence "ganhei bem".
+   Use o formato brasileiro: `R$ 1.250,00`, `12,5%`, `3 mil`, `10k` (gíria aceita).
+6. **Uma ideia por legenda.** Legenda que defende três pontos vira post de blog.
+   Escolha a que merece o salvamento.
+7. **Não faça venda agressiva.** O Instagram enterra legenda promocional demais.
+   Ensine ou conte uma história, depois aponte o próximo passo uma vez.
+8. **Português correto, registro de conversa.** Pode "pra", "tá", "a gente", "né"
+   quando é a voz do perfil. Não pode erro de concordância, crase errada ou
+   "mais" no lugar de "mas": em perfil de empresa isso custa credibilidade.
 
-Count these per paragraph. One is English; two is borderline (flag it in the report, leave the words);
-three in one paragraph reads as AI and the whole paragraph gets rewritten (see `ig-humanizer` V3).
-The durable 2026 set (significant, crucial, notably, particularly,
-comprehensive, insights, robust, leverage, foster, landscape, nuanced,
-streamline, elevate, empower) counts alongside the older corporate words:
-- leverage, utilize, facilitate, streamline, robust, seamless, delve, navigate,
-  unlock, harness, foster, cultivate, elevate, empower, dive in
-- fundamentally, essentially, ultimately, crucially, notably
-- landscape, ecosystem, paradigm, realm, tapestry, journey
+## Marcadores de vocabulário (contados por densidade)
 
-## Always forbidden (single hit, regardless of density)
+Conte por parágrafo. Um marcador é português normal; dois é limite (aponte no
+relatório e deixe as palavras); **três no mesmo parágrafo soa IA** e o parágrafo
+inteiro é reescrito (ver `ig-humanizer` V3).
 
-These are scrubbed on sight. They are reveal bridges, negative parallelism,
-dead phrases or performed sincerity, not vocabulary:
-- "It's not just X, it's Y"
-- "In today's fast-paced world", "in the digital age"
-- "game-changer", "deep dive", "level up", "next level", "must-have"
-- "link in bio" used as filler (only when there is a real link and a real reason)
-- Sincerity announcements as an opener or pivot: "let me be honest", "I'll be
-  real", "honestly?", "real talk", "not gonna lie", "unpopular opinion:" on a
-  take that is actually popular. State the fact flat instead.
+Os marcadores duráveis de texto de IA em português (2026):
 
-## Instagram-native style
+- **Verbos de consultoria:** alavancar, potencializar, impulsionar, otimizar,
+  maximizar, catalisar, fomentar, elevar (sentido figurado), desbloquear,
+  destravar, navegar (figurado), mergulhar (figurado), transformar, revolucionar,
+  ressignificar, agregar valor
+- **Adjetivos inflados:** crucial, fundamental, essencial, robusto, abrangente,
+  holístico, estratégico, significativo, poderoso, incrível, transformador,
+  disruptivo, inovador, impactante, sólido, assertivo
+- **Advérbios de enchimento:** notavelmente, fundamentalmente, essencialmente,
+  basicamente, efetivamente, certamente, indiscutivelmente, verdadeiramente,
+  definitivamente
+- **Substantivos de palestra:** jornada, cenário, ecossistema, panorama,
+  universo (de algo), insights, mindset, sinergia, paradigma, protagonismo
+- **Conectores de redação escolar:** "vale ressaltar", "é importante destacar",
+  "nesse sentido", "diante disso", "além disso" abrindo parágrafo, "por fim",
+  "em suma", "dessa forma"
 
-- **The first line is the whole job.** Instagram hides everything after ~125
-  characters behind "more". If line 1 does not earn the tap, the rest is unread.
-- **Line breaks are punctuation.** White space between short lines controls
-  pacing and makes a caption skimmable. A wall of text gets scrolled past.
-- **Emoji are part of the register, used with restraint.** 0-3 in a caption,
-  placed to break up text or mark a list, never sprinkled. A caption dusted with
-  12 emoji reads as a spam account or AI.
-- **Hashtags are sizing, not volume.** 3-5 well-sized tags beat 30 random ones
-  in 2026 (see `hashtag-strategy.md`). Put them at the end of the caption or in
-  the first comment, never mid-sentence.
+## Sempre proibido (basta uma ocorrência)
 
-## Length
+Removidos na hora. São pontes de revelação, paralelismo negativo, frases mortas
+ou sinceridade encenada, não vocabulário:
 
-- **Caption cap: 2,200 characters.** Only the first ~125 show before "more", so
-  front-load the hook. Most strong captions land between 150 and 1,500 chars;
-  long is fine when it teaches or tells a story worth the scroll.
-- **A carousel caption can be short** because the slides carry the payload. A
-  single-image post leans harder on the caption.
-- **Reels caption: keep it tight.** The video is the hook; the caption adds
-  context and the save/share reason in a line or two.
+- "Não é só X, é Y" / "Não se trata de X, mas de Y" / "Isso não é X. É Y."
+- "No mundo de hoje", "nos dias de hoje", "em um mundo cada vez mais conectado",
+  "na era digital", "na era da IA"
+- "virada de chave", "game changer", "próximo nível", "subir de nível",
+  "imperdível", "sem sombra de dúvidas", "o segredo que ninguém te conta"
+- "link na bio" como enchimento (só quando existe link real e motivo real)
+- Anúncio de sinceridade abrindo ou virando o texto: "vou ser sincero",
+  "sendo bem honesto", "papo reto", "real oficial", "vou te contar uma verdade",
+  "verdade seja dita", "opinião impopular:" numa opinião que é popular,
+  "POV:" em algo que não é ponto de vista. Diga o fato direto.
 
-## Structure
+## Estilo nativo do Instagram
 
-- **Front-load the hook** into the first line (before the fold). State the
-  payoff, the tension, or the number up front.
-- **End on a landing, not a dead prompt.** "What do you think?" is dead. A
-  specific question, a save prompt that names the reason ("save this for your
-  next launch"), or a sharp closing line all beat it.
-- **Carousels:** slide 1 is the hook, the last slide is the payoff plus the
-  save/follow ask. See `hook-formulas.md` and the carousel planner.
+- **A primeira linha é o trabalho todo.** O Instagram esconde tudo depois de
+  ~125 caracteres atrás do "mais". Se a linha 1 não ganha o toque, o resto não é lido.
+- **Quebra de linha é pontuação.** Linhas curtas com espaço entre elas controlam
+  o ritmo. Bloco de texto é ignorado.
+- **Emoji faz parte do registro, com moderação.** 0-3 por legenda, para quebrar
+  texto ou marcar lista, nunca espalhado. Legenda com 12 emoji parece perfil de
+  spam ou texto de IA.
+- **Hashtag é dimensionamento, não volume.** 3-5 hashtags bem escolhidas vencem
+  30 aleatórias (ver `hashtag-strategy.md`). No fim da legenda ou no primeiro
+  comentário, nunca no meio da frase.
 
-## Anti-patterns
+## Tamanho
 
-- Caption that restates the obvious ("Marketing is so important these days").
-- Generic engagement bait ("double tap if you agree", "comment YES").
-- Overused openers: "Let's talk about..", "Here's the thing..", "POV:" on
-  something that is not a POV.
-- Stacked or hollow rule of three ("faster, cheaper, better"); one natural
-  triple with concrete items is fine.
-- A first line that needs line 2 to make sense (the fold eats it).
-- 20+ hashtags stuffed at the top of the caption.
-- ALL CAPS lines for intensity. Carry intensity with word choice.
+- **Limite da legenda: 2.200 caracteres.** Só os primeiros ~125 aparecem antes do
+  "mais". Legendas fortes ficam entre 150 e 1.500 caracteres; longa é ok quando
+  ensina ou conta uma história que vale a rolagem.
+- **Legenda de carrossel pode ser curta:** os slides carregam o conteúdo.
+- **Legenda de Reel: enxuta.** O vídeo é o gancho; a legenda dá contexto e o
+  motivo para salvar ou enviar em uma ou duas linhas.
 
-## Algorithmic note
+## Estrutura
 
-Instagram's 2026 ranking leans on **sends per reach** (shares to friends and to
-your own story) and **saves** as the strongest signals that content is worth
-spreading, ahead of likes. Before posting, check: does this give a viewer a
-reason to send it to one specific friend, or to save it for later? If it only
-earns a passive like, sharpen it.
+- **Gancho na primeira linha** (antes do corte). Entregue o resultado, a tensão
+  ou o número logo de cara.
+- **Termine com aterrissagem, não com pergunta morta.** "O que vocês acham?" é
+  morta. Uma pergunta específica, um pedido de salvamento com motivo ("salva pra
+  consultar antes da próxima assembleia") ou uma frase final forte vencem.
+- **Carrossel:** slide 1 é o gancho, o último é a recompensa + pedido de
+  salvar/seguir. Ver `hook-formulas.md` e o planejador de carrossel.
+
+## CTA de palavra-chave no comentário ("comenta QUERO")
+
+Muito usado no Brasil com automação de direct (ManyChat e similares).
+
+- **Permitido** quando entrega algo real e específico no direct: "comenta
+  SIMULAÇÃO que eu te mando a tabela de parcelas no direct". O comentário vira
+  conversa real e o seguidor recebe o que pediu.
+- **Proibido** como isca vazia: "comenta EU QUERO" sem entregar nada, "comenta SIM
+  se você concorda", "marca 3 amigos". O Instagram rebaixa isso.
+- Só ofereça se o usuário confirmar que a automação existe.
+
+## Antipadrões
+
+- Legenda que repete o óbvio ("O marketing é muito importante hoje em dia").
+- Isca genérica de engajamento ("dá dois toques se concorda", "comenta SIM").
+- Aberturas batidas: "Vamos falar sobre..", "Bora falar de..", "Seguinte..",
+  "Você sabia que..?" sem um dado que surpreenda, "POV:" em algo que não é POV.
+- Regra de três empilhada ou oca ("mais rápido, mais barato, melhor"); um trio
+  natural com itens concretos é ok.
+- Primeira linha que precisa da segunda para fazer sentido (o corte come).
+- 20+ hashtags no topo da legenda.
+- Linha TODA EM CAIXA ALTA para dar intensidade. Intensidade vem da escolha de palavras.
+- Tradução literal de expressão em inglês ("isso é um game changer", "no final do dia").
+
+## Nota sobre o algoritmo
+
+Em 2026 o ranqueamento do Instagram pesa mais **envios por alcance** (compartilhar
+no direct e no próprio story) e **salvamentos** do que curtidas. Antes de postar,
+pergunte: isso dá motivo para alguém mandar para um amigo específico, ou salvar
+para usar depois? Se só rende uma curtida passiva, afie o texto.

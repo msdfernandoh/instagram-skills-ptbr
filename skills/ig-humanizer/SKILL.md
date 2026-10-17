@@ -1,287 +1,258 @@
 ---
 name: ig-humanizer
-description: "Remove the AI tells readers react to in an Instagram caption or carousel slide: 2026 vocabulary by density, reveal bridges, staccato stacks, stacked triads, performed sincerity, emoji storms; caps em dashes. Includes --mode audit (first-125 hook, length, hashtags, emoji, CTA, media) and --mode profile. Not for beating AI detectors (no edit reliably does). Not for writing from scratch (use ig-caption-writer or ig-carousel-planner). Keywords: humanize, de-AI caption, audit before posting."
+description: "Tira a cara de IA de legenda ou slide de carrossel em português: vocabulário de IA por densidade (alavancar, potencializar, jornada, crucial), pontes de revelação, frases picotadas, trios empilhados, sinceridade encenada, chuva de emoji, cara de tradução; limita travessões. Inclui --mode audit (gancho de 125, tamanho, hashtags, emoji, CTA, mídia, português correto) e --mode profile. Não serve para enganar detector de IA. Não serve para escrever do zero (use ig-caption-writer ou ig-carousel-planner)."
 ---
 
-# Instagram Humanizer V3
+# Humanizador para Instagram V3 (PT-BR)
 
-Rewrites any caption or carousel slide text to remove the AI tells that human
-readers notice, and audits a finished caption against the 2026 Instagram
-checklist. Based on Wikipedia's "Signs of AI writing" taxonomy, the 2025-2026
-stylometry literature, our own Instagram caption corpus (n=284, prevalence
-only), and Instagram-specific patterns (the first-125 fold, the
-lowercase-casual caption register, sized hashtags, sends-and-saves structure).
-**V3 (2026-09):** recalibrated on 2026 evidence. Vocabulary is scored by
-density, em dashes are capped instead of banned (and the cap is generous here:
-29% of human captions use one), forced rhythm is now a tell instead of a fix,
-and there is an over-correction guard.
+Reescreve legenda ou texto de slide para tirar os sinais de IA que leitores
+humanos percebem, e revisa uma legenda pronta contra o checklist do Instagram de
+2026. Calibrado para **português brasileiro**: os vícios de texto gerado em
+português não são os mesmos do inglês (excesso de "alavancar", "jornada",
+"vale ressaltar", gerúndio abrindo frase, cara de tradução), e as regras abaixo
+foram reescritas para eles.
 
-**What this skill does not do:** it does not make text "pass" GPTZero,
-Pangram, Turnitin or Originality. Those are trained classifiers keyed on the
-instruction-tuning style signature; prompt-style "sound like a real person"
-rewrites are caught 92-95% of the time, and light mechanical rewriting raises
-detectability. On caption-length text (under 300 words) detector scores are
-noise. The real value is elsewhere: expert human readers cite vocabulary (53%)
-and sentence structure (36%) as what gives AI text away, and on Instagram a
-caption that reads as a brand account earns neither the save nor the send.
-This skill removes what those readers react to.
+Base: a taxonomia de "sinais de escrita por IA", a literatura de estilometria de
+2025-2026, padrões do Instagram (o corte de 125 caracteres, o registro casual
+de legenda, hashtags dimensionadas, estrutura de salvamento e envio) e os vícios
+específicos do português gerado por modelo. **V3:** vocabulário contado por
+densidade, travessão com teto em vez de proibição, ritmo forçado tratado como
+sinal (não como solução) e proteção contra exagero na correção.
 
-## What changed in V3
+**O que esta skill não faz:** não faz o texto "passar" em detectores (GPTZero,
+Turnitin, Originality etc.). Ninguém promete isso, e em texto curto como legenda
+a nota de detector é ruído. O valor real é outro: leitores atentos identificam
+texto de IA pelo vocabulário e pela estrutura das frases, e no Instagram uma
+legenda com cara de conta institucional não ganha nem salvamento nem envio.
+Esta skill remove o que esses leitores percebem.
 
-Evidence tier in brackets: [strong] = replicated across 2+ independent
-2025-2026 studies or our own corpus; [vendor] = single platform or vendor
-dataset; [weak] = one study or expert-panel report.
+## O que mudou na V3
 
-- **Vocabulary moved from a delete-list to density scoring.** The 2023-24 words
-  (delve, tapestry, realm, journey) are decaying as humans avoid them [strong].
-  The durable 2026 markers are common words (significant, crucial, notably,
-  comprehensive, insights, robust, leverage, foster, landscape, nuanced,
-  streamline, elevate) plus grammar: nominalisations and "-ing" clause openers
-  at 5.3x the human rate [strong]. AI vocabulary appears in 10% of human
-  captions in our corpus [strong], so one marker in a paragraph is not a
-  verdict. Three is.
-- **Em dash is no longer a tell.** GPT-5.4 emits 1.43 per 1,000 words, below
-  the 3.23 human baseline [strong], and **29% of human Instagram captions
-  contain one** [strong: corpus]. A caption's em dash is never a tell on its
-  own, and a blanket ban over-sterilises captions. New rule: cap at about 1 per
-  100 words (1-2 per caption), replace only the excess with a comma, colon,
-  parentheses or a rewrite. Never a period (a split dash stacks fragments).
-  Zero em dashes across a long caption is its own tell now.
-- **Forced burstiness is the #1 2026 tell, not the fix.** Mechanical
-  long/short alternation is a learnable humanizer fingerprint [weak], and
-  "Short. Punchy. Done.", "No X. No Y. Just Z.", one-word lines for drama and
-  "The result?" reveals are the current top reader-cited tells [strong].
-  Captions are mid-length, so Pass 2 is an anti-uniformity guard only: fix a
-  paragraph that reads machine-flat, never manufacture variance.
-- **Rule of three is still a tell, at density.** Tricolon runs at 2x
-  expert-human rate across 2026 frontier models [strong], and 23% of human
-  captions contain one [strong: corpus]. So one natural triple with concrete
-  items stays. Stacked, perfectly parallel or hollow triads and a third triad
-  in a caption get scrubbed.
-- **Fingerprint injection was half wrong.** Named entities and concreteness are
-  supported [strong]; an odd-precision number with a referent in the first 125
-  chars is the strongest hook. Bare numbers are not a discriminator, and
-  inserted hedges and confessions backfire: performed hesitancy is 2x more
-  common in LLM text, and sincerity announcements ("let me be honest", "real
-  talk", "POV:" on something that is not a POV) are a named 2026 tell
-  [strong]. Pass 3 asks for a flat, dated, uncomfortable fact instead.
-- **Over-correction guard.** Humanizer output has its own fingerprint [weak].
-  Pass 4 checks whether Passes 1-3 introduced the very patterns they were meant
-  to remove. Edits are proportional to real problems. When in doubt, leave it.
+- **Vocabulário por densidade, não lista de proibidas.** Palavras como
+  "crucial", "fundamental", "estratégico" são português normal. Uma por
+  parágrafo não é veredito. Três no mesmo parágrafo é assinatura.
+- **Travessão deixou de ser sinal.** Em português o travessão é ainda mais comum
+  que em inglês. Proibir esteriliza a legenda. Regra nova: teto de cerca de 1 a
+  cada 100 palavras (1-2 por legenda); o excesso vira vírgula, dois-pontos,
+  parênteses ou reescrita. Nunca ponto final (dividir um travessão empilha
+  fragmentos). Zero travessão numa legenda longa também é sinal.
+- **Ritmo forçado é o sinal nº 1, não a solução.** "Simples. Rápido. Eficiente.",
+  "Sem X. Sem Y. Só Z.", linhas de uma palavra para drama e "O resultado?" são os
+  sinais que leitores mais citam hoje. A Passada 2 só protege contra uniformidade
+  mecânica; nunca fabrica variação.
+- **Regra de três continua sendo sinal, por densidade.** Um trio natural com
+  itens concretos fica. Trio empilhado, perfeitamente paralelo ou oco sai.
+- **Injeção de "humanidade" estava meio errada.** Nomes próprios e
+  concretude ajudam; um número quebrado com referência nos primeiros 125
+  caracteres é o gancho mais forte. Ressalvas inseridas e confissões
+  enquadradas pioram: "vou ser sincero", "papo reto", "POV:" sem ser POV são
+  sinais nomeados. A Passada 3 pede um fato datado, seco e desconfortável.
+- **Proteção contra exagero.** Texto "humanizado" demais tem sua própria
+  assinatura. A Passada 4 verifica se as passadas anteriores criaram os padrões
+  que deviam remover. Edição proporcional ao problema real. Na dúvida, deixe.
 
-## When to use
+## Quando usar
 
-- Before publishing any AI-drafted caption or carousel (rewrite mode)
-- Pre-publish review of a finished caption (audit mode, see `sub-skills/post-audit.md`)
-- When a caption feels off and you cannot pinpoint why
+- Antes de publicar qualquer legenda ou carrossel rascunhado por IA (modo reescrita)
+- Revisão final de uma legenda pronta (modo audit, ver `sub-skills/post-audit.md`)
+- Quando a legenda "tá estranha" e você não sabe por quê
+- Quando o texto veio traduzido do inglês e está com cara de dublagem
 
-## Input
+## Entrada
 
-Any text: a caption, the on-image text of a carousel, or a Reel caption.
-Optional: target voice samples (the user's past captions).
+Qualquer texto: legenda, texto da arte de um carrossel, legenda de Reel.
+Opcional: amostras de voz do usuário (legendas antigas).
 
-## Output
+## Saída
 
-- Rewritten text with AI tells removed
-- A diff showing what changed and why
-- Caption char count (flagging if the hook spills past the first 125 chars)
-- Per-paragraph tell density (markers per paragraph; 3+ triggered a rewrite)
-- Reader-read confidence: "reads human", "mixed", "reads AI" (a reader-tell
-  estimate, not a detector score)
+- Texto reescrito sem os sinais de IA
+- Um diff mostrando o que mudou e por quê
+- Contagem de caracteres (sinalizando se o gancho passou dos 125)
+- Densidade de sinais por parágrafo (marcadores por parágrafo; 3+ dispararam reescrita)
+- Leitura provável: "soa humano", "misto", "soa IA" (estimativa de leitor, não nota de detector)
 
-## Modes
+## Modos
 
 ```bash
-# Default: scrub AI tells (forensic + strict) and fix Instagram-format issues
-ig-humanizer <text>
+# Padrão: limpa sinais de IA (forense + estrito) e corrige formato do Instagram
+ig-humanizer <texto>
 
-# Forensic only - minimum touch, just kill model leakage
-ig-humanizer --mode forensic <text>
+# Só forense - toque mínimo, só remove vazamento de modelo
+ig-humanizer --mode forensic <texto>
 
-# Audit - detection-only pass-fail review, no rewrite
-# Runs the 2026 Instagram checklist: first-125 hook, caption length, sized
-# hashtags, emoji limits, CTA quality, media reminder.
-# Returns Blockers + Warnings + suggested fixes. See sub-skills/post-audit.md.
-ig-humanizer --mode audit <text>
+# Audit - só detecção, passa/não passa, sem reescrever
+# Roda o checklist de 2026: gancho de 125, tamanho, hashtags, emoji, CTA,
+# lembrete de mídia, português correto. Ver sub-skills/post-audit.md.
+ig-humanizer --mode audit <texto>
 
-# Profile - build/update the user's Voice & Brand Profile. See the section below.
+# Profile - monta/atualiza o perfil de voz e marca. Ver seção abaixo.
 ig-humanizer --mode profile
 ```
 
-## The four passes
+## As quatro passadas
 
-### Pass 1 - SCRUB (score, then delete or replace)
+### Passada 1 - LIMPAR (contar, depois cortar ou trocar)
 
-Apply the tiered catalogs in `references/scrub-rules.md`. The unit of
-judgement is the **paragraph (or slide), not the word**: count markers per
-paragraph, rewrite the paragraph at 3+, leave a single marker alone unless it
-is a reveal bridge, negative parallelism, a sincerity marker, or forensic
-leakage.
+Aplique os catálogos de `references/scrub-rules.md`. A unidade de julgamento é
+o **parágrafo (ou slide), não a palavra**: conte marcadores por parágrafo,
+reescreva o parágrafo com 3+, deixe um marcador isolado em paz a menos que seja
+ponte de revelação, paralelismo negativo, marcador de sinceridade ou vazamento forense.
 
-- **Forensic** (always on): real model leakage no human types. AI tool markers
-  (oaicite, contentReference, turn0search0), knowledge-cutoff disclaimers ("As
-  of my last update"), template blanks ([Your Name]), and em dashes above the
-  cap (more than about 1 per 100 words).
-- **Strict** (default on): what readers react to. The durable 2026 vocabulary
-  set scored by density (significant, crucial, notably, particularly,
-  comprehensive, insights, robust, leverage, foster, landscape, nuanced,
-  streamline, elevate, empower), grammar markers (nominalisations,
-  sentence-opening "-ing" clauses), the 2026 model-idiom layer (quietly, "X
-  matters.", compound, "a signal", "the work", "built different", "let that
-  sink in"), reveal bridges on a single hit ("The result?", "Here's what",
-  "Stop X, start Y", "plot twist:"), all forms of negative parallelism,
-  stacked or perfectly parallel triads and any third triad in a caption,
-  phrase cleanups ("in today's fast-paced world", "game-changer", "level up",
-  "dive in"), emoji storms, and dead closers ("what do you think?", "double
-  tap if you agree").
-- **Instagram-format scrubs** (always apply): first-125 hook that stands
-  alone, sized hashtags, emoji limits, carousel slide-1 promise, caption
-  length.
+- **Forense** (sempre ligado): vazamento real de modelo que ninguém digita.
+  Marcadores de ferramenta (oaicite, contentReference, turn0search0), avisos de
+  corte de conhecimento ("Até a minha última atualização"), lacunas de modelo
+  ([Seu Nome], [Nome da Empresa]), e travessões acima do teto.
+- **Estrito** (ligado por padrão): o que leitores percebem. Vocabulário de IA
+  em português por densidade (alavancar, potencializar, impulsionar, crucial,
+  fundamental, robusto, abrangente, jornada, cenário, ecossistema, insights,
+  mergulhar, desbloquear, elevar), marcadores gramaticais (gerúndio abrindo
+  frase, nominalizações "a implementação de", conectores de redação "vale
+  ressaltar", "nesse sentido"), cara de tradução ("no final do dia", "faz
+  sentido?", "isso dito"), pontes de revelação ("O resultado?", "Seguinte:",
+  "Pare de X, comece a Y", "Spoiler:"), todo paralelismo negativo ("não é só X,
+  é Y"), trios empilhados ou ocos, frases mortas ("no mundo de hoje", "virada de
+  chave", "próximo nível"), chuva de emoji e fechamentos mortos ("o que vocês
+  acham?", "dá dois toques se concorda").
+- **Formato do Instagram** (sempre): gancho de 125 que se sustenta, hashtags
+  dimensionadas, limite de emoji, promessa no slide 1, tamanho da legenda.
+- **Português correto** (sempre, sem mudar o registro): concordância, crase,
+  "mas/mais", "há/a", "porque/por que", "a gente vai" (não "a gente vamos").
+  Corrija erro; não corrija gíria ou oralidade intencional.
 
-### Pass 2 - RHYTHM (anti-uniformity guard only)
+### Passada 2 - RITMO (só proteção contra uniformidade)
 
-Detectors do not score burstiness, and captions are mid-length (our corpus
-median is well under 200 words), so rhythm is neither a reach lever nor a
-fix. What readers notice is the mechanical-uniformity tell (every line the
-same length, machine-flat) and, worse, the staged variance that
-second-generation humanizers add. So Pass 2 has two jobs: fix rhythm only
-where it reads machine-flat, and remove manufactured variance everywhere. It
-never adds variance as a tactic.
+Legendas têm tamanho médio, então ritmo não é alavanca de alcance nem solução.
+O que leitores percebem é a uniformidade mecânica (toda frase do mesmo tamanho)
+e, pior, a variação encenada que "humanizadores" adicionam. A Passada 2 corrige
+ritmo só onde soa mecânico e remove variação fabricada em todo lugar. Nunca
+adiciona variação como tática.
 
-- Per paragraph: one genuinely long sentence next to a short one is fine and
-  is what human variance looks like. Two or three mid-length sentences in a
-  row are also fine. Edit only when every sentence in the paragraph runs the
-  same length and reads flat, and then edit one sentence, not the paragraph.
-- Standalone fragments: at most 2 per caption, total. "every time." once is a
-  voice quirk. Three in a caption is a pattern.
-- Banned outright (rewrite as full sentences): "The X? Y." reveals; "No X. No
-  Y. Just Z."; "All the X. None of the Y."; "Simple. Effective. Easy."
-  adjective stacks; one-word lines for drama ("Still." "Exactly."); pseudo-
-  Socratic Q&A ("Why? Because..."); "Short. Punchy. Done." staccato runs.
-  Fragment runs are the tell.
-- Layout is not rhythm. One idea per line with blank lines between them is
-  native caption formatting and stays. Fragment-for-drama inside those lines
-  is the tell. Keep the layout, fix the sentences.
-- Carousel slide text is short by design; never chop or pad a slide for
-  rhythm. Never alternate long/short/long/short across slides or lines. That
-  seesaw is the humanizer fingerprint.
+- Por parágrafo: uma frase realmente longa ao lado de uma curta é variação
+  humana normal. Duas ou três frases médias seguidas também. Edite só quando
+  toda frase do parágrafo tem o mesmo tamanho e soa chapada, e aí edite uma
+  frase, não o parágrafo.
+- Fragmentos soltos: no máximo 2 por legenda. "toda vez." uma vez é jeito de
+  falar. Três numa legenda é padrão.
+- Proibidos (reescreva como frase completa): revelação "O X? Y."; "Sem X. Sem Y.
+  Só Z."; "Todo o X. Nada do Y."; pilha de adjetivos "Simples. Rápido. Fácil.";
+  linha de uma palavra para drama ("Pois é." "Exatamente."); pergunta-resposta
+  pseudo-socrática ("Por quê? Porque..."); "Curto. Direto. Feito.".
+- Layout não é ritmo. Uma ideia por linha com linha em branco entre elas é
+  formatação nativa de legenda e fica. O sinal é o fragmento-para-drama dentro
+  dessas linhas. Mantenha o layout, arrume as frases.
+- Texto de slide é curto por natureza; nunca corte nem encha um slide por ritmo.
+  Nunca alterne longa/curta/longa/curta. Essa gangorra é a assinatura do humanizador.
 
-The check is "does any paragraph read machine-flat, and did I add a staccato
-pattern", not a variance number.
+### Passada 3 - ACRESCENTAR (marcas humanas)
 
-### Pass 3 - ADD (human fingerprints)
+Exija onde o conteúdo permite:
+- Um número quebrado COM referência: quem, o quê, quando ou quanto custou
+  ("de 0 a 10 mil em 4 meses, postando 3 vezes por semana", não "cresci rápido"
+  nem "10 mil"). Número solto não é marca; a referência carrega o sinal.
+- Um nome próprio (pessoa real, marca, data, ferramenta, cidade)
+- Um detalhe concreto em primeira pessoa (o que você viu, quanto custou, o que quebrou)
+- Um fato específico, datado e desconfortável dito seco, sem frase de moldura
+  antes ou depois. Não "papo reto, essa doeu: perdi o cliente." Só "perdi meu
+  maior cliente no dia 14 de fevereiro." O fato carrega a vulnerabilidade. A
+  moldura transforma em sinceridade encenada.
+- O registro casual minúsculo, se for a voz do perfil
 
-Require where the content allows:
-- One odd-precision number WITH a named referent: who, what, when, or what it
-  cost ("0 to 10k in 4 months, posting 3 times a week", not "grew fast" and not
-  "10k"). A bare number is not a fingerprint; the referent carries the signal.
-- One named entity (real person, brand, date, tool)
-- One first-person concrete detail (what you saw, what it cost, what broke)
-- One specific, dated, uncomfortable fact stated flat, with no framing sentence
-  before or after it. Not "real talk, this one hurt: I lost the client." Just
-  "I lost my biggest client on 14 Feb." The fact carries the vulnerability. The
-  frame turns it into performed sincerity, which readers now read as the tell.
-- The lowercase-casual register if the voice calls for it
+Proibido como abertura ou virada (anúncio de sinceridade, sinal nomeado):
+"vou ser sincero", "sendo bem honesto", "vou ser direto", "papo reto", "real
+oficial", "verdade seja dita", "vou te contar uma coisa", "posso ser
+vulnerável?", "opinião impopular:" antes de opinião popular, "POV:" em algo que
+não é ponto de vista, "senta que lá vem história". Também proibido inserir
+ressalvas que o autor não escreveu ("talvez", "posso estar errado, mas",
+"parece que"). Hesitação encenada é bem mais comum em texto de IA; acrescentar
+deixa o rascunho mais IA, não menos.
 
-Forbidden as openers or pivots (sincerity announcements, a named 2026 tell):
-"let me be honest", "I'll be real", "honestly?", "to be direct", "the honest
-version is", "real talk", "not gonna lie", "ngl", "can I be vulnerable for a
-second", "unpopular opinion:" as a preface to a popular one, "POV:" on
-something that is not a POV. Also forbidden as insertions: hedges the author
-did not write ("perhaps", "I might be wrong but", "it seems"). Performed
-hesitancy is 2x more common in LLM text than in expert human text; adding it
-makes the draft read more AI, not less.
+Se a entrada não tem nada disso, peça ao usuário um número, um nome ou um
+momento. Não invente.
 
-If the input lacks these, ask the user for a number, name, or moment. Do not
-fabricate.
+### Passada 4 - AUTOCONFERÊNCIA (proteção contra exagero)
 
-### Pass 4 - SELF-CHECK (over-correction guard)
+Antes de devolver, releia o resultado uma vez e responda três perguntas:
 
-Humanizer output has its own fingerprint. Before returning, re-read the result
-once and answer three questions:
+(a) A Passada 2 criou pilhas picotadas, ponte "O resultado?", linhas de uma
+    palavra ou gangorra longa/curta? Se sim, junte os fragmentos em frases completas.
+(b) A Passada 3 acrescentou confissão enquadrada, anúncio de sinceridade ou
+    ressalva que o autor nunca escreveu? Se sim, tire a moldura e deixe só o fato.
+(c) A limpeza achatou a voz do autor: tom uniforme, sem reação, sem detalhe
+    concreto, todos os travessões sumiram, todos os trios sumiram, todos os
+    emoji sumiram de uma voz que usa, o registro minúsculo foi capitalizado, a
+    gíria regional foi "corrigida"? Se sim, devolva o que o autor tinha.
 
-(a) Did Pass 2 create staccato stacks, "The result?" reveal bridges, one-word
-    lines, or a long/short/long/short seesaw? If yes, merge the fragments back
-    into full sentences.
-(b) Did Pass 3 add a framed confession, a sincerity announcement, or a hedge
-    the author never wrote? If yes, strip the frame and keep only the flat
-    fact, or remove the insertion.
-(c) Did scrubbing flatten the author's voice: uniform tone, no reaction, no
-    concrete detail left, every em dash gone, every triad gone, every emoji
-    gone from a voice that uses them, the lowercase register capitalised? If
-    yes, restore what the author had. Zero em dashes and zero triads in a long
-    caption is a tell in its own right.
+Se alguma resposta for sim, recue em vez de limpar mais. Edição proporcional ao
+problema: uma legenda limpa recebe dois ou três toques, não uma cota. Na dúvida
+se o padrão é do autor ou do modelo, deixe.
 
-If any answer is yes, dial back rather than scrub harder. Edits must be
-proportional to real problems: a clean caption gets two or three touches, not
-a quota. When in doubt whether a pattern is the author or the model, leave it.
+## Regras inegociáveis
 
-## Non-negotiable rules
+Regras de voz globais: ver "Regras de voz" no `SKILL.md` raiz. Regras específicas:
 
-Global voice rules: see root `SKILL.md` Voice rules. Additional skill-specific
-rules (V3):
+- **A limpeza está sempre no escopo.** Quando pedirem para humanizar, tirar cara
+  de IA, finalizar ou publicar uma legenda, rode pelo menos as passadas forense
+  + estrita antes de sair. Vale quando o usuário escreveu o rascunho, diz que
+  amou como está ou está com pressa. A passada forense + estrita não muda o
+  sentido e leva segundos. Se uma restrição realmente proíbe mexer no texto,
+  diga explicitamente e liste cada sinal que ficou.
+- **Limpe na proporção.** Uma passada que não acha nada não muda nada. Não
+  invente edição para justificar a execução, e não reporte nota de detector
+  como resultado; reporte os sinais achados e corrigidos.
+- Preserve a afirmação e o sentido do usuário. "Preservar a voz" cobre jeitos de
+  falar e o que ele afirma, NÃO pontes de revelação, pilhas picotadas ou
+  parágrafo com 3+ marcadores.
+- Nunca introduza fatos que não estavam na entrada. Faltou número, pergunte.
+- Nunca introduza marcador de sinceridade, ressalva ou moldura confessional.
+- Mantenha os jeitos do usuário (início minúsculo, `..`, um travessão a cada
+  ~100 palavras, um trio natural, os 1-3 emoji intencionais, regionalismos como
+  "bah", "uai", "égua", "mano" quando são dele).
+- Nunca prometa resultado em detector. Se perguntarem "vai passar no GPTZero?",
+  responda com honestidade: ninguém garante, e a nota numa legenda de 150
+  palavras é ruído.
+- Respeite a superfície: não transforme texto de slide em legenda ou vice-versa
+  sem avisar.
+- Nunca apresente legenda como publicável sem o lembrete de mídia.
 
-- **Scrubbing is always in scope.** When asked to humanize, de-AI, finalize, or
-  publish a caption, run at least the forensic + strict passes before it ships.
-  This holds when the user wrote the draft themselves, says they love it as-is,
-  or is in a hurry. Author identity, "it's already good," and time pressure are
-  never reasons to skip the scrub. The forensic + strict pass changes no meaning
-  and takes seconds: run it, then ship. If a constraint truly forbids touching
-  the text, say so explicitly and name every tell left in; the default is to
-  scrub, not to wave it through.
-- **Scrub proportionally.** A pass that finds nothing changes nothing. Do not
-  invent edits to justify the run, and do not report a detector score as the
-  result; report the tells found and fixed.
-- Preserve the user's actual claim and meaning. "Preserve their voice" covers
-  voice quirks and what they are claiming, NOT reveal bridges, staccato stacks,
-  or a paragraph with 3+ vocabulary markers. Stripping those is not changing
-  their voice; it is the job.
-- Never introduce facts that were not in the input. If a number is missing, ask.
-- Never introduce sincerity markers, hedges, or confessional frames. If the
-  draft needs a vulnerable beat, ask for a dated fact and state it flat.
-- Keep the user's voice quirks (lowercase starts, `..` soft pauses, one em
-  dash per ~100 words, one natural triad, their 1-3 intentional emoji).
-- Never promise detector results. If the user asks "will this pass GPTZero,"
-  answer honestly: nobody can promise that, and the score on a 150-word
-  caption is noise.
-- Respect the surface: do not turn a carousel's slide text into a single caption
-  or vice versa without flagging it.
-- Never present a caption as publishable without the media reminder (Instagram
-  needs an image or video).
+## Sinais específicos do Instagram que esta skill pega
 
-## Instagram-specific tells this skill catches
+- Gancho que precisa da segunda linha (o corte do "mais" come).
+- Legenda abrindo com "Vamos falar sobre..", "Seguinte..", "Bora falar de..",
+  "Você sabia que..?" sem dado surpreendente, ou "POV:" sem ser POV.
+- 20-30 hashtags no topo em vez de 3-5 dimensionadas.
+- Emoji espalhado em toda linha (4+ por legenda).
+- Título seco no slide 1 em vez de promessa + laço.
+- Regra de três empilhada ou oca ("mais rápido, mais barato, melhor").
+- Isca de engajamento ("comenta SIM", "marca 3 amigos", "dá dois toques se").
+- Pilhas picotadas e linhas de uma palavra (a assinatura do humanizador), ou
+  parágrafo em que toda linha soa chapada.
+- Cara de tradução: expressões calcadas no inglês, "você" repetido em toda
+  frase, ordem de adjetivo do inglês ("incrível oportunidade").
 
-- A hook that needs the second line to make sense (the "more" fold eats it).
-- A caption opening with "Let's talk about..", "Here's the thing..", or "POV:"
-  on something that is not a POV.
-- 20-30 hashtags crammed at the top instead of a 3-5 sized set.
-- Emoji sprinkled through every line (4+ per caption).
-- A bare title on carousel slide 1 instead of a promise + loop.
-- Stacked or hollow rule-of-three lists ("faster, cheaper, better"); one
-  natural triple with concrete items is fine.
-- Engagement bait ("comment YES", "tag 3 friends", "double tap if").
-- Staccato stacks and one-word lines for drama (the humanizer fingerprint), or
-  a paragraph where every line reads machine-flat.
+## Exemplo
 
-## Example
+Ver `references/examples.md`.
 
-See `references/examples.md` for worked before/after rewrites.
+## Arquivos
 
-## Files
+- `SKILL.md` - este arquivo (limpeza + entrada do modo audit)
+- `references/scrub-rules.md` - padrões V3 em português por nível, densidade, teto de travessão, ritmo, inserções proibidas
+- `references/examples.md` - reescritas antes/depois comentadas
+- `references/audit-checklist.md` - checklist de pré-publicação com limites
+- `sub-skills/post-audit.md` - fluxo de revisão pré-publicação (só detecção)
+- `sub-skills/voice-profile.md` - monta/atualiza o perfil de voz (`--mode profile`)
+- `sub-skills/illustration.md` - fluxo opcional de imagem com Pixfaro
 
-- `SKILL.md` - this file (rewrite scrubber + audit-mode entry)
-- `references/scrub-rules.md` - V3 regex patterns by tier, density scoring, em dash cap, rhythm rules, forbidden insertions
-- `references/examples.md` - worked before/after rewrites for captions and slides
-- `references/audit-checklist.md` - the pre-publish checklist with thresholds
-- `sub-skills/post-audit.md` - pre-publish audit workflow (detection-only, no rewrite)
-- `sub-skills/voice-profile.md` - build/update the user's Voice & Brand Profile (`--mode profile`)
-- `sub-skills/illustration.md` - optional Pixfaro image workflow
+## Modo perfil de voz (`--mode profile`)
 
-## Voice profile mode (`--mode profile`)
+`ig-humanizer --mode profile` monta ou atualiza o perfil de voz e marca em
+`../../references/voice-profile.md` a partir de 3-6 posts reais do usuário
+colados (portátil, sem token) ou, se houver token de leitura, da atividade
+puxada. Depois de preenchido, toda skill de escrita do pacote rascunha na voz do
+usuário automaticamente. Ver `sub-skills/voice-profile.md`. Gatilhos: "monta meu
+perfil de voz", "aprende minha voz".
 
-`ig-humanizer --mode profile` builds or updates the user's Voice & Brand Profile at `../../references/voice-profile.md` from 3-6 of their real Instagram posts pasted in (portable, no token) or, if a read token is set, from pulled activity. Once filled, every writing skill in this bundle drafts in the user's voice automatically. See `sub-skills/voice-profile.md`. Triggers: "build my voice profile", "learn my voice".
+## Skills relacionadas
 
-## Related skills
-
-- `ig-caption-writer` - generates captions that already pass the humanizer
-- `ig-carousel-planner` - generates carousels that already pass the humanizer
+- `ig-caption-writer` - gera legendas que já passam pelo humanizador
+- `ig-carousel-planner` - gera carrosséis que já passam pelo humanizador

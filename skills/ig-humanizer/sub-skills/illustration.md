@@ -1,81 +1,79 @@
-# Sub-skill: Generate an illustration for a Instagram post
+# Sub-skill: gerar ilustração para um post do Instagram
 
-Adds an optional image to a draft (feed image, carousel slide, or quote-card) and
-attaches it on publish. Uses the Pixfaro image layer through `lib.illustrate`,
-which returns a hosted URL that flows straight into Publora media. Runs on any
-agent (Claude Code, Codex, OpenClaw).
+Acrescenta uma imagem opcional a um rascunho (imagem do feed, slide de
+carrossel ou card de citação) e anexa na publicação. Usa a camada de imagem
+Pixfaro via `lib.illustrate`, que devolve uma URL hospedada que vai direto para
+a mídia da Publora.
 
-## When this runs
+## Quando roda
 
-- User says "add an image", "make an illustration", "make a quote-card", or
-  "make a carousel" for a Instagram post.
-- Offer it once after a draft is approved, when a visual would lift reach.
+- O usuário diz "coloca uma imagem", "faz uma ilustração", "faz um card de
+  frase" ou "monta as artes do carrossel".
+- Ofereça uma vez depois que o rascunho for aprovado, quando um visual aumentaria o alcance.
 
-## Backends (mirrors the publish layer)
+## Backends
 
-- **pixfaro** - `PIXFARO_TOKEN` (`pf_live_...`) set: image generated + attached
-  automatically.
-- **manual** - no token: the skill drafts the image prompt and asks the user to
-  generate it and paste the URL. Never blocks a draft.
+- **pixfaro** - `PIXFARO_TOKEN` (`pf_live_...`) definido: imagem gerada e anexada.
+- **manual** - sem token: a skill escreve o prompt e pede ao usuário que gere a
+  imagem e cole a URL. Nunca trava o rascunho.
 
-`lib.image_backend()` reports which is active.
+`lib.image_backend()` informa qual está ativo.
 
-## Steps
+## Passos
 
-1. **Pick the kind.** Default for Instagram is `carousel` (aspect 4:5). Override
-   with `aspect_ratio="w:h"` when needed. Other kinds: thumbnail 16:9, carousel/
-   quote/portrait 4:5, story/cover 9:16, wide/link 16:9, square 1:1.
-2. **Craft the prompt.** Describe subject, composition, style, palette. Default
-   to a clean professional look unless Voice & Brand Profile §6 sets a visual
-   style. Do NOT bake the post's words into the art (use overlay).
-3. **Apply brand overlay (if profile has it).** Read `../../../references/voice-profile.md`
-   §6. If a handle, brand color, or logo is set, pass an `overlay` so text/logo is
-   composited pixel-exact (crisp even on a cheap model):
+1. **Escolha o tipo.** Padrão do Instagram é `carousel` (4:5). Mude com
+   `aspect_ratio="w:h"` se precisar. Outros: thumbnail 16:9, carousel/quote/portrait
+   4:5, story/cover 9:16, wide/link 16:9, square 1:1.
+2. **Escreva o prompt.** Descreva assunto, composição, estilo, paleta. Os
+   modelos de imagem entendem melhor prompt em inglês: escreva o prompt de cena
+   em inglês, mas todo texto que aparece na arte vai em português via `overlay`.
+   Use o estilo da seção 6 do perfil de voz se houver. NÃO coloque as palavras
+   do post dentro da arte gerada (use a sobreposição).
+3. **Aplique a sobreposição de marca (se o perfil tiver).** Leia a seção 6 de
+   `../../../references/voice-profile.md`. Se houver @, cor ou logo, passe um
+   `overlay` para compor texto/logo com exatidão:
    ```python
    from lib import illustrate
-   r = illustrate("<scene prompt>", kind="carousel",
-                  overlay={"text": "@handle", "position": "bottom-right", "color": "#RRGGBB"})
+   r = illustrate("<prompt da cena em inglês>", kind="carousel",
+                  overlay={"text": "@perfil", "position": "bottom-right", "color": "#RRGGBB"})
    ```
-   For a **quote-card**, put the pulled hook line in overlay `text` (not the prompt),
-   `kind="quote"`.
-4. **Model choice.** Default `nano-banana-2`. The overlay handles text, so a cheap base
-   model is fine; only reach for gemini-pro-image on premium art. Never silently
-   upgrade the tier.
-5. **Show + confirm.** Present the returned `url` and `cost`. On approval, attach
-   via `media_urls=[r["url"]]` when publishing.
-6. **Manual mode.** If `r["backend"] == "manual"`, show `r["message"]` and ask for
-   a pasted URL.
+   Para **card de frase**, coloque a frase do gancho em `text` do overlay (não no
+   prompt), `kind="quote"`. Confira acentos no texto do overlay.
+4. **Modelo.** Padrão `nano-banana-2`. A sobreposição cuida do texto, então um
+   modelo barato serve; só use gemini-pro-image para arte premium. Nunca suba de
+   nível sem avisar.
+5. **Mostre e confirme.** Apresente a `url` e o `cost` devolvidos. Com
+   aprovação, anexe via `media_urls=[r["url"]]` na publicação.
+6. **Modo manual.** Se `r["backend"] == "manual"`, mostre `r["message"]` e peça a URL colada.
 
-## Refine instead of regenerating
+## Ajuste em vez de gerar de novo
 
-When the user wants a tweak ("make the sky darker", "swap the headline", "more
-whitespace"), do NOT regenerate from scratch. Keep the `id` from the previous
-result and edit it:
+Quando o usuário quer um ajuste ("escurece o fundo", "troca o título", "mais
+respiro"), NÃO gere do zero. Guarde o `id` do resultado anterior e edite:
 
 ```python
 from lib import illustrate, refine
-first = illustrate("<scene>", kind="wide")     # -> {"id": "img_...", "url": ...}
+first = illustrate("<cena>", kind="wide")     # -> {"id": "img_...", "url": ...}
 fixed = refine(first["id"], "make the background darker and increase contrast")
 ```
 
-`refine` edits by `img_...` id (not URL), inherits the source shape/tier when you
-omit `aspect_ratio`/`resolution`, and is cheaper + more consistent than a fresh
-generation. Chain it as many times as needed.
+`refine` edita pelo id `img_...` (não pela URL), herda formato e nível quando
+você omite `aspect_ratio`/`resolution`, e é mais barato e consistente.
 
-## Cost-guard
+## Controle de custo
 
-- Each result carries `cost` and `balance_after`; if `low_balance` is True, tell
-  the user the Pixfaro balance is low before generating more.
-- Default to `nano-banana-2` + 1K. The premium models (`gemini-pro-image`,
-  `gpt-5-image`) bill several times more - only use them when the user asks by
-  name; `illustrate`/`refine` never upgrade on their own.
-  A result's `premium`
-  flag is True when a premium-priced model was used - confirm that was intended.
-- `lib.available_models()` returns live pricing/latency when you need to show it.
+- Cada resultado traz `cost` e `balance_after`; se `low_balance` for True, avise
+  que o saldo da Pixfaro está baixo antes de gerar mais.
+- Padrão `nano-banana-2` + 1K. Modelos premium (`gemini-pro-image`,
+  `gpt-5-image`) custam várias vezes mais: só quando o usuário pedir pelo nome.
+  A flag `premium` do resultado indica modelo premium; confirme que era a intenção.
+- `lib.available_models()` devolve preços e latência ao vivo quando precisar mostrar.
 
-## Hard rules
+## Regras fixas
 
-- One image per request (`n>1` unsupported); generate carousel slides one at a time.
-- Keep real words in the `overlay`, not baked into the prompt art.
-- Default to the cheap model + 1K resolution unless the user asks for premium.
-- Never attach an image the user has not seen and approved.
+- Uma imagem por pedido (`n>1` não suportado); gere os slides um de cada vez.
+- Palavras reais no `overlay`, não dentro da arte.
+- Modelo barato + 1K por padrão, salvo pedido de premium.
+- Nunca anexe imagem que o usuário não viu e aprovou.
+- Nunca gere imagem de pessoa real identificável (cliente, concorrente,
+  celebridade) nem logotipo de outra marca.

@@ -1,95 +1,92 @@
-# Worked Teardowns (Instagram)
+# Análises comentadas (Instagram)
 
-Three teardowns showing the output `ig-hook-extractor` produces: a caption, a
-carousel, and a Reel. Captions are illustrative, not real posts.
-
----
-
-## Example 1: caption (single image)
-
-**Pasted caption (first line):**
-> I deleted 4,000 of my 6,000 email subscribers and my open rate doubled.
-
-**Teardown:**
-
-- **Formula:** IG2 Contrarian Truth (0.7) / IG1 Number-First Result (0.6). The
-  odd-precision numbers pull toward IG1, but the move is a contrarian one
-  (deleting subscribers), so it reads primarily as IG2.
-- **Surface:** single image. The whole idea fits the caption; the image is a
-  supporting visual.
-- **Hook (first 125 chars):** the contrarian action stated flatly, with two real
-  numbers (4,000 of 6,000) that make it land. No setup.
-- **Close:** likely a one-line reason + a send/save prompt.
-- **Primary goal:** shares. "Delete your list and improve" is a sent-to-a-friend
-  idea ("see, I was right").
-- **Why it worked:** a defensible counter-move plus hard numbers is
-  screenshot-ready. The numbers pre-empt the "prove it" comment.
-- **Blank template:**
-  ```
-  I {contrarian action with a real number} and {surprising better result}.
-
-  {The one-line reason it worked.}
-
-  {Send/save prompt.}
-  ```
-- **Cautions:** none in the hook. Confirm the numbers are real before reusing.
+Três análises mostrando a saída de `ig-hook-extractor`: uma legenda, um
+carrossel e um Reel. Os textos são ilustrativos, não posts reais.
 
 ---
 
-## Example 2: carousel
+## Exemplo 1: legenda (imagem única)
 
-**Pasted slides:**
-> Slide 1: "7 portfolio mistakes that cost junior designers the interview (most do #4)"
-> Slides 2-8: one mistake each
-> Slide 9: "the 7 on one slide. save it before your next application."
+**Legenda colada (primeira linha):**
+> apaguei 4.000 dos meus 6.000 contatos da lista de transmissão e as respostas dobraram.
 
-**Teardown:**
+**Análise:**
 
-- **Formula:** IG5 Listicle Carousel (0.9).
-- **Surface:** carousel, 9 slides. A numbered teaching list earns its room with
-  one item per slide.
-- **Hook (slide 1):** the promise (7 mistakes) + the open loop ("most do #4")
-  + the stakes (cost the interview). Earns the swipe.
-- **Body:** one mistake per slide; the recap slide is the save-bait artifact.
-- **Close (slide 9):** the list condensed on one slide + an explicit save prompt.
-- **Primary goal:** saves. A condensed reference slide is built to be saved.
-- **Why it worked:** the loop forces the swipe to #4; the single-slide recap
-  makes the whole carousel worth keeping.
-- **Blank template:**
+- **Fórmula:** IG2 Verdade contrária (0,7) / IG1 Resultado com número primeiro
+  (0,6). Os números quebrados puxam para IG1, mas o movimento é contrário
+  (apagar contatos), então lê principalmente como IG2.
+- **Superfície:** imagem única. A ideia inteira cabe na legenda.
+- **Gancho (125 caracteres):** a ação contrária dita sem rodeio, com dois
+  números reais (4.000 de 6.000). Sem introdução.
+- **Fechamento:** provavelmente um motivo em uma linha + pedido de enviar/salvar.
+- **Objetivo principal:** envios. "Apague sua lista e melhore" é ideia de
+  mandar para um amigo ("viu, eu tinha razão").
+- **Por que funcionou:** um contra-movimento defensável com número concreto é
+  pronto para print. Os números se antecipam ao "prova".
+- **Modelo em branco:**
   ```
-  Slide 1: {N} {mistakes/tips} that {specific stake}. (most do #{k})
-  Slides 2..N-1: one item each, named, with a concrete example
-  Slide N: the {N} on one slide. {save prompt with a reason}
+  eu {ação contrária com número real} e {resultado melhor e surpreendente}.
+
+  {O motivo em uma linha.}
+
+  {Pedido de enviar/salvar.}
   ```
-- **Cautions:** keep the strongest item early in the list, not on the last body
-  slide.
+- **Cuidados:** nada no gancho. Confirme que os números são reais antes de usar.
 
 ---
 
-## Example 3: Reel
+## Exemplo 2: carrossel
 
-**Pasted first 3 seconds:**
-> On-screen text: "you are posting Reels at the worst time."
-> First spoken line: "here is when your audience is actually online, free."
+**Slides colados:**
+> Slide 1: "7 erros que fazem você pagar mais caro no consórcio (quase todo mundo comete o 4)"
+> Slides 2-8: um erro cada
+> Slide 9: "os 7 num slide só. salva antes de assinar a proposta."
 
-**Teardown:**
+**Análise:**
 
-- **Formula:** IG9 Pattern-Interrupt Reel (0.8).
-- **Surface:** Reel. The hook is the first frame text + the open loop.
-- **Hook (first 3 seconds):** a claim that makes scrolling past feel like missing
-  out, plus an immediate promise to resolve it. On-screen text lets silent
-  viewers get it.
-- **Body:** likely the actual timing advice, fast cuts, on-screen labels.
-- **Close:** a save or follow prompt; a loop-able last frame lifts rewatch.
-- **Primary goal:** shares (a "you are doing it wrong" payoff gets sent) with a
-  saves secondary if the timing data is concrete.
-- **Why it worked:** the first frame is a pattern interrupt; retention through
-  the first 3 seconds is what earns the push to non-followers.
-- **Blank template:**
+- **Fórmula:** IG5 Carrossel de lista (0,9).
+- **Superfície:** carrossel, 9 slides. Lista numerada que ensina justifica um item por slide.
+- **Gancho (slide 1):** a promessa (7 erros) + o laço ("quase todo mundo comete
+  o 4") + o que está em jogo (pagar mais caro). Ganha o arraste.
+- **Corpo:** um erro por slide; o slide-resumo é a isca de salvamento.
+- **Fechamento (slide 9):** a lista condensada + pedido explícito de salvar com motivo.
+- **Objetivo principal:** salvamentos.
+- **Por que funcionou:** o laço força o arraste até o 4; o resumo em um slide
+  faz o carrossel inteiro valer guardar.
+- **Modelo em branco:**
   ```
-  First frame: "{a claim that makes scrolling past feel costly}."
-  First line: "{drop straight into the payoff, no welcome-back}."
-  Body: the actual answer, fast, on-screen labels.
-  End: {save or follow prompt} + a loop-able last frame.
+  Slide 1: {N} {erros/dicas} que {o que está em jogo}. (quase todo mundo {erra/comete} o {k})
+  Slides 2..N-1: um item cada, nomeado, com exemplo concreto
+  Slide N: os {N} num slide só. {pedido de salvar com motivo}
   ```
-- **Cautions:** the Reel must pay off the claim fast, or the swipe-away hurts reach.
+- **Cuidados:** mantenha o item mais forte cedo na lista, não no último slide do corpo.
+
+---
+
+## Exemplo 3: Reel
+
+**Primeiros 3 segundos colados:**
+> Texto na tela: "você posta Reels no pior horário possível."
+> Primeira fala: "olha quando o seu público tá online de verdade, de graça."
+
+**Análise:**
+
+- **Fórmula:** IG9 Reel quebra-padrão (0,8).
+- **Superfície:** Reel. O gancho é o texto do primeiro frame + o laço aberto.
+- **Gancho (3 segundos):** uma afirmação que faz passar reto parecer perda, mais
+  a promessa imediata de resolver. Texto na tela pega quem assiste sem som.
+- **Corpo:** provavelmente o caminho nos insights, cortes rápidos, rótulos na tela.
+- **Fechamento:** pedido de salvar ou seguir; um último frame que emenda no
+  primeiro aumenta a reexibição.
+- **Objetivo principal:** envios (um "você tá fazendo errado" é mandado), com
+  salvamentos em segundo se o dado de horário for concreto.
+- **Por que funcionou:** o primeiro frame quebra o padrão; a retenção nos 3
+  primeiros segundos rende o empurrão para não seguidores.
+- **Modelo em branco:**
+  ```
+  Primeiro frame: "{afirmação que faz passar reto parecer caro}."
+  Primeira fala: "{direto na recompensa, sem 'oi gente'}."
+  Corpo: a resposta de verdade, rápida, rótulos na tela.
+  Final: {pedido de salvar ou seguir} + último frame que emenda no começo.
+  ```
+- **Cuidados:** o Reel precisa entregar a promessa rápido, senão a saída derruba o alcance.

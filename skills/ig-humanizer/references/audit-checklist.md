@@ -1,78 +1,73 @@
-# Pre-Publish Audit Checklist (Instagram)
+# Checklist de revisão pré-publicação (Instagram, PT-BR)
 
-The thresholds the `--mode audit` pass applies. Mirror of the root
-`references/algorithm-heuristics.md` checklist, with the humanizer's blocker
-distinctions. V3 (2026-09): AI tells are scored by density per paragraph; em
-dashes are capped at about 1 per 100 words, not banned (29% of human captions
-use one); forced rhythm is a tell.
+Os limites que a passada `--mode audit` aplica. Espelho do checklist de
+`references/algorithm-heuristics.md`, com as distinções de bloqueio do
+humanizador. V3: sinais de IA contados por densidade por parágrafo; travessão
+com teto de cerca de 1 a cada 100 palavras; ritmo forçado é sinal.
 
-## Blockers (auto-fail)
+## Bloqueios (reprova automática)
 
-- [ ] Em dashes (`—`) at or under about 1 per 100 words (1-2 per caption; at
-      most one per carousel slide). A single em dash is never a blocker. No en
-      dash (`–`) between clauses, no double dash (`--`).
-- [ ] The first 125 chars stand alone as a hook (the "more" fold cuts the rest).
-- [ ] Caption within 2,200 chars.
-- [ ] 3-5 sized hashtags, not 20-30, never mid-sentence.
-- [ ] No engagement bait ("comment YES", "tag 3 friends", "double tap if").
-- [ ] No "In today's fast-paced world" or equivalent opener; no reveal-bridge
-      opener ("Here's the thing..", "Let's talk about..", "Stop X, start Y");
-      no sincerity announcement opener ("real talk", "not gonna lie", "POV:"
-      on something that is not a POV).
-- [ ] No "What do you think?" / "Thoughts?" / "Let that sink in." dead closer
-      (a save or send prompt with a reason is fine and wanted).
-- [ ] No paragraph with 3+ vocabulary / grammar markers (one marker per
-      paragraph is fine); no "It's not X, it's Y" negative parallelism; no
-      "The result?" reveal bridge.
-- [ ] Carousel: all images or all video (no mixed media), 2-10 slides.
-- [ ] A media plan exists (Instagram rejects text-only posts).
+- [ ] Travessões (`—`) em até cerca de 1 a cada 100 palavras (1-2 por legenda;
+      no máximo um por slide). Um travessão sozinho nunca bloqueia. Sem
+      meia-risca (`–`) entre orações, sem hífen duplo (`--`).
+- [ ] Os primeiros 125 caracteres se sustentam como gancho.
+- [ ] Legenda com até 2.200 caracteres.
+- [ ] 3-5 hashtags dimensionadas, não 20-30, nunca no meio da frase.
+- [ ] Sem isca de engajamento ("comenta SIM", "marca 3 amigos", "dá dois toques se").
+- [ ] Sem abertura "No mundo de hoje" ou equivalente; sem ponte de revelação na
+      abertura ("Seguinte..", "Vamos falar sobre..", "Pare de X, comece a Y");
+      sem anúncio de sinceridade na abertura ("papo reto", "vou ser sincero",
+      "POV:" sem ser POV).
+- [ ] Sem fechamento morto ("O que vocês acham?", "Comentem aí!", "Pensa nisso.")
+      (pedido de salvar ou enviar com motivo é ok e desejado).
+- [ ] Nenhum parágrafo com 3+ marcadores de vocabulário / gramática / tradução;
+      sem paralelismo negativo "Não é só X, é Y"; sem ponte "O resultado?".
+- [ ] Sem erro de português que mude o sentido ou custe credibilidade
+      (concordância, crase, "mas/mais", "há/a", gerundismo "vou estar enviando").
+- [ ] Sem promessa de resultado garantido em setor regulado.
+- [ ] Carrossel: só imagens ou só vídeos, 2-10 slides.
+- [ ] Existe plano de mídia (o Instagram rejeita post só de texto).
 
-## Warnings (flag with fix)
+## Alertas (sinalizar com correção)
 
-- [ ] Hashtag set is sized (2-3 niche, 1-2 mid, 0-1 broad), not all-broad.
-- [ ] 0-3 emoji, placed with intent, none sprinkled; no rocket/sparkles/fire
-      signature run.
-- [ ] No paragraph reads machine-flat (4+ sentences all the same length, no
-      clause doing work). Flag that paragraph only; never suggest adding
-      variance as a tactic. One-idea-per-line layout is fine.
-- [ ] No staccato stacks ("Short. Punchy. Done.", "No X. No Y. Just Z."),
-      no one-word lines for drama, at most 2 standalone fragments in the
-      caption, no long/short/long/short seesaw.
-- [ ] At least one odd-precision number WITH a named referent where the claim
-      allows (a bare number does not clear this).
-- [ ] At least one named entity.
-- [ ] At most one natural rule-of-three; no stacked or perfectly parallel
-      triads, no hollow triads without concrete items, never 3+ in a caption.
-- [ ] No hedging stack ("perhaps", "it seems", "I might be wrong but") and no
-      framed confession ("real talk, this hurt: ..."). A flat dated fact is
-      fine.
-- [ ] Only when auditing a humanizer rewrite with the original in hand, not a fresh draft: not over-scrubbed, i.e. the author's tone, reactions, lowercase register, one
-      em dash, one natural triad and their intentional emoji survived.
-- [ ] Carousel slide 1 promises + opens a loop, not a bare title.
-- [ ] Strongest carousel point is front-loaded (slide 2-3), not buried last.
-- [ ] One clear primary goal (saves / shares / comments / follows).
-- [ ] One CTA, not three; it names a reason.
+- [ ] Hashtags dimensionadas (2-3 nicho, 1-2 média, 0-1 ampla), não só amplas.
+- [ ] 0-3 emoji, com intenção, nenhum espalhado; sem fila de foguete/brilho/fogo/setinha.
+- [ ] Nenhum parágrafo mecânico (4+ frases do mesmo tamanho, nenhuma oração
+      trabalhando). Sinalize só aquele parágrafo; nunca sugira adicionar
+      variação como tática. Layout de uma ideia por linha é ok.
+- [ ] Sem pilhas picotadas ("Simples. Rápido. Fácil.", "Sem X. Sem Y. Só Z."),
+      sem linha de uma palavra para drama, no máximo 2 fragmentos soltos, sem
+      gangorra longa/curta/longa/curta.
+- [ ] Pelo menos um número quebrado COM referência, onde a afirmação permite.
+- [ ] Pelo menos um nome próprio.
+- [ ] No máximo um trio natural; sem trio empilhado, paralelo ou oco, nunca 3+.
+- [ ] Sem pilha de ressalvas ("talvez", "parece que") e sem confissão enquadrada.
+- [ ] Sem cara de tradução ("no final do dia", "faz sentido?", "isso dito").
+- [ ] Só ao revisar uma reescrita do humanizador com o original em mãos: não
+      limpou demais (tom, reações, registro minúsculo, um travessão, um trio
+      natural, emoji intencionais e regionalismos do autor sobreviveram).
+- [ ] Slide 1 do carrossel promete + abre laço, não é título seco.
+- [ ] Ponto mais forte do carrossel na frente (slide 2-3).
+- [ ] Um objetivo principal claro.
+- [ ] Um CTA, não três; com motivo.
 
-## Thresholds quick reference
+## Referência rápida de limites
 
-| Metric | Limit |
+| Métrica | Limite |
 |---|---|
-| Caption | 2,200 chars (hook in first ~125) |
-| Hashtags | 3-5 sized (30 is the hard cap but spammy) |
-| Emoji per caption | 0-3 |
-| Em dashes | about 1 per 100 words (1-2 per caption; 1 per slide) |
-| Vocabulary / grammar markers per paragraph | 0-2 |
-| Standalone fragments | 2 per caption |
-| Carousel slides | 2-10 |
-| Reel duration | up to 3 min; 5-90s for the Reels tab |
-| Aspect ratio | 4:5 to 1.91:1 |
+| Legenda | 2.200 caracteres (gancho nos primeiros ~125) |
+| Hashtags | 3-5 dimensionadas (30 é o teto técnico, mas é spam) |
+| Emoji por legenda | 0-3 |
+| Travessões | cerca de 1 a cada 100 palavras (1-2 por legenda; 1 por slide) |
+| Marcadores por parágrafo | 0-2 |
+| Fragmentos soltos | 2 por legenda |
+| Slides de carrossel | 2-10 |
+| Duração do Reel | até 3 min; 5-90 s para a aba Reels |
+| Proporção | 4:5 a 1,91:1 |
 
-## Scoring
+## Pontuação
 
-- Any blocker -> **FAIL**, return fixes, offer auto-rewrite via `ig-humanizer`.
-- No blockers, any warnings -> **PASS with warnings**, list each with a fix.
-- Clean -> **PASS**, add the timing note, the surface sanity check, and the
-  media reminder.
-- Report per-paragraph tell density (markers, em dashes per 100 words,
-  fragments, triads). Do not estimate a detector score: on caption-length
-  text those are noise and this skill does not promise to beat them.
+- Qualquer bloqueio -> **REPROVADO**, devolva correções, ofereça reescrita via `ig-humanizer`.
+- Sem bloqueios, com alertas -> **APROVADO com alertas**, cada um com correção.
+- Limpo -> **APROVADO**, com nota de horário, checagem de superfície e lembrete de mídia.
+- Reporte a densidade de sinais por parágrafo. Não estime nota de detector.

@@ -1,110 +1,116 @@
 ---
 name: ig-profile-optimizer
-description: "Audit and rewrite an Instagram profile end-to-end for 2026: profile photo, searchable NAME field weighted with a keyword, @handle, bio (150 chars: value plus topic plus proof), goal-matched link, category label, story highlights, the first-9 grid, and up to 3 pinned posts. Triggers on \"review my Instagram profile\", \"fix my bio\", \"optimize highlights\", \"profile audit\". The whole follow decision happens on the profile header. Not for writing captions (use ig-caption-writer)."
+description: "Revisa e reescreve o perfil de Instagram de ponta a ponta para 2026, em português: foto, campo NOME pesquisável com palavra-chave (e cidade, para negócio local), @, bio de 150 caracteres (valor + tema + prova), link alinhado ao objetivo (inclusive WhatsApp), categoria, destaques, as 9 primeiras do grid e até 3 posts fixados. Aciona com \"revisa meu perfil\", \"arruma minha bio\", \"destaques\", \"auditoria de perfil\". Não serve para legendas (use ig-caption-writer)."
 ---
 
-# Instagram Profile Optimizer
+# Otimizador de perfil do Instagram
 
-Audit the nine parts of an Instagram profile (photo, NAME field, @handle, bio,
-link, category label, highlights, the first-9 grid, pinned posts) against what
-actually converts a profile-visitor into a follower in 2026, then rewrite each
-part that needs it. On Instagram the whole follow decision happens on the
-profile header plus the first two or three grid rows: photo, NAME, bio, link,
-then the grid at a glance. That is what this fixes.
+Revisa as nove partes de um perfil (foto, campo NOME, @, bio, link, categoria,
+destaques, as 9 primeiras do grid, posts fixados) contra o que realmente
+transforma um visitante em seguidor em 2026, depois reescreve cada parte que
+precisa. No Instagram a decisão de seguir acontece no cabeçalho do perfil mais
+as duas ou três primeiras linhas do grid: foto, NOME, bio, link, depois o grid
+de relance. É isso que esta skill arruma.
 
-## When to use
+## Quando usar
 
-- User pastes their Instagram profile or @handle and asks for an audit
-- "Fix my bio", "rewrite my Instagram bio", "what should my highlights be"
-- User is starting to post seriously and wants the profile to match the content
-- Any of: "review my Instagram profile", "optimize highlights", "profile audit"
+- O usuário cola o perfil ou o @ e pede uma revisão
+- "Arruma minha bio", "reescreve minha bio", "quais destaques eu coloco"
+- O usuário vai começar a postar a sério e quer o perfil alinhado ao conteúdo
+- "Revisa meu Instagram", "otimiza os destaques", "auditoria de perfil"
 
-Not for writing captions (use `ig-caption-writer`) or planning a carousel
-(use `ig-carousel-planner`).
+Não serve para legendas (use `ig-caption-writer`) nem carrossel (use `ig-carousel-planner`).
 
-## Input
+## Entrada
 
-- Profile URL / @handle (or a screenshot of the profile header + first grid rows)
-- Goal: **grow a following** / **sell a product** / **land clients** / **build authority**. The bio CTA, the link target, and the pinned posts change by goal
-- Optional: their best-performing posts, to pick the pins and the grid order
+- URL do perfil / @ (ou print do cabeçalho + primeiras linhas do grid)
+- Objetivo: **crescer em seguidores** / **vender um produto** / **conseguir
+  clientes ou leads** / **construir autoridade**. O CTA da bio, o link e os
+  fixados mudam conforme o objetivo
+- Se for negócio local: cidade/região atendida, endereço ou área de atendimento
+- Opcional: os posts que mais performaram, para escolher fixados e ordem do grid
 
-## Output
+## Saída
 
-1. **Scorecard** (9 parts, pass / needs-work / fail)
-2. **Priority fixes** ranked by impact (NAME field, bio, and pins first)
-3. **Before -> After** rewrites for each failing part
-4. **Highlights plan** (covers, order, naming) and **grid + pin picks** with reasons
+1. **Placar** (9 partes: passa / precisa ajuste / falha)
+2. **Correções prioritárias** por impacto (NOME, bio e fixados primeiro)
+3. **Antes -> Depois** de cada parte que falhou
+4. **Plano de destaques** (capas, ordem, nomes) e **escolha do grid + fixados** com motivos
 
-## Steps
+## Passos
 
-1. **Intake.** Collect the profile state + goal. Note the account type
-   (personal / creator / business), since business and creator unlock the
-   category label and the professional dashboard.
-2. **Score the 9 parts** against the scorecard below.
-3. **Weight the NAME field with a keyword.** The NAME field (not the @handle) is
-   what Instagram search indexes. Set it to `Real Name + the topic people type`
-   (e.g. "Sam Rivera | Instagram Growth"), inside 30 chars. This is the single
-   highest-leverage SEO fix on the profile.
-4. **Rewrite the bio (150 chars).** Formula: `who you help + what you post about
-   + one proof or specific`. Lead with the value, not the job title. No "I help X
-   do Y" cliche opener unless the rest is specific. Line breaks and one anchor
-   emoji are fine; an emoji storm is not. Fit inside 150.
-5. **Set the link.** One link matched to the goal (offer / newsletter / booking).
-   If they need several, a single link-hub, not a bare homepage. Business and
-   creator accounts can now add multiple links, but the top one still carries the
-   click.
-6. **Set the category label** (business / creator accounts). One clear label that
-   matches the niche, shown under the NAME. It reinforces the bio; it does not
-   repeat it.
-7. **Plan the highlights.** 4-6 highlights, ordered left to right by the visitor's
-   next question: Start Here / Proof / Offer / FAQ / About. Custom covers in one
-   consistent style, short one-word names that fit without truncating. The first
-   3-4 are what a new visitor sees before scrolling.
-8. **Fix the first-9 grid.** The top nine tiles are the shop window. Aim for
-   readable at a glance, a consistent look (color, framing, or text style), and a
-   mix that shows range without chaos. Reorder or replace weak top tiles; the
-   grid is judged as a set, not tile by tile.
-9. **Pick the pinned posts (up to 3).** The three best proofs of what a new
-   follower will get, matched to the goal: a top performer, a clear offer, and an
-   intro/who-this-is-for post. Pins override the grid order, so use them.
-10. **Photo check.** Clear face, fills the frame, recent, high contrast against a
-    plain background. It renders small, so detail is wasted; contrast is not.
-11. **Deliver the before/after diff** + the header test: read only photo, NAME,
-    bio, link, and the first grid row, and ask "would a stranger follow from this
-    alone?"
+1. **Levantamento.** Estado do perfil + objetivo. Anote o tipo de conta
+   (pessoal / criador / comercial): comercial e criador liberam a categoria,
+   botões de contato e o painel profissional.
+2. **Pontue as 9 partes** pelo placar abaixo.
+3. **Coloque palavra-chave no campo NOME.** O campo NOME (não o @) é o que a
+   busca do Instagram indexa. Use `Nome real + o assunto que as pessoas digitam`
+   (ex.: "Fernando | Consórcio Sinop"), em até 30 caracteres. Para negócio local,
+   a cidade no NOME costuma ser a melhor palavra-chave. É a correção de SEO de
+   maior impacto do perfil.
+4. **Reescreva a bio (150 caracteres).** Fórmula: `quem você ajuda + sobre o que
+   posta + uma prova ou um dado específico`. Comece pelo valor, não pelo cargo.
+   Nada de abrir com "Ajudo X a Y" a menos que o resto seja específico. Quebras
+   de linha e um emoji-âncora são ok; chuva de emoji não. Cabe em 150.
+   Para negócio local, a cidade/região aparece na bio ou no endereço.
+5. **Defina o link.** Um link alinhado ao objetivo (oferta / lista / agendamento
+   / WhatsApp). No Brasil, o WhatsApp costuma ser o canal de conversão principal:
+   use link `wa.me` com mensagem pré-preenchida, ou o botão de WhatsApp da conta
+   comercial. Se precisar de vários, um hub de links, não a home pura. Contas
+   comerciais e de criador podem ter vários links, mas o primeiro leva o clique.
+6. **Defina a categoria** (contas comerciais e de criador). Um rótulo claro que
+   combine com o nicho, exibido abaixo do NOME. Reforça a bio, não repete.
+7. **Planeje os destaques.** 4-6, ordenados da esquerda para a direita pela
+   próxima pergunta do visitante: Comece aqui / Resultados / Como funciona /
+   Dúvidas / Sobre. Capas personalizadas num estilo só, nomes curtos de uma
+   palavra que não cortam. Os 3-4 primeiros são o que um visitante novo vê.
+8. **Arrume as 9 primeiras do grid.** São a vitrine. Busque leitura de relance,
+   visual consistente (cor, enquadramento ou estilo de texto) e uma mistura que
+   mostre variedade sem bagunça. O grid é julgado como conjunto.
+9. **Escolha os fixados (até 3).** As três melhores provas do que um novo
+   seguidor vai receber, alinhadas ao objetivo: um campeão de desempenho, uma
+   oferta clara e um post de apresentação/para quem é. Fixados sobrepõem a ordem
+   do grid, então use.
+10. **Confira a foto.** Rosto nítido ocupando o quadro (ou logo legível, para
+    marca), recente, contraste alto, fundo simples. Aparece pequena: detalhe se
+    perde, contraste não.
+11. **Entregue o antes/depois** + o teste do cabeçalho: leia só foto, NOME, bio,
+    link e a primeira linha do grid e pergunte "um estranho seguiria só com isso?"
 
-## Nine-part scorecard
+## Placar de nove partes
 
-| # | Part | Pass criteria (2026) |
+| # | Parte | Critério para passar (2026) |
 |---|------|----------------------|
-| 1 | **Profile photo** | Clear face filling the frame, recent, high contrast, plain background, reads at small size |
-| 2 | **NAME field** | Real name + a searchable keyword people type, inside 30 chars (this is the indexed field, not the @handle) |
-| 3 | **@handle** | Short, memorable, matches the brand, no numbers/underscores if avoidable |
-| 4 | **Bio** | Value + topic + proof inside 150 chars; no cliche opener; leads with what a follower gets; no emoji storm |
-| 5 | **Link** | One, goal-matched; a link-hub if several are needed; top link carries the click |
-| 6 | **Category label** | Set (business/creator), one clear niche label that reinforces the bio |
-| 7 | **Highlights** | 4-6, ordered by the visitor's next question, consistent custom covers, short names that do not truncate |
-| 8 | **First-9 grid** | Consistent look, readable at a glance, shows range; weak top tiles reordered or replaced |
-| 9 | **Pinned posts** | Up to 3 present, each a best proof matched to the goal (not random recent posts) |
+| 1 | **Foto** | Rosto nítido ou logo legível ocupando o quadro, recente, contraste alto, fundo simples, legível em tamanho pequeno |
+| 2 | **Campo NOME** | Nome real + palavra-chave pesquisável (e cidade, se local), em até 30 caracteres |
+| 3 | **@** | Curto, fácil de lembrar, combina com a marca, sem números/underlines se der |
+| 4 | **Bio** | Valor + tema + prova em 150 caracteres; sem abertura clichê; começa pelo que o seguidor ganha; sem chuva de emoji; português sem erro |
+| 5 | **Link** | Um, alinhado ao objetivo; WhatsApp ou hub se precisar de vários; o primeiro leva o clique |
+| 6 | **Categoria** | Definida (comercial/criador), um rótulo claro de nicho que reforça a bio |
+| 7 | **Destaques** | 4-6, ordenados pela próxima pergunta do visitante, capas consistentes, nomes curtos que não cortam |
+| 8 | **9 primeiras do grid** | Visual consistente, leitura de relance, mostra variedade; as fracas reordenadas ou trocadas |
+| 9 | **Fixados** | Até 3, cada um a melhor prova alinhada ao objetivo (não posts recentes aleatórios) |
 
-## Hard rules
+## Regras fixas
 
-Global voice rules: see root `SKILL.md` Voice rules. Additional skill-specific
-rules:
+Regras de voz globais: ver "Regras de voz" no `SKILL.md` raiz. Regras específicas:
 
-- The header must pass the header test: a stranger reading only photo + NAME +
-  bio + link + first grid row should know who this is for and want to follow.
-- Lead the bio with the reader's benefit, not the user's job title.
-- The NAME field always carries a searchable keyword; never leave it as bare name.
-- Keep every rewrite inside the platform limits (bio 150, NAME 30). Never ship a
-  truncated bio or a highlight name that cuts off.
-- Highlights and grid are judged as sets; fix order and consistency, not just
-  single items.
-- At most one em dash in the bio (a 150-char bio rarely needs one). No "leverage", "fundamentally", "game-changer", "elevate".
+- O cabeçalho precisa passar no teste: um estranho lendo só foto + NOME + bio +
+  link + primeira linha do grid sabe para quem é e quer seguir.
+- A bio começa pelo benefício do leitor, não pelo cargo do usuário.
+- O campo NOME sempre leva uma palavra-chave; nunca só o nome.
+- Toda reescrita dentro dos limites (bio 150, NOME 30). Nunca entregue bio
+  cortada ou nome de destaque que corta.
+- Destaques e grid são julgados como conjunto.
+- No máximo um travessão na bio. Nada de "alavancar", "potencializar",
+  "transformando vidas", "sua jornada", "excelência".
+- Setor regulado: nada de "aprovação garantida", "contemplação garantida" ou
+  similares na bio. Inclua registros obrigatórios (CRECI, CNPJ, credenciamento
+  MEC etc.) quando o usuário informar que o setor exige.
 
-## Related skills
+## Skills relacionadas
 
-- `ig-caption-writer` - write the captions the optimized profile and grid will host
-- `ig-hook-extractor` - find a pin-worthy hook in a post that already worked
-- `ig-content-planner` - plan the cadence that fills the grid and highlights
-- `ig-humanizer --mode audit` - audit the bio and pinned captions before shipping
+- `ig-caption-writer` - escreve as legendas que o perfil e o grid vão receber
+- `ig-hook-extractor` - acha um gancho digno de fixar num post que já funcionou
+- `ig-content-planner` - planeja a cadência que preenche grid e destaques
+- `ig-humanizer --mode audit` - revisa a bio e as legendas fixadas antes de publicar
